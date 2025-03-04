@@ -18,15 +18,15 @@ function Login() {
           }}
         ></div>
 
-        <div className="absolute top-40 left-16 z-10">
-          <div className="font-Courgette text-5xl font-semibold">
+        <div className="absolute top-28 left-16 z-10">
+          <div className="font-Courgette text-4xl font-semibold">
             <p className=" mb-4">Continue your journey to</p>
             <p>reduce waste and feed lives</p>
           </div>
-          <p className="font-Nunito text-3xl mt-16">Log in and get started!</p>
-          <p className="font-Nunito text-4xl mt-16">
+          <p className="font-Nunito text-2xl mt-16">Log in and get started!</p>
+          <p className="font-Nunito text-2xl mt-16">
             Don't have an account yet?{" "}
-            <b className="text-4xl">
+            <b className="text-3xl">
               <u>
                 <Link to="Signup">Sign up</Link>
               </u>
@@ -36,14 +36,14 @@ function Login() {
       </div>
 
       <div className="w-full sm:w-[45%] h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:border-l-2 border-l-0 border-main bg-[#FFFFFF]">
-        <p className="font-Telex text-3xl sm:text-5xl font-medium sm:mt-20 mt-16 ml-10">
+        <p className="font-Telex text-3xl font-medium mt-20 ml-10">
           Welcome Back
         </p>
         <form
-          className="flex flex-col font-Telex mt-11 ml-10"
+          className="flex flex-col font-Telex mt-6 ml-10"
           onSubmit={handleSubmit}
         >
-          <label htmlFor="email" className="mb-2 mt-5 text-xl">
+          <label htmlFor="email" className="mb-2 sm:mt-3 text-xl">
             Email Address
           </label>
           <input
@@ -69,7 +69,7 @@ function Login() {
           {/* <p className=" text-red text-lg">{error}</p> */}
           <button
             type="submit"
-            className=" mt-16 bg-main text-white bg-[#133221] py-2 rounded-lg sm:w-96 ml-7 w-64 sm:mx-auto text-2xl font-semibold transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard"
+            className=" sm:mt-9 mt-12 bg-main text-white bg-[#133221] py-2 rounded-lg sm:w-64 ml-7 w-64 sm:mx-auto text-xl font-semibold transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard"
           >
             Login
           </button>
