@@ -10,13 +10,13 @@ function Signup() {
   return (
     <>
       <div className="sm:block hidden text-[#FFFFFF] bg-[#133221] h-screen">
-        <div
-          className="absolute inset-0 bg-no-repeat"
+        {/* <div
+          className="absolute inset-0 bg-contain bg-no-repeat"
           style={{
             backgroundImage: `url(${bg})`,
-            mixBlendMode: "multiply",
+            // mixBlendMode: "multiply",
           }}
-        ></div>
+        ></div> */}
 
         <div className="absolute top-28 left-16 z-10">
           <div className="font-Courgette text-4xl font-semibold">
@@ -37,7 +37,7 @@ function Signup() {
         </div>
       </div>
 
-      <div className="w-full sm:w-[45%] h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:border-l-2 border-l-0 border-main bg-[#FFFFFF]">
+      <div className="w-full sm:w-1/2 h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:border-l-2 border-l-0 border-main sm:bg-[#FFFFFF] bg-[#133221] sm:text-black text-[#FFFFFF]">
         <p className="font-Telex text-3xl font-medium mt-12 ml-10">
           Create Account
         </p>
@@ -54,7 +54,7 @@ function Signup() {
             // value={fullname}
             // onChange={(e) => setFullname(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] mb-6 py-1 px-2 w-11/12 rounded-md"
+            className="border-0 border-b-2 border-[#133221] mb-6 sm:mb-4 py-1 px-2 w-11/12 rounded-md"
           />
           <label htmlFor="email" className="mb-2 sm:mt-3 text-xl">
             Email Address
@@ -65,7 +65,7 @@ function Signup() {
             // value={email}
             // onChange={(e) => setEmail(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] mb-6 py-1 px-2 w-11/12 rounded-md"
+            className="border-0 border-b-2 border-[#133221] mb-6 sm:mb-4 py-1 px-2 w-11/12 rounded-md"
           />
 
           <label htmlFor="password" className="mb-2 text-xl">
@@ -82,7 +82,7 @@ function Signup() {
           {/* <p className=" text-red text-lg">{error}</p> */}
           <button
             type="submit"
-            className=" sm:mt-9 mt-12 bg-main text-white bg-[#133221] py-2 rounded-lg sm:w-64 ml-7 w-64 sm:mx-auto text-xl font-semibold transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard"
+            className=" sm:mt-9 mt-12 bg-main sm:text-white sm:bg-[#133221] text-black bg-[#FFFFFF] py-2 rounded-lg sm:w-64 w-64 sm:mx-auto text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard"
           >
             Create Account
           </button>

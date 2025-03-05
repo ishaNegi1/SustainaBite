@@ -10,6 +10,7 @@ export default {
       'Coustard':'Coustard',
       'Courgette':'Courgette',
       'Nunito':'Nunito',
+      'Pacifico': 'Pacifico'
     },
   },
   plugins: [],
