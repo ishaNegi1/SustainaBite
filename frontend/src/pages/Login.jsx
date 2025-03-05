@@ -36,7 +36,7 @@ function Login() {
       </div>
 
       <div className="w-full sm:w-1/2 h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:border-l-2 border-l-0 border-main sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF]">
-        <p className="font-Telex text-3xl font-medium mt-20 ml-10">
+        <p className="font-Telex text-3xl font-medium mt-24 ml-10">
           Welcome Back
         </p>
         <form
@@ -69,7 +69,7 @@ function Login() {
           {/* <p className=" text-red text-lg">{error}</p> */}
           <button
             type="submit"
-            className=" sm:mt-9 mt-12 bg-main sm:text-white sm:bg-[#133221] text-black bg-[#FFFFFF] py-2 rounded-lg sm:w-64 w-64 sm:mx-auto text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard"
+            className=" sm:mt-9 mt-12 bg-main sm:text-white sm:bg-[#133221] text-[#FFFFFF] bg-[#fa453c] py-2 rounded-lg sm:w-64 w-64 sm:mx-auto text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard ml-2"
           >
             Login
           </button>
