@@ -9,16 +9,16 @@ function Login() {
 
   return (
     <>
-      <div className="sm:block hidden text-[#FFFFFF] bg-[#133221] h-screen">
-        {/* <div
-          className="absolute inset-0 bg-no-repeat"
+      <div className=" flex text-[#FFFFFF] bg-[#133221] h-screen items-center">
+        <div
+          className=" absolute inset-0 bg-contain bg-no-repeat ml-9"
           style={{
-            backgroundImage: `url(${bg})`,
-            mixBlendMode: "multiply",
+            backgroundImage: `url(${bg})`
           }}
-        ></div> */}
+        ></div>
+        <div className="absolute inset-0 bg-[#133221] opacity-80"></div>
 
-        <div className="absolute top-28 left-16 z-10">
+        <div className=" ml-11 sm:block hidden z-10">
           <div className="font-Courgette text-4xl font-semibold">
             <p className=" mb-4">Continue your journey to</p>
             <p>reduce waste and feed lives</p>
@@ -35,15 +35,16 @@ function Login() {
         </div>
       </div>
 
-      <div className="w-full sm:w-1/2 h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:border-l-2 border-l-0 border-main sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF]">
-        <p className="font-Telex text-3xl font-medium mt-24 ml-10">
+      <div className=" w-full sm:w-1/2 h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF] flex items-center justify-center">
+       <div className=" sm:w-[70%] mx-1">
+        <p className=" font-Telex text-4xl font-medium mb-11">
           Welcome Back
         </p>
         <form
-          className="flex flex-col font-Telex mt-6 ml-10"
+          className="flex flex-col font-Telex"
           onSubmit={handleSubmit}
         >
-          <label htmlFor="email" className="mb-2 sm:mt-3 text-xl">
+          <label htmlFor="email" className="mb-2 text-xl">
             Email Address
           </label>
           <input
@@ -52,7 +53,7 @@ function Login() {
             // value={email}
             // onChange={(e) => setEmail(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] mb-10 py-1 px-2 w-11/12 rounded-md"
+            className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md mb-8"
           />
 
           <label htmlFor="password" className="mb-2 text-xl">
@@ -64,17 +65,17 @@ function Login() {
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] mb-4 py-1 px-2 w-11/12 rounded-md"
+            className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md"
           />
           {/* <p className=" text-red text-lg">{error}</p> */}
           <button
             type="submit"
-            className=" sm:mt-9 mt-12 bg-main sm:text-white sm:bg-[#133221] text-[#FFFFFF] bg-[#fa453c] py-2 rounded-lg sm:w-64 w-64 sm:mx-auto text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard ml-2"
+            className=" bg-main sm:text-white sm:bg-[#133221] text-[#FFFFFF] bg-[#fa453c] rounded-lg w-64 text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-10 mx-auto"
           >
             Login
           </button>
         </form>
-        <p className="sm:hidden block font-Nunito text-xl my-9 text-center">
+        <p className=" sm:hidden block font-Nunito text-xl mt-7">
           Don't have an account yet?{" "}
           <b className="text-2xl">
             <u>
@@ -82,6 +83,7 @@ function Login() {
             </u>
           </b>
         </p>
+      </div>
       </div>
     </>
   );

@@ -5,15 +5,14 @@ import { img } from "../assets/pictures";
 const Home = () => {
   return (
     <div className=" bg-[#FFFFFF] h-screen">
-      <div className=" text-[#115731] sm:h-2/3 h-auto flex relative overflow-hidden">
-        {/* <div
-          className="absolute inset-0 bg-cover bg-center sm:hidden block"
+      <div className=" text-[#FFFFFF] sm:h-2/3 h-auto flex relative overflow-hidden">
+        <div
+          className=" absolute inset-0 bg-cover bg-center bg-no-repeat sm:hidden block"
           style={{
             backgroundImage: `url(${img})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
-        ></div> */}
+        ></div>
+        <div className="absolute inset-0 bg-black opacity-80"></div>
 
         <div className="relative z-10 sm:flex sm:flex-col sm:w-[60%] mt-5 sm:ml-6 sm:-mr-24 p-4">
           <div className="sm:w-[106%] text-center font-Pacifico sm:text-[1.5rem] text-[1.2rem] px-2 sm:px-0">
@@ -43,7 +42,25 @@ const Home = () => {
           className=" w-[60%] bg-no-repeat bg-contain sm:block hidden"
         ></div>
       </div>
-      <div className=" bg-[#85CA81] h-16"></div>
+      <div className="bg-[#85CA81] h-16 flex items-center overflow-hidden whitespace-nowrap mt-1">
+        <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee">
+          <p>Donate Food</p>
+          <p>Compost Collection</p>
+          <p>Leftover Recipes</p>
+          <p>Awareness Blogs</p>
+          <p>Organic Fertilizer</p>
+        </div>
+        <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee ml-12">
+          <p>Donate Food</p>
+          <p>Compost Collection</p>
+          <p>Leftover Recipes</p>
+          <p>Awareness Blogs</p>
+          <p>Organic Fertilizer</p>
+        </div>
+      </div>
+      <div>
+        <h1 className=" text-[#133221] font-Nunito font-bold text-2xl text-center mt-3">OUR SERVICES</h1>
+      </div>
     </div>
   );
 };
