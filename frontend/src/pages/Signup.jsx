@@ -16,17 +16,17 @@ function Signup() {
                     backgroundImage: `url(${bg})`,
                   }}
                 ></div>
-                <div className="absolute inset-0 bg-[#133221] opacity-80"></div>
+                <div className="absolute inset-0 bg-[#133221] opacity-70"></div>
 
         <div className=" ml-11 sm:block hidden z-10">
           <div className="font-Courgette text-4xl font-semibold">
             <p className=" mb-4">Start your journey to</p>
             <p>reduce waste and feed lives</p>
           </div>
-          <p className="font-Nunito text-2xl mt-16">
+          <p className="font-Nunito text-2xl mt-12">
             Sign Up and Make a Difference!
           </p>
-          <p className="font-Nunito text-2xl mt-16">
+          <p className="font-Nunito text-2xl mt-12">
             Already have an account?{" "}
             <b className="text-3xl">
               <u>
@@ -37,7 +37,7 @@ function Signup() {
         </div>
       </div>
 
-      <div className=" w-full sm:w-1/2 h-screen fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF] flex items-center justify-center">
+      <div className=" w-full sm:w-1/2 h-full fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF] flex items-center justify-center">
       <div className=" sm:w-[70%] mx-1">
         <p className=" font-Telex text-4xl font-medium mb-7">
           Create Account
@@ -55,7 +55,7 @@ function Signup() {
             // value={fullname}
             // onChange={(e) => setFullname(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md mb-8"
+            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-8 bg-transparent sm:border-[#133221]"
           />
           <label htmlFor="email" className=" text-xl mb-2">
             Email Address
@@ -66,7 +66,7 @@ function Signup() {
             // value={email}
             // onChange={(e) => setEmail(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md mb-8"
+            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-8 bg-transparent sm:border-[#133221]"
           />
 
           <label htmlFor="password" className=" text-xl mb-2">
@@ -78,7 +78,7 @@ function Signup() {
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md mb-2"
+            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221]"
           />
           {/* <p className=" text-red text-lg">{error}</p> */}
           <button

@@ -12,7 +12,7 @@ const Home = () => {
             backgroundImage: `url(${img})`,
           }}
         ></div>
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
 
         <div className="relative z-10 sm:flex sm:flex-col sm:w-[60%] mt-5 sm:ml-6 sm:-mr-24 p-4">
           <div className="sm:w-[106%] text-center font-Pacifico sm:text-[1.5rem] text-[1.2rem] px-2 sm:px-0">
