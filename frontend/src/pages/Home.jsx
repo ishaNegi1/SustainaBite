@@ -1,27 +1,36 @@
 import React from "react";
 import { Link } from "react-router";
-import { img } from "../assets/pictures";
+import { bg, img1 } from "../assets/pictures";
+import { useEffect, useState } from 'react';
+
 
 const Home = () => {
+  const [image, setImage] = useState(img1);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640) {
+        setImage(bg); 
+      } else {
+        setImage(img1); 
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className=" bg-[#FFFFFF] h-screen">
-      <div className=" text-[#FFFFFF] md:h-[30%] lg:h-[57%] h-auto flex relative overflow-hidden">
-        <div
-          className=" absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden block"
-          style={{
-            backgroundImage: `url(${img})`,
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black opacity-70"></div>
-
-        <div className="relative z-10 md:flex md:flex-col md:w-[65%] lg:w-[60%] lg:mt-5 mt-3 md:-mr-[15] p-4 lg:ml-5">
-          <div className="md:w-[106%] text-center font-Pacifico md:text-lg lg:text-[1.5rem] px-2 md:px-0">
+      <div className=" text-[#FFFFFF] h-auto bg-[#133221] flex items-center justify-center bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${image})`}}>
+      <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className=" z-10 px-4 lg:w-2/4 md:w-2/3 flex flex-col">
+          <div className=" text-center font-Pacifico sm:text-2xl sm:pt-8 pt-4">
             <p>
               "Every meal saved is a life nourished and a planet preserved.
               Let's waste less and care more!"
             </p>
           </div>
-          <div className=" md:w-[106%] w-[100%] text-center font-Nunito md:text-md lg:text-xl text-[1rem] mt-5 px-2">
+          <div className=" text-center font-Nunito sm:text-xl sm:pt-6 pt-3">
             <p>
               Food waste harms both people and the environment. Our platform
               helps reduce waste through food donations, compost collection,
@@ -29,19 +38,16 @@ const Home = () => {
               waste-free, hunger-free future!
             </p>
           </div>
-          <div className="md:w-[100%] text-center">
+          <div className=" text-center">
             <Link to="/signup">
-              <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg lg:w-40 w-40 md:w-36 md:mx-auto lg:text-xl text-xl md:text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-4 mb-5">
+              <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg sm:w-40 w-36 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard sm:my-7 my-4">
                 JOIN US
               </button>
             </Link>
           </div>
         </div>
-        <div
-          style={{ backgroundImage: `url(${img})` }}
-          className=" w-[60%] bg-no-repeat bg-contain md:block hidden md:mt-16 lg:mt-0"
-        ></div>
       </div>
+
       <div className="bg-[#85CA81] h-16 flex items-center overflow-hidden whitespace-nowrap mt-1">
         <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee">
           <p>Donate Food</p>

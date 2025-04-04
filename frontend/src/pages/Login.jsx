@@ -1,16 +1,26 @@
 import React from "react";
 import { Link } from "react-router";
-import { bg } from "../assets/pictures";
+import { bg1 } from "../assets/pictures";
+import { useEffect, useState } from 'react';
 
 function Login() {
+   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 640);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
   const handleSubmit = async (e) => {
     console.log("Done");
   };
 
   return (
     <>
-      <div className=" flex text-[#FFFFFF] bg-[#133221] h-screen items-center">
-        <div className=" lg:ml-11 ml-11 sm:ml-6 sm:block hidden z-10">
+      <div className=" flex text-[#FFFFFF] w-1/2 h-screen items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${bg1})`}}>
+        <div className=" lg:ml-16 ml-11 sm:ml-6 sm:block hidden z-10">
           <div className="font-Courgette lg:text-4xl text-4xl sm:text-2xl font-semibold">
             <p className=" mb-4">Continue your journey to</p>
             <p>reduce waste and feed lives</p>
@@ -27,7 +37,7 @@ function Login() {
         </div>
       </div>
 
-      <div className=" w-full sm:w-1/2 h-full fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF] flex items-center justify-center">
+      <div className=" w-full sm:w-1/2 h-full fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black bg-[#133221] text-[#FFFFFF] flex items-center justify-center bg-cover bg-center bg-no-repeat sm:bg-noner" style={isMobile ? { backgroundImage: `url(${bg1})` } : {}}>
         <div className=" sm:w-[70%] mx-1">
           <p className=" font-Telex sm:text-2xl lg:text-4xl text-4xl font-medium lg:mb-7 mb-7 sm:mb-4">
             Welcome Back
