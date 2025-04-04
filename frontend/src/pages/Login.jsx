@@ -10,12 +10,6 @@ function Login() {
   return (
     <>
       <div className=" flex text-[#FFFFFF] bg-[#133221] h-screen items-center">
-        <div className=" absolute inset-0 bg-cover bg-no-repeat w-1/2 h-screen"
-          style={{
-            backgroundImage: `url(${bg})`,
-          }}
-        ></div>
-        <div className="absolute w-1/2 inset-0 bg-[#133221] sm:opacity-30 opacity-30 lg:opacity-70"></div>
         <div className=" lg:ml-11 ml-11 sm:ml-6 sm:block hidden z-10">
           <div className="font-Courgette lg:text-4xl text-4xl sm:text-2xl font-semibold">
             <p className=" mb-4">Continue your journey to</p>
