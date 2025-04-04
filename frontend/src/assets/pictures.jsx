@@ -10,7 +10,7 @@ import fertilizer2 from './fertilizer2.jpg'
 import leftover1 from './leftover1.jpg'
 import leftover2 from './leftover2.jpg'
 import lifecycle from './lifecycle.jpg'
-import trash from './trash.png'
+import trash from './trash.jpg'
 import objects from './objects.jpg'
 import rotten from './rotten.jpg'
 
