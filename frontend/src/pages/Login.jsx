@@ -70,9 +70,9 @@ function Login() {
               Login
             </button>
           </form>
-          <p className=" sm:hidden block font-Nunito sm:text-xl text-lg mt-7">
+          <p className=" sm:hidden block font-Nunito sm:text-2xl text-xl mt-7">
             Don't have an account?{" "}
-            <b className=" sm:text-2xl text-xl">
+            <b className=" text-2xl">
               <u>
                 <Link to="Signup">Sign up</Link>
               </u>

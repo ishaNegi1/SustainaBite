@@ -87,9 +87,9 @@ function Signup() {
             Create Account
           </button>
         </form>
-        <p className=" sm:hidden block font-Nunito sm:text-xl text-lg mt-7">
+        <p className=" sm:hidden block font-Nunito sm:text-2xl text-xl mt-7">
           Already have an account?{" "}
-          <b className="sm:text-2xl text-xl">
+          <b className=" text-2xl">
             <u>
               <Link to="login">Log in</Link>
             </u>
