@@ -52,7 +52,7 @@ function Login() {
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
               required
-              className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent h-7 sm:border-[#133221]"
+              className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent sm:border-[#133221] text-xl"
             />
 
             <label htmlFor="password" className="sm:text-md text-xl lg:text-xl mb-2">
@@ -64,7 +64,7 @@ function Login() {
               // value={password}
               // onChange={(e) => setPassword(e.target.value)}
               required
-              className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-2 bg-transparent h-7 sm:border-[#133221]"
+              className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] text-xl"
             />
             {/* <p className=" text-red text-lg">{error}</p> */}
             <button

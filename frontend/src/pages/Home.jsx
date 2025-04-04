@@ -24,7 +24,7 @@ const Home = () => {
       <div className=" text-[#FFFFFF] h-auto bg-[#133221] flex items-center justify-center bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${image})`}}>
       <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className=" z-10 px-4 lg:w-2/4 md:w-2/3 flex flex-col">
-          <div className=" text-center font-Pacifico sm:text-2xl sm:pt-8 pt-4">
+          <div className=" text-center font-Pacifico sm:text-2xl text-xl sm:pt-8 pt-4">
             <p>
               "Every meal saved is a life nourished and a planet preserved.
               Let's waste less and care more!"
@@ -35,7 +35,7 @@ const Home = () => {
               Food waste harms both people and the environment. Our platform
               helps reduce waste through food donations, compost collection,
               leftover recipes, and sustainability blogs. Join us in creating a
-              waste-free, hunger-free future!
+              waste-free and hunger-free future!
             </p>
           </div>
           <div className=" text-center">

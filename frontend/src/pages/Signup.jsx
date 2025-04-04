@@ -57,7 +57,7 @@ function Signup() {
             // value={fullname}
             // onChange={(e) => setFullname(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent h-7 sm:border-[#133221]"
+            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent sm:border-[#133221] text-xl"
           />
           <label htmlFor="email" className=" sm:text-md lg:text-xl text-xl mb-2">
             Email Address
@@ -68,7 +68,7 @@ function Signup() {
             // value={email}
             // onChange={(e) => setEmail(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent h-7 sm:border-[#133221]"
+            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent sm:border-[#133221] text-xl"
           />
 
           <label htmlFor="password" className=" sm:text-md lg:text-xl text-xl mb-2">
@@ -80,7 +80,7 @@ function Signup() {
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
             required
-            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-2 bg-transparent h-7 sm:border-[#133221]"
+            className="border-0 border-b-2 border-[#FFFFFF] py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] text-xl"
           />
           {/* <p className=" text-red text-lg">{error}</p> */}
           <button
