@@ -30,7 +30,7 @@ function Login() {
       </div>
 
       <div className=" w-full sm:w-1/2 h-full fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black text-[#133221] flex items-center justify-center bg-cover bg-center bg-no-repeat sm:bg-none bg-[#133221]">
-        <div className=" sm:w-[70%] mx-1 bg-white rounded-lg bg-opacity-85 sm:rounded-none p-6 sm:p-0">
+        <div className=" sm:w-[70%] mx-1 bg-white rounded-lg sm:rounded-none p-6 sm:p-0">
           <p className=" font-Telex sm:text-2xl lg:text-4xl text-2xl font-medium lg:mb-7 mb-5 sm:mb-4">
             Welcome Back
           </p>
