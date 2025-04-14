@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router";
-import { bg1 } from "../assets/pictures";
-import { useEffect, useState } from 'react';
 
 function Signup() {
 

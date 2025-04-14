@@ -1,7 +1,6 @@
 import bg from './bg.png'
-import bg1 from './bg1.png'
 import img from './img.png'
-import blog1 from './blog1.jpg'
+import blog1 from './blog1.png'
 import blog2 from './blog2.jpg'
 import donate1 from './donate1.jpg'
 import donate2 from './donate2.jpg'
@@ -16,4 +15,4 @@ import objects from './objects.jpg'
 import rotten from './rotten.jpg'
 import img1 from './img1.png'
 
-export {bg, bg1, img, blog1, img1, blog2, donate1, donate2, concept, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten}
+export {bg, img, blog1, img1, blog2, donate1, donate2, concept, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten}

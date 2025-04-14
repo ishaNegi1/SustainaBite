@@ -7,10 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'Coustard': 'Coustard',
-        'Courgette': 'Courgette',
         'Nunito': 'Nunito',
-        'Pacifico': 'Pacifico'
+        'Pacifico': 'Pacifico',
       },
       animation: {
         marquee: "marquee 20s linear infinite",
