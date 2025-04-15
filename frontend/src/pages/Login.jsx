@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 
 function Login() {
-
   const handleSubmit = async (e) => {
     console.log("Done");
   };
@@ -15,7 +14,9 @@ function Login() {
             <p className=" mb-4">Continue your journey to</p>
             <p>reduce waste and feed lives</p>
           </div>
-          <p className="font-Nunito lg:text-2xl text-2xl sm:text-xl mt-12">Log in and get started!</p>
+          <p className="font-Nunito lg:text-2xl text-2xl sm:text-xl mt-12">
+            Log in and get started!
+          </p>
           <p className="font-Nunito lg:text-2xl text-2xl sm:text-xl mt-12">
             Don't have an account yet?{" "}
             <b className="lg:text-3xl text-3xl sm:text-2xl">
@@ -32,8 +33,14 @@ function Login() {
           <p className=" font-Telex sm:text-2xl lg:text-4xl text-2xl font-medium lg:mb-7 mb-5 sm:mb-4">
             Welcome Back
           </p>
-          <form className="flex flex-col font-Telex z-10" onSubmit={handleSubmit}>
-            <label htmlFor="email" className="mb-2 sm:text-md lg:text-xl text-lg">
+          <form
+            className="flex flex-col font-Telex z-10"
+            onSubmit={handleSubmit}
+          >
+            <label
+              htmlFor="email"
+              className="mb-2 sm:text-md lg:text-xl text-lg"
+            >
               Email Address
             </label>
             <input
@@ -45,7 +52,10 @@ function Login() {
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#133221] text-sm"
             />
 
-            <label htmlFor="password" className="sm:text-md text-lg lg:text-xl mb-2">
+            <label
+              htmlFor="password"
+              className="sm:text-md text-lg lg:text-xl mb-2"
+            >
               Password
             </label>
             <input

@@ -14,5 +14,6 @@ import trash from './trash.jpg'
 import objects from './objects.jpg'
 import rotten from './rotten.jpg'
 import img1 from './img1.png'
+import logo from './logo.png'
 
-export {bg, img, blog1, img1, blog2, donate1, donate2, concept, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten}
+export {logo, bg, img, blog1, img1, blog2, donate1, donate2, concept, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten}

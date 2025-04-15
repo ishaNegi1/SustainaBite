@@ -10,10 +10,11 @@ import {
   rotten,
 } from "../assets/pictures";
 import { useEffect, useState } from "react";
-import Card from "../components/Card";
+import { Card, ImpactCounter } from "../components/allComponents";
 
 const Home = () => {
   const [image, setImage] = useState(img1);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 640) {
@@ -59,15 +60,15 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-[#85CA81] dark:bg-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-2">
-        <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee">
+      <div className="bg-[#85CA81] text-white dark:text-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-6">
+        <div className="flex space-x-16 text-2xl font-semibold animate-marquee">
           <p>Donate Food</p>
           <p>Compost Collection</p>
           <p>Leftover Recipes</p>
           <p>Awareness Blogs</p>
           <p>Organic Fertilizer</p>
         </div>
-        <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee ml-12">
+        <div className="flex space-x-16 text-2xl font-semibold animate-marquee ml-12">
           <p>Donate Food</p>
           <p>Compost Collection</p>
           <p>Leftover Recipes</p>
@@ -76,9 +77,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto sm:px-4 px-8 mt-12 mb-20">
-        <h1 className="text-[#133221] font-Nunito font-bold text-2xl text-center">
-          OUR SERVICES
+      <div className="max-w-7xl mx-auto sm:px-4 px-8 mt-16 mb-24 sm:mb-28">
+        <h1 className="text-[#133221] dark:text-white font-Nunito font-bold text-2xl text-center">
+          Our Services
         </h1>
         <div className="flex flex-wrap justify-center gap-14 mt-10 sm:mt-12 sm:mb-20 mb-14">
           <Card
@@ -127,12 +128,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className=" flex justify-around items-center bg-slate-400 mt-12 mb-12">
-        <div>100</div>
-        <div>100</div>
-        <div>100</div>
-        <div>100</div>
-      </div>
+      <ImpactCounter />
     </>
   );
 };
