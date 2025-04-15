@@ -5,9 +5,11 @@ import {Footer, Navbar} from './components/allComponents'
 const Layout = () => {
   return (
     <>
+      <div className=" bg-white dark:bg-black transition-colors duration-500">
       <Navbar />
         <Outlet />
       <Footer />
+      </div>
     </>
   )
 }

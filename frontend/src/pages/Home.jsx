@@ -59,7 +59,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-[#85CA81] h-16 flex items-center overflow-hidden whitespace-nowrap mt-2">
+      <div className="bg-[#85CA81] dark:bg-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-2">
         <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee">
           <p>Donate Food</p>
           <p>Compost Collection</p>
@@ -76,7 +76,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 mt-12 mb-20">
+      <div className="max-w-7xl mx-auto sm:px-4 px-8 mt-12 mb-20">
         <h1 className="text-[#133221] font-Nunito font-bold text-2xl text-center">
           OUR SERVICES
         </h1>
@@ -93,7 +93,7 @@ const Home = () => {
             src={blog2}
             alt="Compost Collection"
             title="Compost Collection"
-            desc="Turn your kitchen waste into value! Schedule compost pickups and earn BiteBack Coins in return."
+            desc="Turn your kitchen waste into value! Schedule compost pickups and earn SustainaBite Coins in return."
             backContent="Composting is a simple way to give back to the earth. Schedule pickups and turn waste into value."
             btnText="Schedule Pickup"
           />
@@ -125,6 +125,13 @@ const Home = () => {
             btnText="Explore Blogs"
           />
         </div>
+      </div>
+
+      <div className=" flex justify-around items-center bg-slate-400 mt-12 mb-12">
+        <div>100</div>
+        <div>100</div>
+        <div>100</div>
+        <div>100</div>
       </div>
     </>
   );
