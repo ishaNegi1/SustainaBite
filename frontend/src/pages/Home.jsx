@@ -59,7 +59,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-[#85CA81] h-16 flex items-center overflow-hidden whitespace-nowrap mt-1">
+      <div className="bg-[#85CA81] h-16 flex items-center overflow-hidden whitespace-nowrap mt-2">
         <div className="flex space-x-16 text-white text-2xl font-semibold animate-marquee">
           <p>Donate Food</p>
           <p>Compost Collection</p>
