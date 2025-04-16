@@ -15,7 +15,7 @@ const Counter = ({ end, duration, startCounting }) => {
       if (start === end) clearInterval(counter);
     }, incrementTime);
 
-    return () => clearInterval(counter); // Cleanup
+    return () => clearInterval(counter);
   }, [end, duration, startCounting]);
 
   return <span>{count}+</span>;
@@ -37,11 +37,11 @@ const ImpactCounter = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setStartCounting(true);
-          observer.disconnect(); // Stop observing once triggered
+          observer.disconnect();
         }
       },
       {
-        threshold: 0.5, // 50% of the element is visible
+        threshold: 0.5,
       }
     );
 
@@ -55,25 +55,25 @@ const ImpactCounter = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-[#85CA81] dark:bg-[#133221] pb-10 pt-5 px-4 mb-8 flex flex-col items-center"
+      className="bg-[#85CA81] pb-10 pt-5 px-4 my-32 flex flex-col items-center"
     >
-      <h1 className="font-Nunito font-bold text-2xl mb-6 text-center text-[#133221] dark:text-white">
+      <h1 className="font-Nunito font-bold text-3xl mb-12 text-center text-[#133221]">
         Our Impact
       </h1>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {stats.map((item, index) => (
           <div
             key={index}
-            className="text-center p-4 bg-white dark:bg-[#85CA81] shadow-md rounded-lg"
+            className="text-center p-4 bg-white dark:bg-[#133221] shadow-md rounded-lg"
           >
-            <p className="text-3xl font-bold text-[#133221]">
+            <p className="text-3xl font-bold text-[#133221] dark:text-white">
               <Counter
                 end={item.value}
                 duration={1500}
                 startCounting={startCounting}
               />
             </p>
-            <p className="mt-2 text-sm font-medium text-[#133221]">
+            <p className="mt-2 text-sm font-medium text-[#133221] dark:text-white">
               {item.label}
             </p>
           </div>

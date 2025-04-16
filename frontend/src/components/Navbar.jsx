@@ -37,36 +37,36 @@ function Navbar() {
   return (
     <>
       <div
-        className={` flex justify-center fixed top-0 left-0 h-screen w-[63%] z-30 bg-white dark:bg-[#133221] transition-transform duration-500 ease-in-out sm:hidden ${
+        className={` flex justify-center fixed top-0 left-0 h-screen w-[63%] z-30 bg-white dark:bg-[#133221] transition-transform duration-700 ease-in-out sm:hidden ${
           sideNav ? "translate-x-0" : "-translate-x-full"
-        } dark:border-white dark:border-r-2`}
+        } dark:border-white dark:border-r-2 border-r-2 border-[#133221]`}
       >
         <div className="flex flex-col mt-36">
           <Link
             to="/"
-            className="text-[#133221] dark:text-white font-Coustard text-2xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
+            className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="text-[#133221] dark:text-white font-Coustard text-2xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
+            className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
           >
             About
           </Link>
           <Link
             to="/contact"
-            className="text-[#133221] dark:text-white font-Coustard text-2xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
+            className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
           >
             Contact
           </Link>
           <Link to="/login">
-            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-24 h-9 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 ">
+            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 ">
               Login
             </button>
           </Link>
           <Link to="/signup">
-            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221]  w-24 h-9 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5">
+            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221]  w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5">
               Signup
             </button>
           </Link>
@@ -76,7 +76,7 @@ function Navbar() {
       <div className=" bg-[#133221] h-20 sticky sm:static top-0 left-0 flex justify-between z-30">
         <div className=" flex items-center ml-7 sm:ml-11">
           <div>
-            <img src={logo} alt="logo" className=" w-14 h-14 sm:w-16 sm:h-16" />
+            <img src={logo} alt="logo" className=" w-14 h-14" />
           </div>
         </div>
 

@@ -12,7 +12,7 @@ export default {
         'Pacifico': 'Pacifico',
       },
       animation: {
-        marquee: "marquee 20s linear infinite",
+        marquee: "marquee 40s linear infinite",
       },
       keyframes: {
         marquee: {
