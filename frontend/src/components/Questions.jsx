@@ -34,7 +34,7 @@ const Box = ({ ques, ans }) => {
       <div
         className={`px-10 py-3 text-sm text-[#133221] bg-[#85CA81] transition-all duration-500 ease-in-out ${
           dropDown ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } overflow-hidden mb-3 rounded-lg`}
+        } overflow-hidden mb-3 rounded-lg text-lg font-medium`}
       >
         {ans}
       </div>

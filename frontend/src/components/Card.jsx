@@ -19,7 +19,7 @@ function Services({ src, alt, title, desc, btnText, key }) {
           {title}
         </p>
         <p className=" md:text-sm text-lg">{desc}</p>
-        <button className=" text-white font-Coustard bg-[#fa453c] sm:w-[85%] md:w-[85%] lg:w-[60%] w-[60%] sm:text-base text-lg  mx-auto mb-1 mt-3 py-1 px-1 rounded-lg transition-all duration-500 ease-linear transform hover:scale-110">
+        <button className=" text-white font-Coustard bg-[#fa453c] sm:w-[85%] md:w-[85%] lg:w-[60%] w-[60%] sm:text-base text-lg  mx-auto mb-3 mt-5 py-1 px-1 rounded-lg transition-all duration-500 ease-linear transform hover:scale-110">
           {btnText}
         </button>
       </div>

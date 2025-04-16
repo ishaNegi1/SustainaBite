@@ -7,9 +7,9 @@ const CarouselItem = ({ img, name, message, role }) => (
       alt={name}
       className="w-28 h-28 rounded-full object-cover border-2 border-[#133221]"
     />
-    <p className="text-xl font-semibold">{name}</p>
-    <p className="text-base font-semibold">{role}</p>
-    <p className="text-sm font-medium break-words max-w-xs">“{message}”</p>
+    <p className="text-2xl font-semibold">{name}</p>
+    <p className="text-xl font-semibold">{role}</p>
+    <p className="text-base font-medium break-words max-w-xs">“{message}”</p>
   </div>
 );
 
@@ -53,7 +53,7 @@ const Testimonial = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-[#85CA81] text-white dark:text-[#133221] mb-20 mt-24 sm:mt-28 group">
+    <div className="relative overflow-hidden bg-[#85CA81] text-white dark:text-[#133221] mb-20 mt-28 sm:mt-28 group">
       <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
         {[...testimonials, ...testimonials].map((item, index) => (
           <CarouselItem key={index} {...item} />
