@@ -15,10 +15,10 @@ function Services({ src, alt, title, desc, btnText, key }) {
         key={key}
       >
         <img src={src} alt={alt} className=" rounded-md" />
-        <p className=" md:text-lg text-xl font-Nunito font-bold sm:font-semibold pb-1 pt-3">
+        <p className=" md:text-lg text-xl font-Nunito font-bold sm:font-semibold pb-1 pt-4 mx-2">
           {title}
         </p>
-        <p className=" md:text-sm text-lg">{desc}</p>
+        <p className=" md:text-sm text-lg mx-2">{desc}</p>
         <button className=" text-white font-Coustard bg-[#fa453c] sm:w-[85%] md:w-[85%] lg:w-[60%] w-[60%] sm:text-base text-lg  mx-auto mb-3 mt-5 py-1 px-1 rounded-lg transition-all duration-500 ease-linear transform hover:scale-110">
           {btnText}
         </button>

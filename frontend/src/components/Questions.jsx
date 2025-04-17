@@ -27,14 +27,14 @@ const Box = ({ ques, ans }) => {
           icon={dropDown ? faCaretUp : faCaretDown}
           className="text-white h-5 w-5"
         />
-        <p className=" font-medium text-base sm:text-lg ml-2 text-white ">
+        <p className=" font-medium text-lg sm:text-lg ml-2 text-white ">
           {ques}
         </p>
       </button>
       <div
-        className={`px-10 py-3 text-sm text-[#133221] bg-[#85CA81] transition-all duration-500 ease-in-out ${
+        className={`px-10 py-3 text-base overflow-hidden mb-3 rounded-lg font-medium text-[#133221] bg-[#85CA81] transition-all duration-500 ease-in-out ${
           dropDown ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } overflow-hidden mb-3 rounded-lg text-lg font-medium`}
+        }`}
       >
         {ans}
       </div>
@@ -124,7 +124,7 @@ const Questions = () => {
           : ""}
       </div>
       <div
-        className=" text-lg dark:text-white text-[#133221] font-medium flex mt-2 transition-all duration-500 transform hover:scale-110"
+        className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-1"
         onClick={handleSeeMore}
       >
         <button>{seeMore ? "See less" : "See more"}</button>

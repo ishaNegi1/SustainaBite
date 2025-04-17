@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { bg, img1 } from "../assets/pictures";
 import { useEffect, useState } from "react";
 import { Card, ImpactCounter, Questions, Testimonial } from "../components/allComponents";
@@ -44,7 +44,7 @@ const Home = () => {
           </div>
           <div className=" text-center">
             <Link to="/signup">
-              <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg sm:w-40 w-36 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
+              <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
                 JOIN US
               </button>
             </Link>
@@ -52,7 +52,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-[#85CA81] text-white dark:text-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-8">
+      <div className="bg-[#85CA81] text-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-8">
         <div className="flex space-x-16 text-2xl font-semibold animate-marquee">
           <p>Donate Food</p>
           <p>Compost Collection</p>
