@@ -20,7 +20,7 @@ const Box = ({ ques, ans }) => {
     >
       <button
         onClick={handleDropDown}
-        className="w-full flex px-4 py-2 bg-[#133221] hover:bg-[#21583a] transition-colors duration-300 rounded-lg"
+        className="w-full flex px-4 py-2 bg-[#21583a] hover:bg-[#2c734c] transition-colors duration-300 rounded-lg"
         aria-expanded={dropDown}
       >
         <FontAwesomeIcon

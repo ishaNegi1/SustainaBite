@@ -11,7 +11,7 @@ function Services({ src, alt, title, desc, btnText, key }) {
   return (
     <>
       <div
-        className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#133221] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-col flex-wrap"
+        className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-col flex-wrap transition-transform duration-300 hover:scale-110"
         key={key}
       >
         <img src={src} alt={alt} className=" rounded-md" />

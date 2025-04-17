@@ -1,9 +1,10 @@
 import React from 'react'
+import { about, } from "../assets/pictures";
 
 const Section = ({ title, content }) => {
   return (
     <div
-      className=" lg:max-w-4xl md:max-w-2xl max-w-xs mx-auto px-4 py-5 rounded-lg my-20 bg-[#85CA81] text-[#133221] 
+      className=" lg:max-w-4xl md:max-w-2xl max-w-xs mx-auto px-4 py-5 rounded-lg my-20 bg-[#85CA81] hover:bg-[#6ba568] text-[#133221] 
                  transition-transform duration-500 transform 
                  sm:hover:-rotate-2 hover:-rotate-6 sm:hover:scale-105"
     >
@@ -20,13 +21,16 @@ const Section = ({ title, content }) => {
 const About = () => {
   return (
     <>
-     <div className="text-center py-20 px-4 bg-[#1c4830] text-white">
+     <div className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${about})` }}>
+     <div className="absolute inset-0 bg-black opacity-40"></div>
+     <div className=' relative z-10'>
   <h1 className="text-4xl font-extrabold">
     About SustainaBite
   </h1>
   <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
     Tackling food waste with purpose and passion - for people and the planet.
   </p>
+  </div>
 </div>
 
 
@@ -42,7 +46,7 @@ const About = () => {
 
       <Section
         title="What We Do"
-        content="We enable easy food donations, compost collection scheduling, access to creative leftover recipes, and informative blogs that raise awareness. Users can also purchase organic fertilizers made from compost — closing the loop on food waste."
+        content="We enable easy food donations, compost collection scheduling, access to creative leftover recipes, and informative blogs that raise awareness. Users can also purchase organic fertilizers made from compost - closing the loop on food waste."
       />
 
       <Section
