@@ -53,8 +53,8 @@ const Testimonial = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-16 mt-20 group">
-      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+    <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-16 mt-24 group">
+      <div className="flex w-max animate-marquee1 group-hover:[animation-play-state:paused]">
         {[...testimonials, ...testimonials].map((item, index) => (
           <CarouselItem key={index} {...item} />
         ))}

@@ -1,5 +1,4 @@
 import bg from './bg.png'
-import img from './img.png'
 import blog1 from './blog1.png'
 import blog2 from './blog2.jpg'
 import donate1 from './donate1.jpg'
@@ -15,6 +14,8 @@ import objects from './objects.jpg'
 import rotten from './rotten.jpg'
 import img1 from './img1.png'
 import logo from './logo.png'
+import goals from './goals.png'
+import community from './community.jpg'
 import about from './about.png'
 
-export {logo, bg, img, blog1, img1, blog2, donate1, donate2, concept, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten, about}
+export {logo, bg, blog1, img1, blog2, donate1, donate2, concept, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten, goals, community, about }

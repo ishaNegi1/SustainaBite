@@ -53,14 +53,14 @@ const Home = () => {
       </div>
 
       <div className="bg-[#85CA81] text-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-8">
-        <div className="flex space-x-16 text-2xl font-semibold animate-marquee">
+        <div className="flex space-x-16 text-2xl font-semibold animate-marquee2">
           <p>Donate Food</p>
           <p>Compost Collection</p>
           <p>Leftover Recipes</p>
           <p>Awareness Blogs</p>
           <p>Organic Fertilizer</p>
         </div>
-        <div className="flex space-x-16 text-2xl font-semibold animate-marquee ml-12">
+        <div className="flex space-x-16 text-2xl font-semibold animate-marquee2 ml-12">
           <p>Donate Food</p>
           <p>Compost Collection</p>
           <p>Leftover Recipes</p>

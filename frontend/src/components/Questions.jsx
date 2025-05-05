@@ -7,33 +7,24 @@ import {
   faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Box = ({ ques, ans }) => {
-  const [dropDown, setDropDown] = useState(false);
-
-  const handleDropDown = () => {
-    setDropDown((prev) => !prev);
-  };
-
+const Box = ({ ques, ans, isOpen, onToggle }) => {
   return (
-    <div
-      className={`transition-all duration-500 ${dropDown ? "mb-6" : "mb-1"}`}
-    >
+    <div className={`transition-all duration-500 ${isOpen ? "mb-6" : "mb-1"}`}>
       <button
-        onClick={handleDropDown}
-        className="w-full flex px-4 py-2 bg-[#21583a] hover:bg-[#2c734c] transition-colors duration-300 rounded-lg"
-        aria-expanded={dropDown}
+        onClick={onToggle}
+        className="w-full flex items-center gap-x-3 px-4 py-2 bg-[#21583a] hover:bg-[#2c734c] transition-colors duration-300 rounded-lg text-left"
+        aria-expanded={isOpen}
       >
         <FontAwesomeIcon
-          icon={dropDown ? faCaretUp : faCaretDown}
-          className="text-white h-5 w-5"
+          icon={isOpen ? faCaretUp : faCaretDown}
+          className="text-white h-5 w-5 flex-shrink-0"
         />
-        <p className=" font-medium text-lg sm:text-lg ml-2 text-white ">
-          {ques}
-        </p>
+        <p className="font-medium text-lg sm:text-lg text-white">{ques}</p>
       </button>
+
       <div
         className={`px-10 py-3 text-base overflow-hidden mb-3 rounded-lg font-medium text-[#133221] bg-[#85CA81] transition-all duration-500 ease-in-out ${
-          dropDown ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         {ans}
@@ -44,9 +35,14 @@ const Box = ({ ques, ans }) => {
 
 const Questions = () => {
   const [seeMore, setSeeMore] = useState(false);
+  const [openIndex, setOpenIndex] = useState(null);
 
   const handleSeeMore = () => {
     setSeeMore((prev) => !prev);
+  };
+
+  const handleToggle = (index) => {
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   const faqs = [
@@ -68,7 +64,7 @@ const Questions = () => {
     },
     {
       ques: "What is the organic fertilizer made from?",
-      ans: "It’s made from composted food and plant waste, rich in nutrients, and completely safe for gardens and farms.",
+      ans: "It's made from composted food and plant waste, rich in nutrients, and completely safe for gardens and farms.",
     },
     {
       ques: "How does the leftover recipe feature work?",
@@ -109,19 +105,17 @@ const Questions = () => {
         Your Questions, Answered
       </h1>
 
-      <div className=" flex flex-col mt-5 px-7 sm:px-24 md:px-36 lg:px-64">
-        {faqs.map((item, index) => (
+      <div className=" flex flex-col mt-7 px-7 sm:px-24 md:px-36 lg:px-64">
+        {[...faqs, ...(seeMore ? faqsHidden : [])].map((item, index) => (
           <div key={index} className=" flex flex-col -mb-5">
-            <Box ques={item.ques} ans={item.ans} />
+            <Box
+              ques={item.ques}
+              ans={item.ans}
+              isOpen={openIndex === index}
+              onToggle={() => handleToggle(index)}
+            />
           </div>
         ))}
-        {seeMore
-          ? faqsHidden.map((item, index) => (
-              <div key={index} className=" flex flex-col -mb-5">
-                <Box ques={item.ques} ans={item.ans} />
-              </div>
-            ))
-          : ""}
       </div>
       <div
         className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-1"
