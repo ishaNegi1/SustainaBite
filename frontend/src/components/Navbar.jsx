@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./allComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +15,7 @@ function Navbar() {
     return localStorage.getItem("theme") || "light";
   });
   const [sideNav, setSideNav] = useState(false);
+  const sideNavRef = useRef(null);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -34,9 +35,27 @@ function Navbar() {
     setSideNav((prev) => !prev);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (sideNavRef.current && !sideNavRef.current.contains(e.target)) {
+        setSideNav(false);
+      }
+    };
+    if (sideNav) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sideNav]);
+
   return (
     <>
       <div
+        ref={sideNavRef}
         className={` flex justify-center fixed top-0 left-0 h-screen w-[63%] z-30 bg-white dark:bg-[#133221] transition-transform duration-700 ease-in-out sm:hidden ${
           sideNav ? "translate-x-0" : "-translate-x-full"
         } dark:border-white dark:border-r-2 border-r-2 border-[#133221]`}

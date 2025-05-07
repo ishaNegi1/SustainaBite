@@ -18,7 +18,7 @@ const About = () => {
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${about})`, backgroundSize: "cover" }}
       >
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className=" relative z-10">
           <h1 className="text-4xl font-extrabold">About SustainaBite</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
@@ -28,18 +28,18 @@ const About = () => {
         </div>
       </div>
       <div>
-        <div className=" flex sm:flex-row flex-col mb-28 mt-16 p-4 bg-[#5ea45a] justify-center items-center">
-          <img src={blog1} className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-4 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-left text-center">Who We Are</h1>
+        <div className=" flex sm:flex-row flex-col mb-20 mt-16 p-4 bg-[#85CA81] justify-center items-center">
+          <img src={blog1} className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-64 h-64 rounded-full z-10" />
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">Who We Are</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               SustainaBite is a community-driven platform dedicated to reducing food waste, promoting sustainability, and helping those in need. We connect individuals, restaurants, and organizations to ensure that no food goes to waste.
             </p>
           </div>
         </div>
-        <div className=" flex sm:flex-row flex-col-reverse my-24 p-4 bg-[#5ea45a] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-4 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-right text-center">Our Mission</h1>
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 p-4 bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">Our Mission</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               To build a sustainable ecosystem where excess food is
               redistributed, organic waste is turned into compost, and awareness about food sustainability is spread widely through engaging blogs and ideas.
@@ -47,10 +47,10 @@ const About = () => {
           </div>
           <img src={lifecycle} className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
         </div>
-        <div className=" flex sm:flex-row flex-col my-24 p-4 bg-[#5ea45a] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 p-4 bg-[#85CA81] justify-center items-center">
           <img src={fertilizer2} className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-4 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-left text-center">What We Do</h1>
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">What We Do</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               We enable easy food donations, compost collection scheduling,
               access to creative leftover recipes, and informative blogs that
@@ -58,19 +58,19 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className=" flex sm:flex-row flex-col-reverse my-24 p-4 bg-[#5ea45a] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-4 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-right text-center">Why It Matters</h1>
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 p-4 bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">Why It Matters</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               Every meal saved is a step towards fighting hunger. Every compost pickup reduces landfill pressure. Every recipe shared inspires someone to waste less. Our services aim to create impact.
             </p>
           </div>
           <img src={leftover2} className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
         </div>
-        <div className=" flex sm:flex-row flex-col my-24 p-4 bg-[#5ea45a] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 p-4 bg-[#85CA81] justify-center items-center">
           <img src={trash} className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-4 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-left text-center">How It Works</h1>
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">How It Works</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               Users can sign up and access all features from a single dashboard.
               Food donors list what they have; collectors are notified in
@@ -79,9 +79,9 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className=" flex sm:flex-row flex-col-reverse my-24 p-4 bg-[#5ea45a] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-4 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-right text-center">Our Impact</h1>
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 p-4 bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">Our Impact</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               To date, we've saved thousands of meals, diverted tons of waste
               from landfills, and empowered countless individuals with
@@ -91,10 +91,10 @@ const About = () => {
           </div>
           <img src={donate2} className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
         </div>
-        <div className=" flex sm:flex-row flex-col my-24 p-4 bg-[#5ea45a]  justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 p-4 bg-[#85CA81]  justify-center items-center">
           <img src={community} className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10" />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-4 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-left text-center">Community Voices</h1>
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">Community Voices</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               We celebrate the voices that drive change — from home cooks
               donating food, to compost collectors, to recipe bloggers inspiring
@@ -103,9 +103,9 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className=" flex sm:flex-row flex-col-reverse my-24 p-4 bg-[#5ea45a] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-4 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#5ea45a] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl text-2xl sm:py-3 pb-3  font-medium sm:text-right text-center">Sustainability Goals</h1>
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 p-4 bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white dark:border-[#fa453c] mt-5 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">Sustainability Goals</h1>
             <p className=" font-Merriweather break-words lg:pb-4 sm:pb-2 text-justify">
               SustainaBite contributes directly to multiple Sustainable
               Development Goals including Zero Hunger, Responsible Consumption
