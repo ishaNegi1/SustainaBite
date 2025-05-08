@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./allComponents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoon,
@@ -145,10 +144,14 @@ function Navbar() {
           </div>
           <div className="sm:block hidden">
             <Link to="/login">
-              <Button btnText="Login" />
+              <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
+                Login
+              </button>
             </Link>
             <Link to="/signup">
-              <Button btnText="Signup" />
+              <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
+                Signup
+              </button>
             </Link>
           </div>
         </div>

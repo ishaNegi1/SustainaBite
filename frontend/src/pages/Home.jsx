@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { bg, img1 } from "../assets/pictures";
 import { useEffect, useState } from "react";
-import { Card, ImpactCounter, Questions, Testimonial } from "../components/allComponents";
+import {
+  Card,
+  ImpactCounter,
+  Questions,
+  Testimonial,
+  Carousel,
+} from "../components/allComponents";
 
 const Home = () => {
   const [image, setImage] = useState(img1);
@@ -51,29 +57,19 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <div className="bg-[#85CA81] text-[#133221] h-16 flex items-center overflow-hidden whitespace-nowrap mt-8">
-        <div className="flex space-x-16 text-2xl font-semibold animate-marquee2">
-          <p>Donate Food</p>
-          <p>Compost Collection</p>
-          <p>Leftover Recipes</p>
-          <p>Awareness Blogs</p>
-          <p>Organic Fertilizer</p>
-        </div>
-        <div className="flex space-x-16 text-2xl font-semibold animate-marquee2 ml-12">
-          <p>Donate Food</p>
-          <p>Compost Collection</p>
-          <p>Leftover Recipes</p>
-          <p>Awareness Blogs</p>
-          <p>Organic Fertilizer</p>
-        </div>
-      </div>
-
+      <Carousel
+        carousel={[
+          "Donate Food",
+          "Compost Collection",
+          "Leftover Recipes",
+          "Awareness Blogs",
+          " Organic Fertilizer",
+        ]}
+      />
       <Card />
       <ImpactCounter />
-      <Questions /> 
+      <Questions />
       <Testimonial />
-
     </>
   );
 };
