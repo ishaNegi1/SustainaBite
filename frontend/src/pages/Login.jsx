@@ -8,7 +8,7 @@ function Login() {
   };
 
   return (
-    <div className="flex my-3 h-screen">
+    <div className=" flex my-3 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#ffffff] items-center justify-center bg-[#133221]">
         <div className="ml-11 sm:ml-6 sm:block hidden z-10">
           <div className="font-Courgette lg:text-3xl text-4xl sm:text-2xl font-semibold">
@@ -29,7 +29,7 @@ function Login() {
         </div>
       </div>
 
-      <div className=" sm:w-1/2 w-full flex items-center justify-center sm:bg-[#ffffff] text-[#133221] bg-[#133221]">
+      <div className=" sm:w-1/2 w-full flex items-center justify-center sm:bg-[#ffffff] text-[#133221] bg-[#133221] py-10 sm:p-0">
         <div className="sm:w-[65%] mx-1 bg-[#ffffff] rounded-xl sm:rounded-none p-6 sm:p-0 border-2 border-[#fa453c] sm:border-none">
           <p className="font-Telex text-2xl lg:text-3xl font-medium lg:mb-7 mb-5 sm:mb-4">
             Welcome Back
