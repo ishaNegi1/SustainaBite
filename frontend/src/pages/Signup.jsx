@@ -1,17 +1,18 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 function Signup() {
   const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log("Done");
   };
 
   return (
-    <>
-      <div className=" flex text-[#FFFFFF] w-1/2 h-screen items-center justify-center bg-[#133221]">
-        <div className=" ml-11 sm:ml-6 sm:block hidden z-10">
-          <div className="font-Courgette lg:text-4xl text-4xl sm:text-2xl font-semibold">
-            <p className=" mb-4">Start your journey to</p>
+    <div className="flex my-3 h-screen">
+      <div className=" sm:w-1/2 flex text-[#ffffff] items-center justify-center bg-[#133221]">
+        <div className="ml-11 sm:ml-6 sm:block hidden z-10">
+          <div className="font-Courgette lg:text-3xl text-4xl sm:text-2xl font-semibold">
+            <p className="mb-4">Start your journey to</p>
             <p>reduce waste and feed lives</p>
           </div>
           <p className="font-Nunito lg:text-2xl text-2xl sm:text-xl mt-12">
@@ -19,18 +20,18 @@ function Signup() {
           </p>
           <p className="font-Nunito lg:text-2xl text-2xl sm:text-xl mt-12">
             Already have an account?{" "}
-            <b className="lg:text-3xl text-3xl sm:text-2xl">
+            <b className=" text-3xl sm:text-2xl">
               <u>
-                <Link to="login">Log in</Link>
+                <Link to="/login">Log in</Link>
               </u>
             </b>
           </p>
         </div>
       </div>
 
-      <div className=" w-full sm:w-1/2 h-full fixed right-0 top-0 sm:rounded-s-3xl rounded-none sm:bg-[#FFFFFF] sm:text-black text-[#133221] flex items-center justify-center flex-wrap bg-cover bg-center bg-no-repeat sm:bg-none bg-[#133221]">
-        <div className=" sm:w-[70%] mx-1 bg-white rounded-lg sm:rounded-none p-6 sm:p-0">
-          <p className=" font-Telex sm:text-2xl lg:text-4xl text-2xl font-medium lg:mb-7 mb-5 sm:mb-4">
+      <div className=" sm:w-1/2 w-full flex items-center justify-center sm:bg-[#ffffff] text-[#133221] bg-[#133221]">
+        <div className=" sm:w-[65%] mx-1 bg-[#ffffff] rounded-xl sm:rounded-none p-6 sm:p-0 border-2 border-[#fa453c] sm:border-none">
+          <p className="font-Telex text-2xl lg:text-3xl font-medium lg:mb-7 mb-5 sm:mb-4">
             Create Account
           </p>
           <form
@@ -39,66 +40,60 @@ function Signup() {
           >
             <label
               htmlFor="fullname"
-              className="mb-2 sm:text-md lg:text-xl text-lg"
+              className="mb-2 sm:text-base lg:text-lg text-lg"
             >
               Full Name
             </label>
             <input
               type="text"
               id="fullname"
-              // value={fullname}
-              // onChange={(e) => setFullname(e.target.value)}
               required
               className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
             <label
               htmlFor="email"
-              className=" sm:text-md lg:text-xl text-lg mb-2"
+              className="sm:text-base lg:text-lg text-lg mb-2"
             >
               Email Address
             </label>
             <input
               type="email"
               id="email"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
               required
               className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
 
             <label
               htmlFor="password"
-              className=" sm:text-md lg:text-xl text-lg mb-2"
+              className="sm:text-base lg:text-lg text-lg mb-2"
             >
               Password
             </label>
             <input
               type="password"
               id="password"
-              // value={password}
-              // onChange={(e) => setPassword(e.target.value)}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent border-[#133221] text-sm"
             />
-            {/* <p className=" text-red text-lg">{error}</p> */}
+
             <button
               type="submit"
-              className=" bg-main sm:text-white sm:bg-[#133221] text-[#FFFFFF] bg-[#fa453c] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-6 mx-auto"
+              className="bg-main sm:bg-[#133221] text-[#ffffff] bg-[#fa453c] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-6 mx-auto"
             >
               Create Account
             </button>
           </form>
-          <p className=" sm:hidden block font-Nunito sm:text-2xl text-lg mt-7">
+          <p className="sm:hidden block font-Nunito sm:text-2xl text-lg mt-7">
             Already have an account?{" "}
-            <b className=" text-xl">
+            <b className="text-xl">
               <u>
-                <Link to="login">Log in</Link>
+                <Link to="/login">Log in</Link>
               </u>
             </b>
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
