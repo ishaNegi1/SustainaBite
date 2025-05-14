@@ -14,7 +14,9 @@ function Navbar() {
     return localStorage.getItem("theme") || "light";
   });
   const [sideNav, setSideNav] = useState(false);
+
   const sideNavRef = useRef(null);
+  const topNavRef = useRef(null);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -36,7 +38,12 @@ function Navbar() {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (sideNavRef.current && !sideNavRef.current.contains(e.target)) {
+      const clickedOutside =
+        sideNavRef.current &&
+        !sideNavRef.current.contains(e.target) &&
+        topNavRef.current &&
+        !topNavRef.current.contains(e.target);
+      if (clickedOutside) {
         setSideNav(false);
       }
     };
@@ -45,7 +52,7 @@ function Navbar() {
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
-
+    
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -91,7 +98,10 @@ function Navbar() {
         </div>
       </div>
 
-      <div className=" bg-[#133221] h-20 sticky sm:static top-0 left-0 flex justify-between z-30">
+      <div
+        ref={topNavRef}
+        className=" bg-[#133221] h-20 sticky sm:static top-0 left-0 flex justify-between z-30"
+      >
         <div className=" flex items-center ml-7 sm:ml-11">
           <div>
             <img src={logo} alt="logo" className=" w-14 h-14" />
