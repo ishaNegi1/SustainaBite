@@ -64,7 +64,7 @@ const ImpactCounter = () => {
         {stats.map((item, index) => (
           <div
             key={index}
-            className="text-center p-4 bg-white dark:bg-[#133221] shadow-md rounded-lg transition-transform duration-300 hover:scale-110"
+            className="text-center p-4 bg-white dark:bg-[#133221] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg border-2 border-[#fa453c] transition-transform duration-300 hover:scale-110"
           >
             <p className="text-3xl font-bold text-[#133221] dark:text-white">
               <Counter

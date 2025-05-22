@@ -100,12 +100,12 @@ const Questions = () => {
   ];
 
   return (
-    <div className=" mb-12 flex flex-col justify-center items-center">
-      <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center pb-5">
+    <div className=" mb-24 flex flex-col justify-center items-center">
+      <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center">
         Your Questions, Answered
       </h1>
 
-      <div className=" flex flex-col mt-7 px-7 sm:px-24 md:px-36 lg:px-64">
+      <div className=" flex flex-col mt-14 px-7 sm:px-24 md:px-36 lg:px-64">
         {[...faqs, ...(seeMore ? faqsHidden : [])].map((item, index) => (
           <div key={index} className=" flex flex-col -mb-5">
             <Box

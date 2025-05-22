@@ -1,21 +1,142 @@
-import React from 'react'
+import React from "react";
+import { contact, connect1, connect } from "../assets/pictures";
 
 const Contact = () => {
   return (
     <>
       <div
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
+        style={{ backgroundImage: `url(${contact})`, backgroundSize: "cover" }}
       >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
         <div className=" relative z-10">
           <h1 className="text-4xl font-extrabold">Contact Us</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
-          We're here to answer your questions, hear your ideas, and work together toward a waste-free future.
+            We're here to answer your questions, hear your ideas, and work
+            together toward a waste-free future.
           </p>
         </div>
       </div>
-    </>
-  )
-}
 
-export default Contact
+      <div className="bg-[#133221] sm:py-6 sm:px-6 my-14 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
+        <div className=" sm:w-1/2 flex flex-col">
+          <form className="flex flex-col font-Telex z-10 px-4">
+            <h1 className=" font-Merriweather sm:text-2xl text-xl text-center font-semibold my-8">
+              Let's Make a Difference Together
+            </h1>
+            <label
+              htmlFor="name"
+              className="mb-2 sm:text-base lg:text-lg text-lg"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              required
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+            />
+            <label
+              htmlFor="email"
+              className="mb-2 sm:text-base lg:text-lg text-lg"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              required
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+            />
+            <label
+              htmlFor="phone"
+              className="mb-2 sm:text-base lg:text-lg text-lg"
+            >
+              Phone number
+            </label>
+            <input
+              type="number"
+              id="phone"
+              required
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+            />
+            <label
+              htmlFor="message"
+              className="mb-2 sm:text-base lg:text-lg text-lg"
+            >
+              Message
+            </label>
+            <textarea
+              type="text"
+              id="message"
+              required
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+            />
+            <button
+              type="submit"
+              className=" bg-[#fa453c] text-[#ffffff] rounded-lg w-40 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-7 mb-7 sm:mb-0 mx-auto"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <img
+          src={connect}
+          alt="connect"
+          className=" w-[45%] h-[34rem] rounded-xl sm:block hidden"
+        />
+        <img
+          src={connect1}
+          alt="connect1"
+          className=" rounded-tl-xl rounded-tr-xl sm:hidden block"
+        />
+      </div>
+
+      <div className=" bg-[#85CA81] py-10 px-6 mb-14 flex flex-col justify-center items-center text-center">
+        <p className="text-xl font-Nunito font-bold mb-16 mx-auto max-w-3xl text-[#133221]">
+          We'd love to connect with you. Whether you have a question, feedback,
+          or a partnership idea - reach out and we'll get back to you soon.
+        </p>
+        <div className=" grid grid-cols-2 sm:grid-cols-4 gap-6 text-[#133221] dark:text-[#FFFFFF]">
+          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <p className=" font-bold text-lg">Email</p>
+            <a
+              href="mailto:support@sustainabite.com"
+              className="underline break-words"
+            >
+              support@sustainabite.com
+            </a>
+          </div>
+          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <p className=" font-bold text-lg">Phone</p>
+            <a href="tel:+911234567890" className="underline break-words">
+              +91 98765 43210
+            </a>
+          </div>
+          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <p className=" font-bold text-lg">Instagram</p>
+            <a
+              href="https://instagram.com/sustainabite"
+              className="underline break-words"
+              target="_blank"
+            >
+              instagram.com/sustainabite
+            </a>
+          </div>
+          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <p className=" font-bold text-lg">Facebook</p>
+            <a
+              href="https://facebook.com/sustainabite"
+              className="underline break-words"
+              target="_blank"
+            >
+              facebook.com/sustainabite
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Contact;

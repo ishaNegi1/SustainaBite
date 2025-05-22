@@ -8,8 +8,8 @@ function Signup() {
   };
 
   return (
-    <div className="flex my-3 sm:h-screen">
-      <div className=" sm:w-1/2 flex text-[#ffffff] items-center justify-center bg-[#133221]">
+    <div className="flex sm:my-3 my-6 sm:h-screen">
+      <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
         <div className="ml-11 sm:ml-6 sm:block hidden z-10">
           <div className="font-Courgette lg:text-3xl text-4xl sm:text-2xl font-semibold">
             <p className="mb-4">Start your journey to</p>
@@ -29,8 +29,8 @@ function Signup() {
         </div>
       </div>
 
-      <div className=" sm:w-1/2 w-full flex items-center justify-center sm:bg-[#ffffff] text-[#133221] bg-[#133221] py-10 sm:p-0">
-        <div className=" sm:w-[65%] mx-1 bg-[#ffffff] rounded-xl sm:rounded-none p-6 sm:p-0 border-2 border-[#fa453c] sm:border-none">
+      <div className=" sm:w-1/2 w-full flex items-center justify-center bg-[#FFFFFF] sm:text-[#133221] text-[#FFFFFF]">
+        <div className=" sm:w-[65%] mx-1 sm:bg-[#FFFFFF] bg-[#133221] rounded-xl sm:rounded-none p-6 sm:p-0 border-2 border-[#fa453c] sm:border-none">
           <p className="font-Telex text-2xl lg:text-3xl font-medium lg:mb-7 mb-5 sm:mb-4">
             Create Account
           </p>
@@ -48,7 +48,7 @@ function Signup() {
               type="text"
               id="fullname"
               required
-              className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
+              className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
             <label
               htmlFor="email"
@@ -60,7 +60,7 @@ function Signup() {
               type="email"
               id="email"
               required
-              className="border-0 border-b-2 border-[#133221] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
+              className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
 
             <label
@@ -73,12 +73,12 @@ function Signup() {
               type="password"
               id="password"
               required
-              className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent border-[#133221] text-sm"
+              className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
 
             <button
               type="submit"
-              className="bg-main sm:bg-[#133221] text-[#ffffff] bg-[#fa453c] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-6 mx-auto"
+              className=" bg-[#fa453c] text-[#FFFFFF] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-9 mx-auto"
             >
               Create Account
             </button>
