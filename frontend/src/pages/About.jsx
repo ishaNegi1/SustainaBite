@@ -41,12 +41,12 @@ const About = () => {
         ]}
       />
       <div>
-        <div className=" flex sm:flex-row flex-col mb-20 mt-16 px-4 py-8 bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 mt-16 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
           <img
             src={blog1}
             className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-64 h-64 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3 font-medium sm:text-left text-center">
               Who We Are
             </h1>
@@ -59,9 +59,9 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Our Mission
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
@@ -77,12 +77,12 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
           <img
             src={fertilizer2}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               What We Do
             </h1>
@@ -95,9 +95,9 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Why It Matters
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
@@ -112,12 +112,12 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
           <img
             src={trash}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               How It Works
             </h1>
@@ -130,9 +130,9 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Our Impact
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
@@ -148,12 +148,12 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#85CA81]  justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
           <img
             src={community}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 border-[#1c4830] sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Community Voices
             </h1>
@@ -166,9 +166,9 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 border-[#1c4830] sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] dark:border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
-            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-right text-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+            <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Sustainability Goals
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
