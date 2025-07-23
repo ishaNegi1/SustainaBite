@@ -54,7 +54,7 @@ const Testimonial = () => {
 
   return (
     <>
-    <h1 className="font-Nunito font-bold text-3xl mb-16 text-center text-[#133221]">
+    <h1 className="font-Nunito font-bold text-3xl mb-16 text-center text-[#133221] dark:text-[#ffffff]">
         What Our Community Says
       </h1>
     <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-16 py-5 group">
