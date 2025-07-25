@@ -1,10 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../slices/authSlice";
+import { loginUser } from "../hooks/authApi";
+import { useDispatch } from 'react-redux'; 
 
 function Login() {
+
+  const [error, setError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Done");
+    const session = await loginUser({email, password});
+    console.log(session);
+    if(session){
+      dispatch(login({email, password}))
+      navigate('/')
+    }
+    else{
+      setError("Invalid email or password");
+    }
   };
 
   return (
@@ -47,7 +65,9 @@ function Login() {
             <input
               type="email"
               id="email"
+              value={email}
               required
+              onChange={(e)=> setEmail(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
 
@@ -60,9 +80,13 @@ function Login() {
             <input
               type="password"
               id="password"
+              value={password}
               required
+              onChange={(e)=> setPassword(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
+
+            <p className=" mt-4 text-[#fa453c] text-center text-lg">{error}</p>
 
             <button
               type="submit"

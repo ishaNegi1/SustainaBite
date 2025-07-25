@@ -8,8 +8,13 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { logo } from "../assets/pictures";
+import { useSelector } from 'react-redux';
+
 
 function Navbar() {
+ 
+  const status = useSelector(state => state.auth.status);
+
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "light";
   });
@@ -106,6 +111,7 @@ function Navbar() {
           <div>
             <img src={logo} alt="logo" className=" w-14 h-14" />
           </div>
+        <p className=" text-[#ffffff] text-lg mx-5"> {status ? "hello" : "Bye" } </p>
         </div>
 
         <div className=" flex items-center mr-4 sm:mr-0">

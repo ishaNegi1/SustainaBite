@@ -1,10 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signupUser } from "../hooks/authApi";
+
 
 function Signup() {
+  
+  const [error, setError] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Done");
+    const user = await signupUser({fullName, email, password});
+    if(user){
+       console.log(user);
+       navigate('/Login');
+    }
+    else{
+      setError("User already exists")
+    }
   };
 
   return (
@@ -47,7 +63,9 @@ function Signup() {
             <input
               type="text"
               id="fullname"
+              value={fullName}
               required
+              onChange={(e)=> setFullName(e.target.value)}
               className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
             <label
@@ -59,7 +77,9 @@ function Signup() {
             <input
               type="email"
               id="email"
+              value={email}
               required
+              onChange={(e)=> setEmail(e.target.value)}
               className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
 
@@ -72,13 +92,17 @@ function Signup() {
             <input
               type="password"
               id="password"
+              value={password}
               required
+              onChange={(e)=> setPassword(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
 
+            <p className=" mt-4 text-[#fa453c] text-center text-lg">{error}</p>
+
             <button
               type="submit"
-              className=" bg-[#fa453c] text-[#FFFFFF] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-9 mx-auto"
+              className=" bg-[#fa453c] text-[#FFFFFF] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-5 mx-auto"
             >
               Create Account
             </button>
