@@ -6,12 +6,10 @@ const cors = require('cors')
 
 dotenv.config();
 const app = express();
-app.use(express.json());
-app.use('/api/auth', authRoutes);
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://sustaina-bite.vercel.app/',
+  'https://sustaina-bite.vercel.app',
 ];
 
 app.use(cors({
@@ -25,6 +23,9 @@ app.use(cors({
   },
   credentials: true,
 }));
+
+app.use(express.json());
+app.use('/api/auth', authRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
