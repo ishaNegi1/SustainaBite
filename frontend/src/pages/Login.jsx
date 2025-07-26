@@ -9,22 +9,33 @@ function Login() {
   const [error, setError] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('')
     const session = await loginUser({email, password});
-    console.log(session);
-    if(session){
-      dispatch(login(session.user))
-      navigate('/')
+    if(session?.user){
+      dispatch(login(session.user));
+      localStorage.setItem("user", JSON.stringify(session.user));
+      navigate('/');
     }
-    else{
-      setError("Invalid email or password");
-    }
+    else {
+    setError(session?.error || "Invalid email or password");
+  }
+  setLoading(false);
   };
 
+ if (loading) {
+  return (
+    <div className="flex justify-center items-center h-screen bg-[#133221]">
+      <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+    </div>
+  );
+}
   return (
     <div className=" flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
@@ -90,7 +101,7 @@ function Login() {
 
             <button
               type="submit"
-              className="  bg-[#fa453c] text-[#FFFFFF] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-9 mx-auto"
+              className="  bg-[#fa453c] text-[#FFFFFF] rounded-lg sm:w-52 lg:w-64 w-60 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-5 mx-auto"
             >
               Login
             </button>

@@ -6,23 +6,31 @@ import { signupUser } from "../hooks/authApi";
 function Signup() {
   
   const [error, setError] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await signupUser({fullName, email, password});
-    if(user){
-       console.log(user);
+    setLoading(true);
+    setError('')
+    if (password.length < 6) {
+    setError("Password must be at least 6 characters long");
+    return;
+  }
+    const result = await signupUser({name, email, password});
+    if(result?.user){
        navigate('/Login');
     }
     else{
-      setError("User already exists")
+      setError(result?.error || "User already exists")
     }
+    setLoading(false)
   };
 
+  {loading && <p className="text-center text-[#fa453c] mt-3">Logging in...</p>}
   return (
     <div className="flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
@@ -55,17 +63,17 @@ function Signup() {
             onSubmit={handleSubmit}
           >
             <label
-              htmlFor="fullname"
+              htmlFor="name"
               className="mb-2 sm:text-base lg:text-lg text-lg"
             >
               Full Name
             </label>
             <input
               type="text"
-              id="fullname"
-              value={fullName}
+              id="name"
+              value={name}
               required
-              onChange={(e)=> setFullName(e.target.value)}
+              onChange={(e)=> setName(e.target.value)}
               className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
             <label
@@ -97,8 +105,9 @@ function Signup() {
               onChange={(e)=> setPassword(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
-
-            <p className=" mt-4 text-[#fa453c] text-center text-lg">{error}</p>
+            <div className=" max-w-64 sm:max-w-full mx-auto">
+            <p className=" mt-4 text-[#fa453c] text-center text-lg text-wrap">{error}</p>
+            </div>
 
             <button
               type="submit"

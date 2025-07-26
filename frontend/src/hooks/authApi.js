@@ -5,7 +5,7 @@ const signupUser = async (userData) => {
     const response = await api.post('/auth/signup', userData);
     return response.data;
   } catch (error) {
-    throw error.response?.data?.message || 'Signup failed';
+    return { error: error.response?.data?.message || "Signup failed" };
   }
 };
 
@@ -14,7 +14,7 @@ const loginUser = async (credentials) => {
     const response = await api.post('/auth/login', credentials);
     return response.data;
   } catch (error) {
-    throw error.response?.data?.message || 'Login failed';
+    return { error: error.response?.data?.message || "Login failed" };
   }
 };
 

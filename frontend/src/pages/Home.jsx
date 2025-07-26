@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { bg, img1 } from "../assets/pictures";
 import { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
+import { login } from "../slices/authSlice";
 import {
   Card,
   ImpactCounter,
@@ -12,6 +14,14 @@ import {
 
 const Home = () => {
   const [image, setImage] = useState(img1);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatch(login(JSON.parse(storedUser)));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     const handleResize = () => {

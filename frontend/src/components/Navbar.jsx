@@ -27,6 +27,7 @@ function Navbar() {
 
   const handleLogout = () => {
      dispatch(logout());
+     localStorage.removeItem("user");
   }
 
   useEffect(() => {
@@ -96,6 +97,14 @@ function Navbar() {
           >
             Contact
           </Link>
+          { status ?
+          <div>
+            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 " onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+          :
+          <div className=" flex flex-col">
           <Link to="/login">
             <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 ">
               Login
@@ -106,6 +115,8 @@ function Navbar() {
               Signup
             </button>
           </Link>
+          </div>
+          }
         </div>
       </div>
 
@@ -165,7 +176,7 @@ function Navbar() {
             </Link>
           </div>
           { status ?
-          <div>
+          <div className="sm:block hidden">
             <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110" onClick={handleLogout}>
                 Logout
               </button>

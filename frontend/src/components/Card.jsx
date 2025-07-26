@@ -56,7 +56,7 @@ function Card() {
       src: leftover1,
       alt: "Leftover Recipes",
       title: "Leftover Recipes",
-      desc: "Don't waste leftovers—transform them! Enter ingredients and discover recipes you can try at home.",
+      desc: "Don't waste leftovers-transform them! Enter ingredients and discover recipes you can try at home.",
       btnText: "Get Recipes",
     },
     {
