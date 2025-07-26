@@ -17,7 +17,7 @@ function Login() {
     const session = await loginUser({email, password});
     console.log(session);
     if(session){
-      dispatch(login({email, password}))
+      dispatch(login(session.user))
       navigate('/')
     }
     else{
