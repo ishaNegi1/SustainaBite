@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { bg, img1 } from "../assets/pictures";
 import { useEffect, useState } from "react";
-import { useDispatch } from 'react-redux';
-import { login } from "../slices/authSlice";
+import { useSelector } from "react-redux";
 import {
   Card,
   ImpactCounter,
@@ -13,15 +12,9 @@ import {
 } from "../components/allComponents";
 
 const Home = () => {
+  const status = useSelector(state => state.auth.status);
+  const name = useSelector(state => state.auth.user?.name);
   const [image, setImage] = useState(img1);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      dispatch(login(JSON.parse(storedUser)));
-    }
-  }, [dispatch]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,6 +51,13 @@ const Home = () => {
               waste-free and hunger-free future!
             </p>
           </div>
+          { status ?
+          <div className=" text-center">
+             <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
+                Hello {name}
+              </button>
+          </div>
+          :
           <div className=" text-center">
             <Link to="/signup">
               <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
@@ -65,6 +65,7 @@ const Home = () => {
               </button>
             </Link>
           </div>
+          }
         </div>
       </div>
       <Carousel

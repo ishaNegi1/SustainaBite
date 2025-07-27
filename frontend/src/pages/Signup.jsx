@@ -30,7 +30,13 @@ function Signup() {
     setLoading(false)
   };
 
-  {loading && <p className="text-center text-[#fa453c] mt-3">Logging in...</p>}
+  if (loading) {
+  return (
+    <div className="flex justify-center items-center my-52">
+      <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+    </div>
+  );
+}
   return (
     <div className="flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">

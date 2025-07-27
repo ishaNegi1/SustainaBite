@@ -31,8 +31,8 @@ function Login() {
 
  if (loading) {
   return (
-    <div className="flex justify-center items-center h-screen bg-[#133221]">
-      <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+    <div className="flex justify-center items-center my-52">
+      <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
     </div>
   );
 }

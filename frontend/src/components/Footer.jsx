@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { logo } from "../assets/pictures";
 
 const Footer = () => {
+
   return (
     <footer className="bg-[#133221] text-white py-10 px-8 md:px-20">
       <div className=" grid grid-cols-2 sm:grid-cols-4 sm:gap-10 gap-14 mb-10">
@@ -44,19 +45,19 @@ const Footer = () => {
           <h2 className="text-xl font-semibold mb-3">Our Services</h2>
           <ul className="space-y-2 text-gray-200 text-sm">
             <li>
-              <Link to="/">Donate Food</Link>
+              <Link to="/donation">Donate Food</Link>
             </li>
             <li>
-              <Link to="/">Compost Collection</Link>
+              <Link to="/pickup">Compost Collection</Link>
             </li>
             <li>
-              <Link to="/">Buy Fertilizer</Link>
+              <Link to="/fertilizer">Buy Fertilizer</Link>
             </li>
             <li>
-              <Link to="/">Leftover Recipes</Link>
+              <Link to="/recipes">Leftover Recipes</Link>
             </li>
             <li>
-              <Link to="/">Sustainability Blogs</Link>
+              <Link to="/blogs">Sustainability Blogs</Link>
             </li>
           </ul>
         </div>

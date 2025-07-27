@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { logo } from "../assets/pictures";
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from "../slices/authSlice";
+import { logout, login } from "../slices/authSlice";
 
 
 function Navbar() {
@@ -29,6 +29,13 @@ function Navbar() {
      dispatch(logout());
      localStorage.removeItem("user");
   }
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatch(login(JSON.parse(storedUser)));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -128,7 +135,7 @@ function Navbar() {
           <div>
             <img src={logo} alt="logo" className=" w-14 h-14" />
           </div>
-        <p className=" text-[#ffffff] text-lg mx-5"> {status ? name : "" } </p>
+        <p className=" text-[#ffffff] text-lg mx-3"> {status ? name : "" } </p>
         </div>
 
         <div className=" flex items-center mr-4 sm:mr-0">
