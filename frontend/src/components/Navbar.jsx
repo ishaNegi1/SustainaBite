@@ -9,7 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { logo } from "../assets/pictures";
 import { useSelector, useDispatch } from 'react-redux';
-import { logout, login } from "../slices/authSlice";
+import { logoutUser } from '../hooks/authApi';
+import { logout } from "../slices/authSlice";
 
 
 function Navbar() {
@@ -26,16 +27,9 @@ function Navbar() {
   const topNavRef = useRef(null);
 
   const handleLogout = () => {
-     dispatch(logout());
-     localStorage.removeItem("user");
-  }
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      dispatch(login(JSON.parse(storedUser)));
-    }
-  }, [dispatch]);
+  dispatch(logout());
+  logoutUser();
+};
 
   useEffect(() => {
     const root = window.document.documentElement;

@@ -14,20 +14,19 @@ function Login() {
   const dispatch = useDispatch();
   
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('')
-    const session = await loginUser({email, password});
-    if(session?.user){
-      dispatch(login(session.user));
-      localStorage.setItem("user", JSON.stringify(session.user));
-      navigate('/');
-    }
-    else {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  const session = await loginUser({ email, password });
+  if (session?.token && session?.user) {
+    dispatch(login(session.user));
+    localStorage.setItem("user", JSON.stringify(session.user));
+    navigate('/');
+  } else {
     setError(session?.error || "Invalid email or password");
   }
   setLoading(false);
-  };
+};
 
  if (loading) {
   return (

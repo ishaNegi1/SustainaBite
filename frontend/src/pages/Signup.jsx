@@ -22,8 +22,8 @@ function Signup() {
   }
     const result = await signupUser({name, email, password});
     if(result?.user){
-       navigate('/Login');
-    }
+  navigate('/Login');
+}
     else{
       setError(result?.error || "User already exists")
     }
