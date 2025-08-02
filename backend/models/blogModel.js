@@ -26,9 +26,10 @@ const blogSchema = new mongoose.Schema({
     default: Date.now,
   },
   author: {
-    type: String,
-    default: 'anonymous',
-  },
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'users',
+  required: true,
+},
 });
 
 module.exports = mongoose.model('blogs', blogSchema);

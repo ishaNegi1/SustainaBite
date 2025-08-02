@@ -1,39 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { community } from "../assets/pictures";
-
-const dummyBlogs = [
-  {
-    id: 1,
-    title: "Eco-Friendly Living",
-    content:
-      "Discover how small changes in your lifestyle can lead to big environmental benefits.",
-    image: "https://source.unsplash.com/featured/?nature",
-    views: 120,
-    stars: 4.5,
-    date: "2024-07-25",
-    author: "other",
-  },
-  {
-    id: 2,
-    title: "Composting 101",
-    content: "A beginner's guide to composting your kitchen waste.",
-    image: "https://source.unsplash.com/featured/?compost",
-    views: 85,
-    stars: 4.8,
-    date: "2025-01-24",
-    author: "me",
-  },
-];
+import { getAllBlogs, createBlog, deleteBlog, updateBlog, updateStars, updateViews } from "../hooks/blogApi";
 
 const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
 
 function Blogs() {
   const user = useSelector((state) => state.auth.user);
-  const [blogs, setBlogs] = useState(dummyBlogs);
+  const [blogs, setBlogs] = useState([]);
   const [newBlog, setNewBlog] = useState({ image: "", title: "", content: "" });
   const [filter, setFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedBlog, setSelectedBlog] = useState(null);
+const [editedBlog, setEditedBlog] = useState(null);
+
+
+   useEffect(() => {
+    const fetchBlogs = async () => {
+      const data = await getAllBlogs();
+      if (!data.error) setBlogs(data);
+      else console.error(data.error);
+    };
+    fetchBlogs();
+  }, []);
 
   const filteredBlogs = blogs
     .filter((blog) => {
@@ -45,7 +34,7 @@ function Blogs() {
         return (
           blog.title.toLowerCase().includes(searchTerm) ||
           blog.content.toLowerCase().includes(searchTerm) ||
-          blog.author.toLowerCase().includes(searchTerm)
+          blog.author.name.toLowerCase().includes(searchTerm)
         );
       }
       return true;
@@ -61,17 +50,11 @@ function Blogs() {
       }
     });
 
-  const handleAddBlog = (e) => {
+  const handleAddBlog = async (e) => {
     e.preventDefault();
-    const newEntry = {
-      ...newBlog,
-      id: Date.now(),
-      views: 0,
-      stars: 0,
-      date: new Date().toISOString(),
-      author: user.name,
-    };
-    setBlogs([newEntry, ...blogs]);
+    const result = await createBlog(newBlog);
+    if (result.error) return alert(result.error);
+    setBlogs([result, ...blogs]);
     setNewBlog({ image: "", title: "", content: "" });
   };
 
@@ -79,11 +62,42 @@ function Blogs() {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  // const handleDelete = (id) => {
-  //   const blog = blogs.find((b) => b.id === id);
-  //   if (blog.author !== user?.name) return alert("You can delete only your blogs.");
-  //   setBlogs(blogs.filter((b) => b.id !== id));
-  // };
+ const handleDelete = async (id) => {
+    const confirmed = confirm("Do you want to delete the blog?")
+    if(confirmed){
+    const result = await deleteBlog(id);
+    if (result.error) return alert(result.error);
+    setBlogs(blogs.filter((b) => b._id !== id));
+    }
+  };
+
+  const handleEditClick = (blog) => {
+  setEditedBlog({ ...blog }); 
+};
+
+const handleCancelEdit = () => {
+  setEditedBlog(null);
+};
+
+const handleSaveEdit = async () => {
+  const result = await updateBlog(editedBlog._id, {
+    title: editedBlog.title,
+    content: editedBlog.content,
+    image: editedBlog.image,
+  });
+  if (result.error) return alert(result.error);
+  const updatedBlogs = blogs.map((b) =>
+    b._id === editedBlog._id ? { ...b, ...editedBlog } : b
+  );
+  setBlogs(updatedBlogs);
+  setEditedBlog(null);
+};
+
+const handleStarClick = async (id) => {
+  const result = await updateStars(id);
+  if (result.error) return alert(result.error);
+  setBlogs(blogs.map((b) => (b._id === id ? { ...b, stars: b.stars + 1 } : b)));
+};
 
   return (
     <>
@@ -153,7 +167,7 @@ function Blogs() {
       <div className="space-y-10 mb-16">
         {filteredBlogs.map((blog) => (
           <div
-            key={blog.id}
+            key={blog._id}
             className="dark:bg-[#133221] dark:border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
           >
             <img src={blog.image} alt={blog.title} className="w-full sm:w-1/3 sm:h-60 h-44 object-cover" />
@@ -161,29 +175,136 @@ function Blogs() {
               <div>
                 <div className="flex flex-col sm:flex-row justify-between items-center">
                   <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
-                  <p className="text-sm font-medium">Author: {blog.author}</p>
+                  <p className="text-sm font-medium">Author: {blog.author.name}</p>
                 </div>
                 <p className="text-base">{blog.content.slice(0, 150)}...</p>
               </div>
               <div className="flex flex-wrap justify-between items-center mt-4">
                 <p className="text-sm">Views: {blog.views} | Stars: {blog.stars}</p>
                 <p className="text-sm">Date: {new Date(blog.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</p>
-                {user?.name === blog.author && (
+                {user?._id === blog.author._id && (
+                  <>
                   <button
-                    className="text-red-500 underline text-sm"
-                    onClick={() => handleDelete(blog.id)}
+                    className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm transition-all duration-500 ease-linear transform hover:scale-110"
+                    onClick={() => handleDelete(blog._id)}
                   >
                     Delete
                   </button>
+                  <button
+  className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm transition-all duration-500 ease-linear transform hover:scale-110"
+  onClick={() => handleEditClick(blog)}
+>
+  Edit
+</button>
+</>
                 )}
-                <button className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm mt-2 sm:mt-0 hover:scale-105 transition">
-                  See More →
-                </button>
+                <button
+  className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm mt-2 sm:mt-0 transition-all duration-500 ease-linear transform hover:scale-110"
+  onClick={async () => {
+    await updateViews(blog._id);
+    setBlogs(blogs.map((b) => (b._id === blog._id ? { ...b, views: b.views + 1 } : b)));
+    setSelectedBlog(blog);
+  }}
+>
+  See More →
+</button>
+
               </div>
             </div>
           </div>
         ))}
       </div>
+     {selectedBlog && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
+    <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
+    <div className=" flex justify-end">
+    <div className="flex items-center mr-6">
+  {[1, 2, 3, 4, 5].map((n) => (
+    <button
+      key={n}
+      onClick={() => handleStarClick(selectedBlog._id)}
+      className={` text-3xl transition hover:scale-125 ${
+        n <= selectedBlog.stars ? "text-yellow-400" : "text-gray-400"
+      }`}
+    >
+      ★
+    </button>
+  ))}
+</div>
+      <button
+        onClick={() => setSelectedBlog(null)}
+        className=" bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm transition-all duration-500 ease-linear transform hover:scale-110 font-bold"
+      >
+        Close
+      </button>
+      </div>
+      <h2 className="text-3xl font-bold mb-2">{selectedBlog.title}</h2>
+      <p className="text-sm font-medium mb-1">Author: {selectedBlog.author.name}</p>
+      <p className="text-sm mb-4 font-medium">
+        Date: {new Date(selectedBlog.date).toLocaleDateString("en-US", {
+          year: "numeric", month: "short", day: "numeric"
+        })}
+      </p>
+      <img
+        src={selectedBlog.image}
+        alt={selectedBlog.title}
+        className="w-full h-44 object-cover rounded-lg mb-4"
+      />
+      <p className="text-lg leading-relaxed whitespace-pre-line">{selectedBlog.content}</p>
+    </div>
+  </div>
+)}
+{editedBlog && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
+    <div className="bg-white text-black dark:bg-[#133221] dark:text-white p-6 rounded-lg w-full max-w-3xl overflow-auto max-h-[90vh]">
+    <div className="flex justify-end gap-4">
+        <button
+          onClick={handleCancelEdit}
+          className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm transition-all duration-500 ease-linear transform hover:scale-110 font-bold"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleSaveEdit}
+          className="bg-green-600 text-white rounded-lg px-4 py-2 text-sm transition-all duration-500 ease-linear transform hover:scale-110 font-bold"
+        >
+          Save Changes
+        </button>
+      </div>
+      <h2 className="text-2xl font-bold mb-4">Edit Blog</h2>
+
+      <label className="font-semibold">Image URL:</label>
+      <input
+        type="text"
+        value={editedBlog.image}
+        onChange={(e) => setEditedBlog({ ...editedBlog, image: e.target.value })}
+        className="w-full p-2 mb-4 border rounded dark:text-black"
+      />
+
+      <img
+        src={editedBlog.image}
+        alt={editedBlog.title}
+        className="w-full h-64 object-cover mb-4 rounded"
+      />
+
+      <label className="font-semibold">Title:</label>
+      <input
+        type="text"
+        value={editedBlog.title}
+        onChange={(e) => setEditedBlog({ ...editedBlog, title: e.target.value })}
+        className="w-full p-2 mb-4 border rounded dark:text-black"
+      />
+
+      <label className="font-semibold">Content:</label>
+      <textarea
+        value={editedBlog.content}
+        onChange={(e) => setEditedBlog({ ...editedBlog, content: e.target.value })}
+        className="w-full p-2 mb-4 border rounded dark:text-black"
+        rows={8}
+      />
+    </div>
+  </div>
+)}
     </>
   );
 }
