@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import {
   blog2,
   donate1,
@@ -11,20 +11,19 @@ import {
 function Services({ src, alt, title, desc, btnText, path }) {
   return (
     <>
-        <img src={src} alt={alt} className=" rounded-md" />
-        <p className=" md:text-lg text-xl font-Nunito font-bold sm:font-semibold pb-1 pt-4 mx-2">
-          {title}
-        </p>
-        <p className=" md:text-sm text-lg mx-2">{desc}</p>
-        <div className="w-[85%] sm:w-[85%] md:w-[85%] lg:w-[60%] mx-auto">
-  <Link
-    to={path}
-    className="block text-white font-Coustard bg-[#fa453c] text-center sm:text-base text-lg mb-3 mt-5 py-1 px-1 rounded-lg transition-all duration-500 ease-linear transform hover:scale-110 w-full"
-  >
-    {btnText}
-  </Link>
-</div>
-
+      <img src={src} alt={alt} className=" rounded-md" />
+      <p className=" md:text-lg text-xl font-Nunito font-bold sm:font-semibold pb-1 pt-4 mx-2">
+        {title}
+      </p>
+      <p className=" md:text-sm text-lg mx-2">{desc}</p>
+      <div className="w-[85%] sm:w-[85%] md:w-[85%] lg:w-[60%] mx-auto">
+        <Link
+          to={path}
+          className="block text-white font-Coustard bg-[#fa453c] text-center sm:text-base text-lg mb-3 mt-5 py-1 px-1 rounded-lg transition-all duration-500 ease-linear transform hover:scale-110 w-full"
+        >
+          {btnText}
+        </Link>
+      </div>
     </>
   );
 }
@@ -84,16 +83,17 @@ function Card() {
       <div className="flex flex-wrap justify-center gap-14 mt-16 sm:mb-24 mb-14">
         {card1.map((item, index) => (
           <div
-        className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110" key={index}
-      >
-          <Services
-            src={item.src}
-            alt={item.alt}
-            title={item.title}
-            desc={item.desc}
-            btnText={item.btnText}
-            path={item.path}
-          />
+            className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110"
+            key={index}
+          >
+            <Services
+              src={item.src}
+              alt={item.alt}
+              title={item.title}
+              desc={item.desc}
+              btnText={item.btnText}
+              path={item.path}
+            />
           </div>
         ))}
       </div>
@@ -101,17 +101,18 @@ function Card() {
       <div className="flex flex-wrap justify-center gap-14">
         {card2.map((item, index) => (
           <div
-        className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110" key={index}
-      >
-          <Services
-            src={item.src}
-            alt={item.alt}
-            title={item.title}
-            desc={item.desc}
-            btnText={item.btnText}
-            path={item.path}
-          />
-        </div>
+            className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110"
+            key={index}
+          >
+            <Services
+              src={item.src}
+              alt={item.alt}
+              title={item.title}
+              desc={item.desc}
+              btnText={item.btnText}
+              path={item.path}
+            />
+          </div>
         ))}
       </div>
     </div>

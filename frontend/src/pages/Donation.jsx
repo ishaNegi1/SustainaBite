@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Donation = () => {
-  return (
-    <div>
-      Donation...
-    </div>
-  )
-}
+  return <div>Donation...</div>;
+};
 
-export default Donation
+export default Donation;

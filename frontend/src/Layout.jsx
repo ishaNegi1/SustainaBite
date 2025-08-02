@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
-import {Outlet} from 'react-router-dom'
-import {Footer, Navbar} from './components/allComponents'
-import { useDispatch } from 'react-redux'
-import { login } from './slices/authSlice'
+import React, { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import { Footer, Navbar } from "./components/allComponents";
+import { useDispatch } from "react-redux";
+import { login } from "./slices/authSlice";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -17,12 +17,12 @@ const Layout = () => {
   return (
     <>
       <div className=" bg-white dark:bg-black transition-colors duration-500">
-      <Navbar />
+        <Navbar />
         <Outlet />
-      <Footer />
+        <Footer />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

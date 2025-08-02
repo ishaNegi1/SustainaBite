@@ -8,15 +8,13 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { logo } from "../assets/pictures";
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../hooks/authApi';
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../hooks/authApi";
 import { logout } from "../slices/authSlice";
 
-
 function Navbar() {
- 
-  const status = useSelector(state => state.auth.status);
-  const name = useSelector(state => state.auth.user?.name);
+  const status = useSelector((state) => state.auth.status);
+  const name = useSelector((state) => state.auth.user?.name);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "light";
   });
@@ -27,9 +25,9 @@ function Navbar() {
   const topNavRef = useRef(null);
 
   const handleLogout = () => {
-  dispatch(logout());
-  logoutUser();
-};
+    dispatch(logout());
+    logoutUser();
+  };
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -65,7 +63,7 @@ function Navbar() {
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
-    
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -98,26 +96,29 @@ function Navbar() {
           >
             Contact
           </Link>
-          { status ?
-          <div>
-            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 " onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-          :
-          <div className=" flex flex-col">
-          <Link to="/login">
-            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 ">
-              Login
-            </button>
-          </Link>
-          <Link to="/signup">
-            <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221]  w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5">
-              Signup
-            </button>
-          </Link>
-          </div>
-          }
+          {status ? (
+            <div>
+              <button
+                className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 "
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className=" flex flex-col">
+              <Link to="/login">
+                <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 ">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221]  w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5">
+                  Signup
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
@@ -129,7 +130,7 @@ function Navbar() {
           <div>
             <img src={logo} alt="logo" className=" w-14 h-14" />
           </div>
-        <p className=" text-[#ffffff] text-lg mx-3"> {status ? name : "" } </p>
+          <p className=" text-[#ffffff] text-lg mx-3"> {status ? name : ""} </p>
         </div>
 
         <div className=" flex items-center mr-4 sm:mr-0">
@@ -176,26 +177,29 @@ function Navbar() {
               Contact
             </Link>
           </div>
-          { status ?
-          <div className="sm:block hidden">
-            <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110" onClick={handleLogout}>
+          {status ? (
+            <div className="sm:block hidden">
+              <button
+                className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110"
+                onClick={handleLogout}
+              >
                 Logout
               </button>
-          </div>
-          :
-          <div className="sm:block hidden">
-            <Link to="/login">
-              <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
-                Login
-              </button>
-            </Link>
-            <Link to="/signup">
-              <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
-                Signup
-              </button>
-            </Link>
-          </div>
-          }
+            </div>
+          ) : (
+            <div className="sm:block hidden">
+              <Link to="/login">
+                <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
+                  Signup
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </>

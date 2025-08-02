@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Fertilizer = () => {
-  return (
-    <div>
-      Fertilizer...
-    </div>
-  )
-}
+  return <div>Fertilizer...</div>;
+};
 
-export default Fertilizer
+export default Fertilizer;

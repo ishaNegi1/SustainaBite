@@ -12,8 +12,8 @@ import {
 } from "../components/allComponents";
 
 const Home = () => {
-  const status = useSelector(state => state.auth.status);
-  const name = useSelector(state => state.auth.user?.name);
+  const status = useSelector((state) => state.auth.status);
+  const name = useSelector((state) => state.auth.user?.name);
   const [image, setImage] = useState(img1);
 
   useEffect(() => {
@@ -51,21 +51,21 @@ const Home = () => {
               waste-free and hunger-free future!
             </p>
           </div>
-          { status ?
-          <div className=" text-center">
-             <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
+          {status ? (
+            <div className=" text-center">
+              <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
                 Hello {name}
               </button>
-          </div>
-          :
-          <div className=" text-center">
-            <Link to="/signup">
-              <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
-                JOIN US
-              </button>
-            </Link>
-          </div>
-          }
+            </div>
+          ) : (
+            <div className=" text-center">
+              <Link to="/signup">
+                <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
+                  JOIN US
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <Carousel

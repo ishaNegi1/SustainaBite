@@ -1,40 +1,39 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../slices/authSlice";
 import { loginUser } from "../hooks/authApi";
-import { useDispatch } from 'react-redux'; 
+import { useDispatch } from "react-redux";
 
 function Login() {
-
-  const [error, setError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  setError('');
-  const session = await loginUser({ email, password });
-  if (session?.token && session?.user) {
-    dispatch(login(session.user));
-    localStorage.setItem("user", JSON.stringify(session.user));
-    navigate('/');
-  } else {
-    setError(session?.error || "Invalid email or password");
-  }
-  setLoading(false);
-};
 
- if (loading) {
-  return (
-    <div className="flex justify-center items-center my-52">
-      <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
-    </div>
-  );
-}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const session = await loginUser({ email, password });
+    if (session?.token && session?.user) {
+      dispatch(login(session.user));
+      localStorage.setItem("user", JSON.stringify(session.user));
+      navigate("/");
+    } else {
+      setError(session?.error || "Invalid email or password");
+    }
+    setLoading(false);
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center my-52">
+        <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+      </div>
+    );
+  }
   return (
     <div className=" flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
@@ -77,7 +76,7 @@ function Login() {
               id="email"
               value={email}
               required
-              onChange={(e)=> setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
 
@@ -92,7 +91,7 @@ function Login() {
               id="password"
               value={password}
               required
-              onChange={(e)=> setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
 

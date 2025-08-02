@@ -2,41 +2,38 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signupUser } from "../hooks/authApi";
 
-
 function Signup() {
-  
-  const [error, setError] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('')
+    setError("");
     if (password.length < 6) {
-    setError("Password must be at least 6 characters long");
-    return;
-  }
-    const result = await signupUser({name, email, password});
-    if(result?.user){
-  navigate('/Login');
-}
-    else{
-      setError(result?.error || "User already exists")
+      setError("Password must be at least 6 characters long");
+      return;
     }
-    setLoading(false)
+    const result = await signupUser({ name, email, password });
+    if (result?.user) {
+      navigate("/Login");
+    } else {
+      setError(result?.error || "User already exists");
+    }
+    setLoading(false);
   };
 
   if (loading) {
-  return (
-    <div className="flex justify-center items-center my-52">
-      <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
-    </div>
-  );
-}
+    return (
+      <div className="flex justify-center items-center my-52">
+        <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+      </div>
+    );
+  }
   return (
     <div className="flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
@@ -79,7 +76,7 @@ function Signup() {
               id="name"
               value={name}
               required
-              onChange={(e)=> setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
             <label
@@ -93,7 +90,7 @@ function Signup() {
               id="email"
               value={email}
               required
-              onChange={(e)=> setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="border-0 border-b-2 sm:border-[#133221] border-[#FFFFFF] py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent text-sm"
             />
 
@@ -108,11 +105,13 @@ function Signup() {
               id="password"
               value={password}
               required
-              onChange={(e)=> setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className="border-0 border-b-2 py-1 px-2 rounded-md mb-2 bg-transparent sm:border-[#133221] border-[#FFFFFF] text-sm"
             />
             <div className=" max-w-64 sm:max-w-full mx-auto">
-            <p className=" mt-4 text-[#fa453c] text-center text-lg text-wrap">{error}</p>
+              <p className=" mt-4 text-[#fa453c] text-center text-lg text-wrap">
+                {error}
+              </p>
             </div>
 
             <button

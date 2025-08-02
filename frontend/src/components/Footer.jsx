@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { logo } from "../assets/pictures";
 
 const Footer = () => {
-
   return (
     <footer className="bg-[#133221] text-white py-10 px-8 md:px-20">
       <div className=" grid grid-cols-2 sm:grid-cols-4 sm:gap-10 gap-14 mb-10">

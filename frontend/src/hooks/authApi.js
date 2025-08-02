@@ -1,8 +1,8 @@
-import api from './api'
+import api from "./api";
 
 const signupUser = async (userData) => {
   try {
-    const response = await api.post('/auth/signup', userData);
+    const response = await api.post("/auth/signup", userData);
     return response.data;
   } catch (error) {
     return { error: error.response?.data?.message || "Signup failed" };
@@ -11,7 +11,7 @@ const signupUser = async (userData) => {
 
 const loginUser = async (credentials) => {
   try {
-    const response = await api.post('/auth/login', credentials);
+    const response = await api.post("/auth/login", credentials);
     if (response.data.token) {
       localStorage.setItem("token", response.data.token);
     }
@@ -26,4 +26,4 @@ const logoutUser = () => {
   localStorage.removeItem("user");
 };
 
-export { signupUser, loginUser, logoutUser} 
+export { signupUser, loginUser, logoutUser };
