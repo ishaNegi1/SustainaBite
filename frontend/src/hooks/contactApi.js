@@ -1,6 +1,6 @@
 import api from './api'
 
-export const submitForm = async(formData) => {
+const submitForm = async(formData) => {
 try {
     const response = await api.post("/contact", formData);
     return response.data;
@@ -8,4 +8,6 @@ try {
    return { error: error.response?.data?.message || "Submission failed" };
   }
 }
+
+export default submitForm
 
