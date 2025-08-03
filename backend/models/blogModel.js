@@ -26,6 +26,13 @@ const blogSchema = new mongoose.Schema({
     ref: "users",
     required: true,
   },
+  starredBy: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+  },
+],
+
 });
 
 module.exports = mongoose.model("blogs", blogSchema);

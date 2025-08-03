@@ -52,11 +52,16 @@ const updateBlog = async (req, res) => {
 
 const updateStars = async (req, res) => {
   try {
-    const blog = await Blog.findByIdAndUpdate(
-      req.params.id,
-      { $inc: { stars: 1 } },
-      { new: true }
-    );
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ message: "Blog not found" });
+    if (blog.starredBy.includes(req.user.id)) {
+      return res
+        .status(400)
+        .json({ message: "You have already starred this blog" });
+    }
+    blog.stars += 1;
+    blog.starredBy.push(req.user.id);
+    await blog.save();
     res.json(blog);
   } catch (err) {
     res.status(500).json({ message: "Failed to update stars" });

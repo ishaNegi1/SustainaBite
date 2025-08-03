@@ -15,7 +15,7 @@ const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
 function Blogs() {
   const user = useSelector((state) => state.auth.user);
   const [blogs, setBlogs] = useState([]);
-  const [newBlog, setNewBlog] = useState({title: "", content: "" });
+  const [newBlog, setNewBlog] = useState({ title: "", content: "" });
   const [filter, setFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -28,7 +28,7 @@ function Blogs() {
       else console.error(data.error);
     };
     fetchBlogs();
-  }, []);
+  }, [blogs]);
 
   const filteredBlogs = blogs
     .filter((blog) => {
@@ -56,8 +56,8 @@ function Blogs() {
       }
     });
 
-   const handleAddBlog = async (e) => {
-     e.preventDefault();
+  const handleAddBlog = async (e) => {
+    e.preventDefault();
     const result = await createBlog(newBlog);
     if (result.error) return alert(result.error);
     setBlogs([result, ...blogs]);
@@ -99,12 +99,13 @@ function Blogs() {
   };
 
   const handleStarClick = async (id) => {
-    const result = await updateStars(id);
-    if (result.error) return alert(result.error);
-    setBlogs(
-      blogs.map((b) => (b._id === id ? { ...b, stars: b.stars + 1 } : b))
-    );
-  };
+  const result = await updateStars(id);
+  if (result.error) return alert(result.error);
+  setBlogs((prevBlogs) =>
+    prevBlogs.map((b) => (b._id === id ? result : b))
+  );
+  setSelectedBlog((prev) => (prev && prev._id === id ? result : prev));
+};
 
   return (
     <>
@@ -188,19 +189,19 @@ function Blogs() {
           >
             <div className="p-6 flex flex-col justify-between w-full">
               <div>
-                <div className="flex flex-col sm:flex-row justify-between items-center">
+                <div className="flex flex-col justify-between items-center">
                   <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
-                  <p className="text-sm font-medium">
+                  <p className=" text-base font-semibold my-2">
                     Author: {blog.author.name}
                   </p>
                 </div>
-                <p className="text-base">{blog.content.slice(0, 150)}...</p>
+                <p className="text-base">{blog.content.slice(0, 350)}...</p>
               </div>
-              <div className="flex flex-wrap justify-between items-center mt-4">
-                <p className="text-sm">
+              <div className="flex flex-wrap justify-between sm:justify-start items-center mt-4">
+                <p className=" text-base font-medium sm:mx-2">
                   Views: {blog.views} | Stars: {blog.stars}
                 </p>
-                <p className="text-sm">
+                <p className="text-base font-medium sm:mx-5">
                   Date:{" "}
                   {new Date(blog.date).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -208,37 +209,39 @@ function Blogs() {
                     day: "numeric",
                   })}
                 </p>
-                {user?._id === blog.author._id && (
-                  <>
-                    <button
-                      className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm transition-all duration-500 ease-linear transform hover:scale-110"
-                      onClick={() => handleDelete(blog._id)}
-                    >
-                      Delete
-                    </button>
-                    <button
-                      className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm transition-all duration-500 ease-linear transform hover:scale-110"
-                      onClick={() => handleEditClick(blog)}
-                    >
-                      Edit
-                    </button>
-                  </>
-                )}
-                <button
-                  className="bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm mt-2 sm:mt-0 transition-all duration-500 ease-linear transform hover:scale-110"
-                  onClick={async () => {
-                    await updateViews(blog._id);
-                    setBlogs(
-                      blogs.map((b) =>
-                        b._id === blog._id ? { ...b, views: b.views + 1 } : b
-                      )
-                    );
-                    setSelectedBlog(blog);
-                  }}
-                >
-                  See More →
-                </button>
               </div>
+              {user?._id === blog.author._id && (
+                <div className=" flex justify-center sm:justify-end items-center my-5">
+                  <button
+                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
+                    onClick={() => handleDelete(blog._id)}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
+                    onClick={() => handleEditClick(blog)}
+                  >
+                    Edit
+                  </button>
+                </div>
+              )}
+              <button
+                className={`bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110 ${
+                  user?._id !== blog.author._id ? "mt-10" : ""
+                }`}
+                onClick={async () => {
+                  await updateViews(blog._id);
+                  setBlogs(
+                    blogs.map((b) =>
+                      b._id === blog._id ? { ...b, views: b.views + 1 } : b
+                    )
+                  );
+                  setSelectedBlog(blog);
+                }}
+              >
+                See More →
+              </button>
             </div>
           </div>
         ))}
@@ -269,11 +272,11 @@ function Blogs() {
                 Close
               </button>
             </div>
-            <h2 className="text-3xl font-bold mb-2">{selectedBlog.title}</h2>
-            <p className="text-sm font-medium mb-1">
+            <h2 className="text-3xl font-bold my-4">{selectedBlog.title}</h2>
+            <p className="text-base font-semibold mb-1">
               Author: {selectedBlog.author.name}
             </p>
-            <p className="text-sm mb-4 font-medium">
+            <p className="text-base mb-4 font-medium">
               Date:{" "}
               {new Date(selectedBlog.date).toLocaleDateString("en-US", {
                 year: "numeric",

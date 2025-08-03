@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { contact, connect1, connect } from "../assets/pictures";
 import submitForm from '../hooks/contactApi'
 
@@ -80,11 +80,19 @@ const handleSubmit = async (e) => {
               Phone number
             </label>
             <input
-              type="number"
-              id="phone" value={formData.phone} onChange={handleChange}
-              required
-              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
-            />
+  type="tel"
+  id="phone"
+  value={formData.phone}
+  onChange={(e) => {
+    const val = e.target.value;
+    if (/^\d{0,10}$/.test(val)) {
+      setFormData({ ...formData, phone: val });
+    }
+  }}
+  required
+  className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+/>
+
             <label
               htmlFor="message"
               className="mb-2 sm:text-base lg:text-lg text-lg"
