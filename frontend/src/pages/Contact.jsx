@@ -1,7 +1,30 @@
 import React from "react";
 import { contact, connect1, connect } from "../assets/pictures";
+import submitForm from '../hooks/contactApi'
 
 const Contact = () => {
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.id]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const result = await submitForm(formData);
+  if (result.error) {
+    alert("Failed to send message. Please try again later.");
+  } else {
+    alert("Your message has been sent!");
+    setFormData({ name: "", email: "", phone: "", message: "" });
+  }
+};
+
   return (
     <>
       <div
@@ -20,7 +43,7 @@ const Contact = () => {
 
       <div className="bg-[#133221] sm:py-6 sm:px-6 my-14 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
         <div className=" sm:w-1/2 flex flex-col">
-          <form className="flex flex-col font-Telex z-10 px-4">
+          <form className="flex flex-col font-Telex z-10 px-4" onSubmit={handleSubmit}>
             <h1 className=" font-Merriweather sm:text-2xl text-xl text-center font-semibold my-8">
               Let's Make a Difference Together
             </h1>
@@ -32,7 +55,9 @@ const Contact = () => {
             </label>
             <input
               type="text"
-              id="name"
+              id="name" 
+              value={formData.name} 
+              onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
             />
@@ -44,7 +69,7 @@ const Contact = () => {
             </label>
             <input
               type="email"
-              id="email"
+              id="email" value={formData.email} onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
             />
@@ -56,7 +81,7 @@ const Contact = () => {
             </label>
             <input
               type="number"
-              id="phone"
+              id="phone" value={formData.phone} onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
             />
@@ -68,7 +93,7 @@ const Contact = () => {
             </label>
             <textarea
               type="text"
-              id="message"
+              id="message" value={formData.message} onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
             />

@@ -12,7 +12,9 @@ const getAllBlogs = async (req, res) => {
 const createBlog = async (req, res) => {
   try {
     const blog = new Blog({
-      ...req.body,
+      title: req.body.title,
+      content: req.body.content,
+      image: req.file ? `/uploads/${req.file.filename}` : "",
       author: req.user.id,
     });
     await blog.save();

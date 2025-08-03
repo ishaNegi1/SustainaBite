@@ -56,12 +56,16 @@ function Blogs() {
       }
     });
 
-  const handleAddBlog = async (e) => {
+   const handleAddBlog = async (e) => {
     e.preventDefault();
-    const result = await createBlog(newBlog);
+    const formData = new FormData();
+    formData.append("title", newBlog.title);
+    formData.append("content", newBlog.content);
+    formData.append("image", newBlog.image);
+    const result = await createBlog(formData);
     if (result.error) return alert(result.error);
     setBlogs([result, ...blogs]);
-    setNewBlog({ image: "", title: "", content: "" });
+    setNewBlog({ image: null, title: "", content: "" });
   };
 
   const handleSearch = (e) => {
@@ -135,10 +139,11 @@ function Blogs() {
             Image URL:
           </label>
           <input
-            type="text"
-            placeholder="Image URL"
-            value={newBlog.image}
-            onChange={(e) => setNewBlog({ ...newBlog, image: e.target.value })}
+            type="file"
+            accept="image/*"
+            onChange={(e) =>
+              setNewBlog({ ...newBlog, image: e.target.files[0] })
+            }
             required
             className="border-2 border-[#85CA81] rounded-md p-2"
           />
