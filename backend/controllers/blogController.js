@@ -14,7 +14,6 @@ const createBlog = async (req, res) => {
     const blog = new Blog({
       title: req.body.title,
       content: req.body.content,
-      image: req.file ? `/uploads/${req.file.filename}` : "",
       author: req.user.id,
     });
     await blog.save();
@@ -41,7 +40,7 @@ const updateBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Blog not found" });
-    if (blog.author !== req.user.name)
+    if (blog.author.toString() !== req.user.id)
       return res.status(403).json({ message: "Unauthorized" });
     Object.assign(blog, req.body);
     await blog.save();

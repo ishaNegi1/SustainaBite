@@ -15,7 +15,7 @@ const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
 function Blogs() {
   const user = useSelector((state) => state.auth.user);
   const [blogs, setBlogs] = useState([]);
-  const [newBlog, setNewBlog] = useState({ image: "", title: "", content: "" });
+  const [newBlog, setNewBlog] = useState({title: "", content: "" });
   const [filter, setFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBlog, setSelectedBlog] = useState(null);
@@ -57,15 +57,11 @@ function Blogs() {
     });
 
    const handleAddBlog = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", newBlog.title);
-    formData.append("content", newBlog.content);
-    formData.append("image", newBlog.image);
-    const result = await createBlog(formData);
+     e.preventDefault();
+    const result = await createBlog(newBlog);
     if (result.error) return alert(result.error);
     setBlogs([result, ...blogs]);
-    setNewBlog({ image: null, title: "", content: "" });
+    setNewBlog({ title: "", content: "" });
   };
 
   const handleSearch = (e) => {
@@ -93,7 +89,6 @@ function Blogs() {
     const result = await updateBlog(editedBlog._id, {
       title: editedBlog.title,
       content: editedBlog.content,
-      image: editedBlog.image,
     });
     if (result.error) return alert(result.error);
     const updatedBlogs = blogs.map((b) =>
@@ -135,18 +130,6 @@ function Blogs() {
           Add Your Blog
         </h3>
         <form className="flex flex-col gap-4" onSubmit={handleAddBlog}>
-          <label className="text-lg font-medium text-[#133221]">
-            Image URL:
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) =>
-              setNewBlog({ ...newBlog, image: e.target.files[0] })
-            }
-            required
-            className="border-2 border-[#85CA81] rounded-md p-2"
-          />
           <label className="text-lg font-medium text-[#133221]">Title:</label>
           <input
             type="text"
@@ -203,11 +186,6 @@ function Blogs() {
             key={blog._id}
             className="dark:bg-[#133221] dark:border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
           >
-            <img
-              src={blog.image}
-              alt={blog.title}
-              className="w-full sm:w-1/3 sm:h-60 h-44 object-cover"
-            />
             <div className="p-6 flex flex-col justify-between w-full">
               <div>
                 <div className="flex flex-col sm:flex-row justify-between items-center">
@@ -303,11 +281,6 @@ function Blogs() {
                 day: "numeric",
               })}
             </p>
-            <img
-              src={selectedBlog.image}
-              alt={selectedBlog.title}
-              className="w-full h-44 object-cover rounded-lg mb-4"
-            />
             <p className="text-lg leading-relaxed whitespace-pre-line">
               {selectedBlog.content}
             </p>
@@ -332,23 +305,6 @@ function Blogs() {
               </button>
             </div>
             <h2 className="text-2xl font-bold mb-4">Edit Blog</h2>
-
-            <label className="font-semibold">Image URL:</label>
-            <input
-              type="text"
-              value={editedBlog.image}
-              onChange={(e) =>
-                setEditedBlog({ ...editedBlog, image: e.target.value })
-              }
-              className="w-full p-2 mb-4 border rounded dark:text-black"
-            />
-
-            <img
-              src={editedBlog.image}
-              alt={editedBlog.title}
-              className="w-full h-64 object-cover mb-4 rounded"
-            />
-
             <label className="font-semibold">Title:</label>
             <input
               type="text"
