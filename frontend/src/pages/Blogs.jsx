@@ -22,26 +22,20 @@ function Blogs() {
   const [editedBlog, setEditedBlog] = useState(null);
 
   const fetchBlogs = async () => {
-    const data = await getAllBlogs();
-if (!data.error && Array.isArray(data)) {
-  setBlogs(data);
-} else {
-  console.error("Invalid blog data received:", data);
-  setBlogs([]); 
-}
-  };
+      const data = await getAllBlogs();
+      if (!data.error) setBlogs(data);
+      else console.error(data.error);
+    };
   useEffect(() => {
     fetchBlogs();
   }, []);
 
-  const filteredBlogs = (Array.isArray(blogs)
-  ? blogs.filter((blog) => {
+  const filteredBlogs = blogs
+    .filter((blog) => {
       const blogYear = new Date(blog.date).getFullYear().toString();
-
       if (!["Most Viewed", "Max Stars", "All", ""].includes(filter)) {
         if (filter !== blogYear) return false;
       }
-
       if (searchTerm) {
         return (
           blog.title.toLowerCase().includes(searchTerm) ||
@@ -49,20 +43,18 @@ if (!data.error && Array.isArray(data)) {
           blog.author.name.toLowerCase().includes(searchTerm)
         );
       }
-
       return true;
     })
-  : []
-).sort((a, b) => {
-  switch (filter) {
-    case "Most Viewed":
-      return b.views - a.views;
-    case "Max Stars":
-      return b.stars - a.stars;
-    default:
-      return 0;
-  }
-});
+    .sort((a, b) => {
+      switch (filter) {
+        case "Most Viewed":
+          return b.views - a.views;
+        case "Max Stars":
+          return b.stars - a.stars;
+        default:
+          return 0;
+      }
+    });
 
   const handleAddBlog = async (e) => {
     e.preventDefault();
@@ -110,20 +102,21 @@ if (!data.error && Array.isArray(data)) {
   };
 
   const handleStarClick = async (id) => {
-    try {
-      const result = await updateStars(id);
-      if (result.error) {
-        alert(result.error);
-        return;
-      }
-      setBlogs((prevBlogs) =>
-        prevBlogs.map((b) => (b._id === id ? result : b))
-      );
-      setSelectedBlog((prev) => (prev && prev._id === id ? result : prev));
-    } catch (error) {
-      alert("An error occurred while starring the blog.");
+    try{
+  const result = await updateStars(id);
+  if (result.error) {
+      alert(result.error);
+      return;
     }
-  };
+  setBlogs((prevBlogs) =>
+    prevBlogs.map((b) => (b._id === id ? result : b))
+  );
+  setSelectedBlog((prev) => (prev && prev._id === id ? result : prev));
+}
+catch(error){
+    alert("An error occurred while starring the blog.");
+}
+};
 
   return (
     <>
@@ -268,25 +261,23 @@ if (!data.error && Array.isArray(data)) {
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
           <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
             <div className=" flex justify-end">
-             <div className="flex items-center mr-6">
+              <div className="flex items-center mr-6">
+                {[1, 2, 3, 4, 5].map((n) => (
   <button
+    key={n}
     onClick={() => handleStarClick(selectedBlog._id)}
     className={`text-3xl transition hover:scale-125 ${
       selectedBlog.starredBy.includes(user?._id)
         ? "text-yellow-400"
         : "text-gray-400"
     }`}
-    title={
-      selectedBlog.starredBy.includes(user?._id)
-        ? "Click to remove your star"
-        : "Click to star this blog"
-    }
+    disabled={selectedBlog.starredBy.includes(user?._id)} 
   >
     ★
   </button>
-  <span className="ml-2 text-white text-sm">{selectedBlog.stars} stars</span>
-</div>
+))}
 
+              </div>
               <button
                 onClick={() => setSelectedBlog(null)}
                 className=" bg-[#fa453c] text-white rounded-lg px-4 py-1 text-sm transition-all duration-500 ease-linear transform hover:scale-110 font-bold"
@@ -294,9 +285,7 @@ if (!data.error && Array.isArray(data)) {
                 Close
               </button>
             </div>
-            <h2 className="text-3xl font-bold sm:my-4 my-7">
-              {selectedBlog.title}
-            </h2>
+            <h2 className="text-3xl font-bold sm:my-4 my-7">{selectedBlog.title}</h2>
             <p className="text-base font-semibold mb-1">
               Author: {selectedBlog.author.name}
             </p>
