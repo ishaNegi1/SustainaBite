@@ -23,19 +23,25 @@ function Blogs() {
 
   const fetchBlogs = async () => {
     const data = await getAllBlogs();
-    if (!data.error) setBlogs(data);
-    else console.error(data.error);
+if (!data.error && Array.isArray(data)) {
+  setBlogs(data);
+} else {
+  console.error("Invalid blog data received:", data);
+  setBlogs([]); 
+}
   };
   useEffect(() => {
     fetchBlogs();
   }, []);
 
-  const filteredBlogs = blogs
-    .filter((blog) => {
+  const filteredBlogs = (Array.isArray(blogs)
+  ? blogs.filter((blog) => {
       const blogYear = new Date(blog.date).getFullYear().toString();
+
       if (!["Most Viewed", "Max Stars", "All", ""].includes(filter)) {
         if (filter !== blogYear) return false;
       }
+
       if (searchTerm) {
         return (
           blog.title.toLowerCase().includes(searchTerm) ||
@@ -43,18 +49,20 @@ function Blogs() {
           blog.author.name.toLowerCase().includes(searchTerm)
         );
       }
+
       return true;
     })
-    .sort((a, b) => {
-      switch (filter) {
-        case "Most Viewed":
-          return b.views - a.views;
-        case "Max Stars":
-          return b.stars - a.stars;
-        default:
-          return 0;
-      }
-    });
+  : []
+).sort((a, b) => {
+  switch (filter) {
+    case "Most Viewed":
+      return b.views - a.views;
+    case "Max Stars":
+      return b.stars - a.stars;
+    default:
+      return 0;
+  }
+});
 
   const handleAddBlog = async (e) => {
     e.preventDefault();
