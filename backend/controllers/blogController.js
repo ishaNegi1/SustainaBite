@@ -2,12 +2,13 @@ const Blog = require("../models/blogModel");
 
 const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.populate("author", "name");
+    const blogs = await Blog.find().populate("author", "name");
     res.json(blogs);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 const createBlog = async (req, res) => {
   try {
