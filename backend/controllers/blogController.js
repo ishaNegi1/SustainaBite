@@ -28,7 +28,7 @@ const deleteBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Blog not found" });
-    if (blog.author.toString() !== req.user.name)
+    if (blog.author.toString() !== req.user.id)
       return res.status(403).json({ message: "Unauthorized" });
     await Blog.findByIdAndDelete(req.params.id);
     res.json({ message: "Blog deleted" });
@@ -55,13 +55,15 @@ const updateStars = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.status(404).json({ message: "Blog not found" });
-    if (blog.starredBy.includes(req.user.id)) {
-      return res
-        .status(400)
-        .json({ message: "You have already starred this blog" });
+    const userId = req.user.id;
+    const index = blog.starredBy.indexOf(userId);
+    if (index > -1) {
+      blog.starredBy.splice(index, 1);
+      blog.stars = Math.max(blog.stars - 1, 0); 
+    } else {
+      blog.starredBy.push(userId);
+      blog.stars += 1;
     }
-    blog.stars += 1;
-    blog.starredBy.push(req.user.id);
     await blog.save();
     await blog.populate("author", "name");
     res.json(blog);
@@ -69,6 +71,7 @@ const updateStars = async (req, res) => {
     res.status(500).json({ message: "Failed to update stars" });
   }
 };
+
 
 const updateViews = async (req, res) => {
   try {
