@@ -5,6 +5,7 @@ import ImpactCounter from "./ImpactCounter";
 import Questions from "./Questions";
 import Testimonial from "./Testimonial";
 import Carousel from "./Carousel";
+import ScrollToTop from "./ScrollToTop"
 
 export {
   Footer,
@@ -14,4 +15,5 @@ export {
   Questions,
   Testimonial,
   Carousel,
+  ScrollToTop,
 };

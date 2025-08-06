@@ -21,14 +21,14 @@ function Blogs() {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [editedBlog, setEditedBlog] = useState(null);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
+  const fetchBlogs = async () => {
       const data = await getAllBlogs();
       if (!data.error) setBlogs(data);
       else console.error(data.error);
     };
+  useEffect(() => {
     fetchBlogs();
-  }, [blogs]);
+  }, []);
 
   const filteredBlogs = blogs
     .filter((blog) => {
@@ -62,6 +62,7 @@ function Blogs() {
     if (result.error) return alert(result.error);
     setBlogs([result, ...blogs]);
     setNewBlog({ title: "", content: "" });
+    fetchBlogs();
   };
 
   const handleSearch = (e) => {
@@ -74,6 +75,7 @@ function Blogs() {
       const result = await deleteBlog(id);
       if (result.error) return alert(result.error);
       setBlogs(blogs.filter((b) => b._id !== id));
+      fetchBlogs();
     }
   };
 
@@ -96,15 +98,24 @@ function Blogs() {
     );
     setBlogs(updatedBlogs);
     setEditedBlog(null);
+    fetchBlogs();
   };
 
   const handleStarClick = async (id) => {
+    try{
   const result = await updateStars(id);
-  if (result.error) return alert(result.error);
+  if (result.error) {
+      alert(result.error);
+      return;
+    }
   setBlogs((prevBlogs) =>
     prevBlogs.map((b) => (b._id === id ? result : b))
   );
   setSelectedBlog((prev) => (prev && prev._id === id ? result : prev));
+}
+catch(error){
+    alert("An error occurred while starring the blog.");
+}
 };
 
   return (
@@ -185,7 +196,7 @@ function Blogs() {
         {filteredBlogs.map((blog) => (
           <div
             key={blog._id}
-            className="dark:bg-[#133221] dark:border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
+            className="dark:bg-[#133221] border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
           >
             <div className="p-6 flex flex-col justify-between w-full">
               <div>
@@ -213,13 +224,13 @@ function Blogs() {
               {user?._id === blog.author._id && (
                 <div className=" flex justify-center sm:justify-end items-center my-5">
                   <button
-                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
+                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
                     onClick={() => handleDelete(blog._id)}
                   >
                     Delete
                   </button>
                   <button
-                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
+                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
                     onClick={() => handleEditClick(blog)}
                   >
                     Edit
@@ -227,7 +238,7 @@ function Blogs() {
                 </div>
               )}
               <button
-                className={`bg-[#fa453c] text-white rounded-lg px-4 py-2 text-sm sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110 ${
+                className={`bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110 ${
                   user?._id !== blog.author._id ? "mt-10" : ""
                 }`}
                 onClick={async () => {
@@ -252,18 +263,20 @@ function Blogs() {
             <div className=" flex justify-end">
               <div className="flex items-center mr-6">
                 {[1, 2, 3, 4, 5].map((n) => (
-                  <button
-                    key={n}
-                    onClick={() => handleStarClick(selectedBlog._id)}
-                    className={` text-3xl transition hover:scale-125 ${
-                      n <= selectedBlog.stars
-                        ? "text-yellow-400"
-                        : "text-gray-400"
-                    }`}
-                  >
-                    ★
-                  </button>
-                ))}
+  <button
+    key={n}
+    onClick={() => handleStarClick(selectedBlog._id)}
+    className={`text-3xl transition hover:scale-125 ${
+      selectedBlog.starredBy.includes(user?._id)
+        ? "text-yellow-400"
+        : "text-gray-400"
+    }`}
+    disabled={selectedBlog.starredBy.includes(user?._id)} 
+  >
+    ★
+  </button>
+))}
+
               </div>
               <button
                 onClick={() => setSelectedBlog(null)}
@@ -272,7 +285,7 @@ function Blogs() {
                 Close
               </button>
             </div>
-            <h2 className="text-3xl font-bold my-4">{selectedBlog.title}</h2>
+            <h2 className="text-3xl font-bold sm:my-4 my-7">{selectedBlog.title}</h2>
             <p className="text-base font-semibold mb-1">
               Author: {selectedBlog.author.name}
             </p>

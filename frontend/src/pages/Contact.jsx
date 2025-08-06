@@ -1,29 +1,32 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { contact, connect1, connect } from "../assets/pictures";
-import submitForm from '../hooks/contactApi'
+import submitForm from "../hooks/contactApi";
 
 const Contact = () => {
-const [formData, setFormData] = useState({
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-});
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-const handleChange = (e) => {
-  setFormData({ ...formData, [e.target.id]: e.target.value });
-};
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const result = await submitForm(formData);
-  if (result.error) {
-    alert("Failed to send message. Please try again later.");
-  } else {
-    alert("Your message has been sent!");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const result = await submitForm(formData);
+    if (result.error) {
+      alert("Failed to send message. Please try again later.");
+    } else {
+      alert("Your message has been sent!");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    }
+    setLoading(false);
+  };
 
   return (
     <>
@@ -43,7 +46,10 @@ const handleSubmit = async (e) => {
 
       <div className="bg-[#133221] sm:py-6 sm:px-6 my-14 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
         <div className=" sm:w-1/2 flex flex-col">
-          <form className="flex flex-col font-Telex z-10 px-4" onSubmit={handleSubmit}>
+          <form
+            className="flex flex-col font-Telex z-10 px-4"
+            onSubmit={handleSubmit}
+          >
             <h1 className=" font-Merriweather sm:text-2xl text-xl text-center font-semibold my-8">
               Let's Make a Difference Together
             </h1>
@@ -55,8 +61,8 @@ const handleSubmit = async (e) => {
             </label>
             <input
               type="text"
-              id="name" 
-              value={formData.name} 
+              id="name"
+              value={formData.name}
               onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
@@ -69,7 +75,9 @@ const handleSubmit = async (e) => {
             </label>
             <input
               type="email"
-              id="email" value={formData.email} onChange={handleChange}
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
             />
@@ -80,18 +88,18 @@ const handleSubmit = async (e) => {
               Phone number
             </label>
             <input
-  type="tel"
-  id="phone"
-  value={formData.phone}
-  onChange={(e) => {
-    const val = e.target.value;
-    if (/^\d{0,10}$/.test(val)) {
-      setFormData({ ...formData, phone: val });
-    }
-  }}
-  required
-  className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
-/>
+              type="tel"
+              id="phone"
+              value={formData.phone}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (/^\d{0,10}$/.test(val)) {
+                  setFormData({ ...formData, phone: val });
+                }
+              }}
+              required
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+            />
 
             <label
               htmlFor="message"
@@ -101,7 +109,9 @@ const handleSubmit = async (e) => {
             </label>
             <textarea
               type="text"
-              id="message" value={formData.message} onChange={handleChange}
+              id="message"
+              value={formData.message}
+              onChange={handleChange}
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
             />
@@ -109,7 +119,7 @@ const handleSubmit = async (e) => {
               type="submit"
               className=" bg-[#fa453c] text-[#ffffff] rounded-lg w-40 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-7 mb-7 sm:mb-0 mx-auto"
             >
-              Submit
+              {loading ? "Loading..." : "Submit"}
             </button>
           </form>
         </div>
