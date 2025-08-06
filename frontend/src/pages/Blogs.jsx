@@ -23,8 +23,12 @@ function Blogs() {
 
   const fetchBlogs = async () => {
       const data = await getAllBlogs();
-      if (!data.error) setBlogs(data);
-      else console.error(data.error);
+      if (Array.isArray(data)) {
+    setBlogs(data);
+  } else {
+    console.error("Invalid blog data received:", data);
+    setBlogs([]); 
+  }
     };
   useEffect(() => {
     fetchBlogs();
