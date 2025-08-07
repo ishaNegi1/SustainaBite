@@ -3,7 +3,12 @@ const Chat = require("../models/chatModel");
 const { OpenAI } = require("openai");
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1", 
+  apiKey: process.env.OPENROUTER_API_KEY,
+  defaultHeaders: {
+    "HTTP-Referer": "https://sustaina-bite.vercel.app/", 
+    "X-Title": "Leftover Recipe Chat",         
+  },
 });
 
 const getAllChats = async(req,res) => {
@@ -11,7 +16,7 @@ const getAllChats = async(req,res) => {
     const chats = await Chat.find({ userId: req.user.id }).sort({ createdAt: -1 });
     res.json(chats);
   } catch (error) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: error.message });
   }
 }
 
@@ -45,6 +50,9 @@ const createNewChat = async(req,res) => {
 const saveMessages = async(req,res) => {
   const chatId = req.params.id;
   const { content } = req.body;
+  console.log("Chat ID:", chatId);
+  console.log("Content:", content);
+  console.log("User ID:", req.user?.id);
   try {
     const chat = await Chat.findOne({ _id: chatId, userId: req.user.id });
     if (!chat) return res.status(404).json({ error: "Chat not found" });
@@ -54,21 +62,25 @@ const saveMessages = async(req,res) => {
     });
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "openai/gpt-oss-20b:free", 
+      //deepseek/deepseek-r1-0528:free 
       messages: chat.messages.map((m) => ({
-        role: m.role === "bot" ? "bot" : m.role,
+        role: m.role === "bot" ? "assistant" : m.role,
         content: m.content,
       })),
     });
+
     const botReply = {
       role: "bot",
       content: completion.choices[0].message.content,
     };
+
     chat.messages.push(botReply);
     await chat.save();
+
     res.json(chat);
   } catch (error) {
-    console.error("Error saving message:", error);
+    console.error("Error saving message:", error?.response?.data || error.message);
     res.status(500).json({ error: "Server error" });
   }
 }

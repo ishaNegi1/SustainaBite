@@ -30,16 +30,16 @@ const startNewChat = async(title) => {
   }
 }
 
-const sendMessage = async (chatId, message) => {
+const sendMsg = async (chatId, content) => {
   try {
-    const res = await api.post(`/chats/saveChat/${chatId}`, {
-      content: message,
+    const response = await api.post(`/chats/saveChat/${chatId}`, {
+      content: content,
     });
-    return res.data; 
+    return response.data;
   } catch (error) {
     console.error("Error sending message:", error);
-    return null;
+    throw error;
   }
 };
 
-export {getChats, getChatById, startNewChat, sendMessage}
+export {getChats, getChatById, startNewChat, sendMsg}
