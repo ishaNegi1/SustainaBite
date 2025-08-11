@@ -33,7 +33,7 @@ const startNewChat = async(title) => {
 const sendMsg = async (chatId, content) => {
   try {
     const response = await api.post(`/chats/saveChat/${chatId}`, {
-      content: content,
+      content
     });
     return response.data;
   } catch (error) {
@@ -42,4 +42,14 @@ const sendMsg = async (chatId, content) => {
   }
 };
 
-export {getChats, getChatById, startNewChat, sendMsg}
+const delChat = async(chatId) => {
+  try{
+    const response = await api.delete(`/chats/deleteChat/${chatId}`)
+    return response.data;
+  }
+  catch(error){
+    console.log("Error deleting chat", error);
+  }
+}
+
+export {getChats, getChatById, startNewChat, sendMsg, delChat}

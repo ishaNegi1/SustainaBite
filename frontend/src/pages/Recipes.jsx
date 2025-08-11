@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { leftover1 } from "../assets/pictures";
-import {
-  getChats,
-  getChatById,
-  startNewChat,
-  sendMsg,
-} from "../hooks/chatApi";
+import { getChats, getChatById, startNewChat, sendMsg, delChat } from "../hooks/chatApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
 
 const Recipes = () => {
   const [chats, setChats] = useState([]);
@@ -17,9 +14,7 @@ const Recipes = () => {
   const [isChatLoading, setIsChatLoading] = useState(true);
   const [chatError, setChatError] = useState("");
   const [ingredients, setIngredients] = useState("");
-const [dishType, setDishType] = useState("");
-
-  const messagesEndRef = useRef(null);
+  const [dishType, setDishType] = useState("");
 
   useEffect(() => {
     loadChats();
@@ -63,24 +58,31 @@ const [dishType, setDishType] = useState("");
     }
   };
 
-  const handleSend = async () => {
-  if (!ingredients.trim() || !dishType.trim() || !activeChat) return;
-  const content = `I have ${ingredients} ingredients, give recipes which are ${dishType} and easy to make in text format.`;
-  try {
-    setLoading(true);
-    const updatedChat = await sendMsg(activeChat._id, { content });
-    setActiveChat(updatedChat);
-    setInput(""); 
-  } catch (err) {
-    console.error("Error sending message:", err);
-  } finally {
-    setLoading(false);
-  }
-};
+  const handleSend = async (e) => {
+    e.preventDefault();
+    if (!ingredients.trim() || !dishType.trim() || !activeChat) return;
+    const content = `I have ${ingredients}, give recipes that are ${dishType} and easy to make in text format.`;
+    try {
+      setLoading(true);
+      const updatedChat = await sendMsg(activeChat._id, content);
+      setActiveChat(updatedChat);
+      setInput("");
+    } catch (err) {
+      console.error("Error sending message:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [activeChat]);
+  const handleDelete = async(chatId) => {
+     const confirmed = confirm("Do you want to delete the chat?");
+     if(confirmed){
+      const result = await delChat(chatId)
+     if (result.error) return alert(result.error);
+     setChats(chats.filter((c) => c._id !== chatId));
+     loadChats();
+     }
+  }
 
   return (
     <>
@@ -102,7 +104,7 @@ const [dishType, setDishType] = useState("");
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row h-[85vh] my-4">
+      <div className="flex flex-col sm:flex-row my-4">
         <div className="w-full sm:w-1/3 bg-[#133221] text-white p-4 sm:block overflow-y-auto sm:overflow-y-visible max-h-[60vh] sm:max-h-none">
           {!showTitleInput ? (
             <button
@@ -155,7 +157,10 @@ const [dishType, setDishType] = useState("");
                           : "bg-[#25603f] text-[#ffffff] hover:bg-[#85CA81]"
                       }`}
                     >
+                    <div className=" flex justify-between items-center">
                       {chat.title || "New Chat"}
+                      <FontAwesomeIcon icon={faTrash} className=" transition-all duration-500 ease-linear transform hover:scale-110" onClick={() => handleDelete(chat._id)}/>
+                      </div>
                     </li>
                   )
               )}
@@ -170,7 +175,7 @@ const [dishType, setDishType] = useState("");
             </div>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto mb-4 max-h-[60vh] p-4 border-2 border-[#133221]">
+              <div className="flex-1 overflow-y-auto mb-4 max-h-[90vh] p-4 border-2 border-[#133221] dark:border-[#ffffff] rounded-lg">
                 {(activeChat?.messages || []).map((msg, index) => (
                   <div
                     key={index}
@@ -187,34 +192,40 @@ const [dishType, setDishType] = useState("");
                     </span>
                   </div>
                 ))}
-                <div ref={messagesEndRef} />
               </div>
-              <div className="flex">
-                <div className="flex flex-col sm:flex-row gap-2 mb-2">
-  <input
-    type="text"
-    value={ingredients}
-    onChange={(e) => setIngredients(e.target.value)}
-    className="flex-1 border p-2 rounded"
-    placeholder="Enter available ingredients (e.g. rice, tomato, cheese)"
-  />
-  <input
-    type="text"
-    value={dishType}
-    onChange={(e) => setDishType(e.target.value)}
-    className="flex-1 border p-2 rounded"
-    placeholder="Enter dish type (e.g. Indian, breakfast, spicy)"
-  />
-</div>
-
-                <button
-                  onClick={handleSend}
-                  disabled={loading}
-                  className="bg-green-600 text-white px-4 rounded-r disabled:opacity-50 font-medium"
-                >
-                  {loading ? "Sending..." : "Send"}
-                </button>
-              </div>
+              <form className="flex flex-col gap-5 my-3" onSubmit={handleSend}>
+              <div className="flex flex-col">
+              <label htmlFor="ingredients" className=" font-Nunito dark:text-[#ffffff]">Ingredients: </label>
+                <input
+                  type="text"
+                  id="ingredients"
+                  value={ingredients}
+                  required
+                  onChange={(e) => setIngredients(e.target.value)}
+                  className=" p-2 rounded-md mt-2"
+                  placeholder="e.g. rice, tomato, cheese, chappati, coconut"
+                />
+                </div>
+                <div className="flex flex-col">
+                <label htmlFor="type" className=" font-Nunito dark:text-[#ffffff]">Dish Type: </label>
+                <input
+                  type="text"
+                  id="type"
+                  required
+                  value={dishType}
+                  onChange={(e) => setDishType(e.target.value)}
+                  className="p-2 rounded-md mt-2"
+                  placeholder="e.g. spicy, breakfast, indian, sweet"
+                />
+                </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110"
+              >
+                {loading ? "Sending..." : "Send"}
+              </button>
+              </form>
             </>
           )}
         </div>

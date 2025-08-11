@@ -266,11 +266,9 @@ catch(error){
           <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
             <div className=" flex justify-end">
               <div className="flex items-center mr-6">
-                {[1, 2, 3, 4, 5].map((n) => (
   <button
-    key={n}
     onClick={() => handleStarClick(selectedBlog._id)}
-    className={`text-3xl transition hover:scale-125 ${
+    className={`text-4xl transition hover:scale-125 ${
       selectedBlog.starredBy.includes(user?._id)
         ? "text-yellow-400"
         : "text-gray-400"
@@ -279,7 +277,6 @@ catch(error){
   >
     ★
   </button>
-))}
 
               </div>
               <button
@@ -289,7 +286,7 @@ catch(error){
                 Close
               </button>
             </div>
-            <h2 className="text-3xl font-bold sm:my-4 my-7">{selectedBlog.title}</h2>
+            <h2 className="text-3xl font-bold my-7">{selectedBlog.title}</h2>
             <p className="text-base font-semibold mb-1">
               Author: {selectedBlog.author.name}
             </p>

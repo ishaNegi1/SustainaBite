@@ -47,23 +47,21 @@ const createNewChat = async(req,res) => {
   }
 }
 
-const saveMessages = async(req,res) => {
+const saveMessages = async (req, res) => {
   const chatId = req.params.id;
   const { content } = req.body;
-  console.log("Chat ID:", chatId);
-  console.log("Content:", content);
-  console.log("User ID:", req.user?.id);
+
   try {
     const chat = await Chat.findOne({ _id: chatId, userId: req.user.id });
     if (!chat) return res.status(404).json({ error: "Chat not found" });
+
     chat.messages.push({
       role: "user",
       content,
     });
 
     const completion = await openai.chat.completions.create({
-      model: "openai/gpt-oss-20b:free", 
-      //deepseek/deepseek-r1-0528:free 
+      model: "openai/gpt-oss-20b:free",
       messages: chat.messages.map((m) => ({
         role: m.role === "bot" ? "assistant" : m.role,
         content: m.content,
@@ -74,15 +72,27 @@ const saveMessages = async(req,res) => {
       role: "bot",
       content: completion.choices[0].message.content,
     };
-
     chat.messages.push(botReply);
     await chat.save();
-
     res.json(chat);
   } catch (error) {
     console.error("Error saving message:", error?.response?.data || error.message);
     res.status(500).json({ error: "Server error" });
   }
+};
+
+const deleteChat = async(req, res) => {
+  try{
+  const chat = await Chat.findById(req.params.id);
+  if (!chat) return res.status(404).json({ message: "Chat not found" });
+  if(chat.userId.toString() !== req.user.id) return res.status(403).json({ message: "Unauthorized" });
+  await Chat.findByIdAndDelete(req.params.id)
+  res.json({ message: "Chat deleted" }); 
+  }
+  catch(error){
+    res.status(500).json({message: error.message})
+  }
 }
 
-module.exports = {getAllChats, getAllMessages, createNewChat, saveMessages}
+
+module.exports = {getAllChats, getAllMessages, createNewChat, saveMessages, deleteChat}
