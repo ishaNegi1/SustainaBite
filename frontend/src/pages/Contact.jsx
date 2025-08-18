@@ -34,7 +34,7 @@ const Contact = () => {
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${contact})`, backgroundSize: "cover" }}
       >
-        <div className="absolute inset-0 bg-black opacity-70"></div>
+        <div className="absolute inset-0 bg-black sm:opacity-60 opacity-40"></div>
         <div className=" relative z-10">
           <h1 className="text-4xl font-extrabold">Contact Us</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">

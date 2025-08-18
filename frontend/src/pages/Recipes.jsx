@@ -61,7 +61,7 @@ const Recipes = () => {
   const handleSend = async (e) => {
     e.preventDefault();
     if (!ingredients.trim() || !dishType.trim() || !activeChat) return;
-    const content = `I have ${ingredients}, give recipes that are ${dishType} and easy to make in text format.`;
+    const content = `The leftover ingredients are: ${ingredients}. Give recipes that are ${dishType} and easy to make in text format.`;
     try {
       setLoading(true);
       const updatedChat = await sendMsg(activeChat._id, content);
@@ -81,6 +81,7 @@ const Recipes = () => {
      if (result.error) return alert(result.error);
      setChats(chats.filter((c) => c._id !== chatId));
      loadChats();
+     setActiveChat(null);
      }
   }
 
@@ -93,7 +94,7 @@ const Recipes = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="absolute inset-0 bg-black opacity-65"></div>
+        <div className="absolute inset-0 bg-black sm:opacity-60 opacity-40"></div>
         <div className="relative z-10">
           <h1 className="text-4xl font-extrabold">Leftover Recipes</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
@@ -194,7 +195,7 @@ const Recipes = () => {
                 ))}
               </div>
               <form className="flex flex-col gap-5 my-3" onSubmit={handleSend}>
-              <div className="flex flex-col">
+              <div className="flex flex-col mt-6">
               <label htmlFor="ingredients" className=" font-Nunito dark:text-[#ffffff]">Ingredients: </label>
                 <input
                   type="text"
@@ -202,11 +203,11 @@ const Recipes = () => {
                   value={ingredients}
                   required
                   onChange={(e) => setIngredients(e.target.value)}
-                  className=" p-2 rounded-md mt-2"
+                  className=" p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
                   placeholder="e.g. rice, tomato, cheese, chappati, coconut"
                 />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col mt-6">
                 <label htmlFor="type" className=" font-Nunito dark:text-[#ffffff]">Dish Type: </label>
                 <input
                   type="text"
@@ -214,14 +215,14 @@ const Recipes = () => {
                   required
                   value={dishType}
                   onChange={(e) => setDishType(e.target.value)}
-                  className="p-2 rounded-md mt-2"
+                  className="p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
                   placeholder="e.g. spicy, breakfast, indian, sweet"
                 />
                 </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110"
+                className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110 mt-7"
               >
                 {loading ? "Sending..." : "Send"}
               </button>

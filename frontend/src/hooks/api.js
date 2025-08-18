@@ -18,16 +18,15 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const isTokenExpired =
-      error.response &&
-      error.response.status === 401 &&
-      error.response.data.message === "Token expired";
+    const status = error.response?.status;
+    const message = error.response?.data?.message;
 
-    if (isTokenExpired) {
+    if (status === 401 && message?.toLowerCase().includes("expired")) {
       alert("Your session has expired. Please log in again.");
       localStorage.removeItem("token");
       window.location.href = "/login"; 
     }
+
     return Promise.reject(error);
   }
 );

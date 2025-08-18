@@ -20,8 +20,10 @@ function Blogs() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [editedBlog, setEditedBlog] = useState(null);
+  const [loading, setLoading] = useState(false)
 
   const fetchBlogs = async () => {
+    setLoading(true);
       const data = await getAllBlogs();
       if (Array.isArray(data)) {
     setBlogs(data);
@@ -29,6 +31,7 @@ function Blogs() {
     console.error("Invalid blog data received:", data);
     setBlogs([]); 
   }
+  setLoading(false);
     };
   useEffect(() => {
     fetchBlogs();
@@ -131,7 +134,7 @@ catch(error){
           backgroundSize: "cover",
         }}
       >
-        <div className="absolute inset-0 bg-black opacity-65"></div>
+        <div className="absolute inset-0 bg-black sm:opacity-60 opacity-40"></div>
         <div className="relative z-10">
           <h1 className="text-4xl font-extrabold">SustainaBite Blog</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
@@ -196,7 +199,11 @@ catch(error){
         </select>
       </div>
 
-      <div className="space-y-10 mb-16">
+        {loading ? (<div className="flex justify-center items-center my-36">
+        <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+      </div>)
+      :
+        <div className="space-y-10 mb-16">
         {filteredBlogs.map((blog) => (
           <div
             key={blog._id}
@@ -210,13 +217,14 @@ catch(error){
                     Author: {blog.author.name}
                   </p>
                 </div>
-                <p className="text-base">{blog.content.slice(0, 350)}...</p>
+                <p className="text-base">{blog.content.slice(0, 250)}...</p>
               </div>
-              <div className="flex flex-wrap justify-between sm:justify-start items-center mt-4">
+              <div className=" sm:flex sm:justify-between">
+              <div className="flex flex-wrap sm:flex-row flex-col justify-between sm:justify-start items-center my-7">
                 <p className=" text-base font-medium sm:mx-2">
                   Views: {blog.views} | Stars: {blog.stars}
                 </p>
-                <p className="text-base font-medium sm:mx-5">
+                <p className="text-base font-medium sm:mx-5 mt-3 sm:mt-0">
                   Date:{" "}
                   {new Date(blog.date).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -241,10 +249,9 @@ catch(error){
                   </button>
                 </div>
               )}
+              </div>
               <button
-                className={`bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110 ${
-                  user?._id !== blog.author._id ? "mt-10" : ""
-                }`}
+                className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110"
                 onClick={async () => {
                   await updateViews(blog._id);
                   setBlogs(
@@ -260,7 +267,7 @@ catch(error){
             </div>
           </div>
         ))}
-      </div>
+      </div>}
       {selectedBlog && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
           <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
@@ -321,7 +328,7 @@ catch(error){
                 Save Changes
               </button>
             </div>
-            <h2 className="text-2xl font-bold mb-4">Edit Blog</h2>
+            <h2 className="text-2xl font-bold my-5">Edit Blog</h2>
             <label className="font-semibold">Title:</label>
             <input
               type="text"
