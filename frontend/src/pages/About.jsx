@@ -39,9 +39,9 @@ const About = () => {
           "Community Voices",
           "Sustainability Goals",
         ]}
-      />
+      />z
       <div>
-        <div className=" flex sm:flex-row flex-col mb-20 mt-16 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 mt-5 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
           <img
             src={blog1}
             className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-64 h-64 rounded-full z-10"

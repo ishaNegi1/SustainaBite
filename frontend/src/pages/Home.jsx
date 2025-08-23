@@ -13,7 +13,6 @@ import {
 
 const Home = () => {
   const status = useSelector((state) => state.auth.status);
-  const name = useSelector((state) => state.auth.user?.name);
   const [image, setImage] = useState(img1);
 
   useEffect(() => {
@@ -53,9 +52,11 @@ const Home = () => {
           </div>
           {status ? (
             <div className=" text-center">
+            <Link to="/dashboard">
               <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard mt-7">
-                Hello {name}
+                Dashboard
               </button>
+              </Link>
             </div>
           ) : (
             <div className=" text-center">

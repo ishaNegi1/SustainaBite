@@ -8,6 +8,7 @@ import Fertilizer from "./Fertilizer";
 import Blogs from "./Blogs";
 import Recipes from "./Recipes";
 import Pickup from "./Pickup";
+import Dashboard from "./Dashboard";
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   Blogs,
   Recipes,
   Pickup,
+  Dashboard
 };

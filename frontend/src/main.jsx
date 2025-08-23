@@ -16,6 +16,7 @@ import {
   Recipes,
   Blogs,
   Pickup,
+  Dashboard,
 } from "./pages/allPages";
 import PrivateRoute from "./components/PrivateRoute";
 import Layout from "./Layout";
@@ -87,6 +88,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        )
+      }
     ],
   },
   {

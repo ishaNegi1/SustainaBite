@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoon,
@@ -69,37 +69,48 @@ function Navbar() {
     };
   }, [sideNav]);
 
+  const navContent = [
+    { path: "/", name: "Home" },
+    { path: "/about", name: "About" },
+    { path: "/contact", name: "Contact" },
+    { path: "/donation", name: "Donate" },
+    { path: "/pickup", name: "Compost" },
+    { path: "/blogs", name: "Blogs" },
+    { path: "/recipes", name: "Leftovers" },
+    { path: "/fertilizer", name: "Fertilizer" },
+  ];
+
   return (
     <>
       <div
         ref={sideNavRef}
-        className={` flex justify-center fixed top-0 left-0 h-screen w-[63%] z-30 bg-white dark:bg-[#133221] transition-transform duration-700 ease-in-out sm:hidden ${
+        className={` flex justify-center fixed top-0 left-0 h-screen overflow-y-auto w-[63%] z-30 bg-white dark:bg-[#133221] transition-transform duration-700 ease-in-out md:hidden ${
           sideNav ? "translate-x-0" : "-translate-x-full"
         } dark:border-white dark:border-r-2 border-r-2 border-[#133221]`}
       >
-        <div className="flex flex-col mt-36">
-          <Link
-            to="/"
-            className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-5 ml-1"
-          >
-            Contact
-          </Link>
+        <div className="flex flex-col items-center my-24">
+          {navContent.map((item, index) => (
+            <NavLink
+              key={index}
+              to={item.path}
+              className="text-[#133221] dark:text-white font-Coustard text-xl font-medium transition-all duration-300 transform hover:scale-110 inline-block my-3 p-1"
+            >
+              {({ isActive }) => (
+                <>
+                  {item.name}
+                  <span
+                    className={`absolute left-0 bottom-0 h-[3px] bg-[#fa453c] ${
+                      isActive ? "w-full" : "w-0"
+                    }`}
+                  ></span>
+                </>
+              )}
+            </NavLink>
+          ))}
           {status ? (
             <div>
               <button
-                className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 "
+                className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 mt-5 mb-10"
                 onClick={handleLogout}
               >
                 Logout
@@ -108,12 +119,12 @@ function Navbar() {
           ) : (
             <div className=" flex flex-col">
               <Link to="/login">
-                <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5 ">
+                <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221] w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-3 ">
                   Login
                 </button>
               </Link>
               <Link to="/signup">
-                <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221]  w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-5">
+                <button className=" font-Coustard bg-[#133221] dark:bg-white text-white dark:text-[#133221]  w-[5.4rem] h-10 rounded-md text-xl font-medium transition-all duration-500 ease-linear transform hover:scale-110 my-3">
                   Signup
                 </button>
               </Link>
@@ -124,31 +135,31 @@ function Navbar() {
 
       <div
         ref={topNavRef}
-        className=" bg-[#133221] h-20 sticky sm:static top-0 left-0 flex justify-between z-30"
+        className=" bg-[#133221] h-20 sticky md:static top-0 left-0 flex justify-between z-30"
       >
-        <div className=" flex items-center ml-7 sm:ml-11">
+        <div className=" flex items-center ml-7">
           <div>
             <img src={logo} alt="logo" className=" w-14 h-14" />
           </div>
           <p className=" text-[#ffffff] text-lg mx-3"> {status ? name : ""} </p>
         </div>
 
-        <div className=" flex items-center mr-4 sm:mr-0">
+        <div className=" flex items-center mr-4 md:mr-0">
           <button
             onClick={toggleTheme}
             title={
               theme === "light" ? "Switch to dark mode" : "Switch to light mode"
             }
-            className=" mr-6 h-6 w-6 sm:h-7 sm:w-7 transition-transform duration-500 ease-in-out transform"
+            className=" mr-5 h-6 w-6 transition-transform duration-500 ease-in-out transform"
           >
             <FontAwesomeIcon
               icon={theme === "light" ? faMoon : faSun}
-              className={` h-6 w-6 sm:h-7 sm:w-7 text-white transform transition-transform duration-500 ${
+              className={` h-6 w-6 text-white transform transition-transform duration-500 ${
                 theme === "light" ? "rotate-0" : "rotate-180"
               }`}
             />
           </button>
-          <button className="sm:hidden block h-7 w-7" onClick={handleSideNav}>
+          <button className="md:hidden block h-7 w-7" onClick={handleSideNav}>
             <FontAwesomeIcon
               icon={sideNav ? faXmark : faBars}
               className={`text-white h-7 w-7 transform transition-transform duration-300 ease-in-out ${
@@ -157,44 +168,44 @@ function Navbar() {
             />
           </button>
 
-          <div className=" lg:mr-8 mr-10 sm:mr-5 sm:block hidden">
-            <Link
-              to="/"
-              className=" text-[#FFFFFF] font-Coustard text-[1.1rem] font-medium lg:mx-3 mx-4 sm:mx-2 transition-all duration-500 ease-linear transform hover:scale-110 inline-block p-2"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className=" text-[#FFFFFF] font-Coustard text-[1.1rem] font-medium lg:mx-3 mx-4 sm:mx-1 transition-all duration-500 ease-linear transform hover:scale-110 inline-block p-2"
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className=" text-[#FFFFFF] font-Coustard text-[1.1rem] font-medium lg:mx-3 mx-4 sm:mx-1 transition-all duration-500 ease-linear transform hover:scale-110 inline-block p-2"
-            >
-              Contact
-            </Link>
+          <div className=" lg:mr-8 mr-10 sm:mr-5 md:block hidden text-base text-[#FFFFFF] font-Coustard font-medium">
+            {navContent.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                className="relative mx-4 sm:mx-1 transition-all duration-500 ease-linear transform hover:scale-110 inline-block px-2 py-6"
+              >
+                {({ isActive }) => (
+                  <>
+                    {item.name}
+                    <span
+                      className={`absolute left-0 bottom-0 h-[3px] bg-[#fa453c] ${
+                        isActive ? "w-full" : "w-0"
+                      }`}
+                    ></span>
+                  </>
+                )}
+              </NavLink>
+            ))}
           </div>
           {status ? (
-            <div className="sm:block hidden">
+            <div className="md:block hidden">
               <button
-                className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110"
+                className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-base font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110"
                 onClick={handleLogout}
               >
                 Logout
               </button>
             </div>
           ) : (
-            <div className="sm:block hidden">
+            <div className="md:block hidden">
               <Link to="/login">
-                <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
+                <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-base font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
                   Login
                 </button>
               </Link>
               <Link to="/signup">
-                <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-[1.1rem] font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
+                <button className=" font-Coustard bg-[#FFFFFF] text-black w-20 h-7 rounded-md text-base font-medium lg:mr-11 mr-11 sm:mr-5 transition-all duration-500 ease-linear transform hover:scale-110">
                   Signup
                 </button>
               </Link>

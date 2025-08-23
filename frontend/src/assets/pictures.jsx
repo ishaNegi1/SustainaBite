@@ -19,5 +19,6 @@ import about from './about.png'
 import contact from './contact.jpg'
 import connect from './connect.jpg'
 import connect1 from './connect1.jpg'
+import dashboard from './dashboard.jpg'
 
-export {logo, bg, blog1, img1, blog2, donate1, donate2, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten, goals, community, about, contact, connect, connect1 }
+export {logo, bg, blog1, img1, blog2, donate1, donate2, leftover1, leftover2,fertilizer1,fertilizer2, lifecycle, trash, objects, rotten, goals, community, about, contact, connect, connect1, dashboard }

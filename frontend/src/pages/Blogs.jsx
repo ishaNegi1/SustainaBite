@@ -136,10 +136,9 @@ catch(error){
       >
         <div className="absolute inset-0 bg-black sm:opacity-60 opacity-40"></div>
         <div className="relative z-10">
-          <h1 className="text-4xl font-extrabold">SustainaBite Blog</h1>
+          <h1 className="text-4xl font-extrabold">Sustainability Blogs</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
-            Inspiring change, one bite at a time. Dive into stories, solutions,
-            and insights that fight food waste and nourish a sustainable future.
+            Inspiring change, one bite at a time. Dive into stories, solutions, and insights that fight food waste and nourish a sustainable future.
           </p>
         </div>
       </div>
@@ -156,7 +155,7 @@ catch(error){
             value={newBlog.title}
             onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })}
             required
-            className="border-2 border-[#85CA81] rounded-md p-2"
+            className="border-2 border-[#85CA81] rounded-md p-2 focus:outline-none"
           />
           <label className="text-lg font-medium text-[#133221]">Content:</label>
           <textarea
@@ -166,7 +165,7 @@ catch(error){
               setNewBlog({ ...newBlog, content: e.target.value })
             }
             required
-            className="border-2 border-[#85CA81] rounded-md p-2"
+            className="border-2 border-[#85CA81] rounded-md p-2 focus:outline-none"
             rows={4}
           ></textarea>
           <button

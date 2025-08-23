@@ -58,11 +58,11 @@ function Login() {
 
       <div className=" sm:w-1/2 w-full flex items-center justify-center sm:bg-[#FFFFFF] sm:text-[#133221] text-[#FFFFFF]">
         <div className=" sm:w-[65%] mx-1 sm:bg-[#FFFFFF] bg-[#133221] rounded-xl sm:rounded-none p-6 sm:p-0 border-2 border-[#fa453c] sm:border-none">
-          <p className="font-Telex text-2xl lg:text-3xl font-medium lg:mb-7 mb-5 sm:mb-4">
+          <p className=" text-2xl lg:text-3xl font-medium lg:mb-7 mb-5 sm:mb-4">
             Welcome Back
           </p>
           <form
-            className="flex flex-col font-Telex z-10"
+            className="flex flex-col z-10"
             onSubmit={handleSubmit}
           >
             <label

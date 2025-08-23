@@ -47,7 +47,7 @@ const Contact = () => {
       <div className="bg-[#133221] sm:py-6 sm:px-6 my-14 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
         <div className=" sm:w-1/2 flex flex-col">
           <form
-            className="flex flex-col font-Telex z-10 px-4"
+            className="flex flex-col z-10 px-4"
             onSubmit={handleSubmit}
           >
             <h1 className=" font-Merriweather sm:text-2xl text-xl text-center font-semibold my-8">
@@ -65,7 +65,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm focus:outline-none"
             />
             <label
               htmlFor="email"
@@ -79,7 +79,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm focus:outline-none"
             />
             <label
               htmlFor="phone"
@@ -98,7 +98,7 @@ const Contact = () => {
                 }
               }}
               required
-              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] focus:outline-none text-sm"
             />
 
             <label
@@ -113,7 +113,7 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               required
-              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm"
+              className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm focus:outline-none"
             />
             <button
               type="submit"

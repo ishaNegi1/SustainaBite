@@ -1,4 +1,6 @@
 import axios from "axios";
+import store from "../store"
+import { logout } from "../slices/authSlice";
 
 const api = axios.create({
   baseURL: "https://sustainabite-mhc1.onrender.com/api",
@@ -24,6 +26,7 @@ api.interceptors.response.use(
     if (status === 401 && message?.toLowerCase().includes("expired")) {
       alert("Your session has expired. Please log in again.");
       localStorage.removeItem("token");
+      store.dispatch(logout());
       window.location.href = "/login"; 
     }
 
