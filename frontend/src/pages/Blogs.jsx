@@ -13,6 +13,7 @@ import {
 const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
 
 function Blogs() {
+  
   const user = useSelector((state) => state.auth.user);
   const [blogs, setBlogs] = useState([]);
   const [newBlog, setNewBlog] = useState({ title: "", content: "" });

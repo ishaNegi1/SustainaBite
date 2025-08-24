@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { donate1 } from "../assets/pictures";
 import Carousel from "../components/Carousel";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { donateRequest } from "../hooks/donateApi";
 
 const Donation = () => {
+
   const userName = useSelector((state) => state.auth.user.name);
   const userEmail = useSelector((state) => state.auth.user.email);
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+  if (submitted) {
+    const timer = setTimeout(() => {
+      setSubmitted(false);
+    }, 30000); 
+    return () => clearTimeout(timer); 
+  }
+}, [submitted]);
 
   const [formData, setFormData] = useState({
     name: userName || "",
@@ -17,11 +28,11 @@ const Donation = () => {
     address: "",
     city: "",
     pincode: "",
-    foodTypes: [],
+    foodType: [],
     quantity: "",
     duration: "",
     image: null,
-    time: "",
+    preferredTime: "",
   });
 
   const handleChange = (e) => {
@@ -29,13 +40,13 @@ const Donation = () => {
 
     if (type === "checkbox") {
       setFormData((prev) => {
-        let updated = [...prev.foodTypes];
+        let updated = [...prev.foodType];
         if (checked) {
           updated.push(id);
         } else {
           updated = updated.filter((item) => item !== id);
         }
-        return { ...prev, foodTypes: updated };
+        return { ...prev, foodType: updated };
       });
     } else if (type === "file") {
       setFormData({ ...formData, [id]: files[0] });
@@ -44,12 +55,20 @@ const Donation = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-  };
+  const handleSubmit = async(e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const result = await donateRequest(formData);
+    if (result.error) {
+      alert(result.error);
+    } else {
+      setSubmitted(true);
+    }
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <>
@@ -203,7 +222,7 @@ const Donation = () => {
                     <input
                       type="checkbox"
                       id={item.toLowerCase()}
-                      checked={formData.foodTypes.includes(item.toLowerCase())}
+                      checked={formData.foodType.includes(item.toLowerCase())}
                       onChange={handleChange}
                     />
                     {item}
@@ -254,20 +273,20 @@ const Donation = () => {
               type="file"
               id="image"
               accept="image/*"
-              required
+              
               onChange={handleChange}
               className="w-full"
             />
           </div>
 
           <div>
-            <label htmlFor="time" className="block mb-1">
+            <label htmlFor="preferredTime" className="block mb-1">
               Preferred Pickup Time
             </label>
             <input
               type="time"
-              id="time"
-              value={formData.time}
+              id="preferredTime"
+              value={formData.preferredTime}
               required
               onChange={handleChange}
               className="w-full border-b-2 text-sm rounded-md border-white bg-transparent py-2 px-3 focus:outline-none"

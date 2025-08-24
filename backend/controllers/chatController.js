@@ -27,8 +27,7 @@ const getAllMessages = async(req,res) => {
     if (!chat) return res.status(404).json({ error: "Chat not found" });
     res.json(chat);
   } catch (error) {
-    console.error("Error fetching chat:", error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({message: error.message})
   }
 }
 
@@ -42,8 +41,7 @@ const createNewChat = async(req,res) => {
     await newChat.save();
     res.status(201).json(newChat);
   } catch (error) {
-    console.error("Error creating chat:", error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({message: error.message})
   }
 }
 
@@ -76,8 +74,7 @@ const saveMessages = async (req, res) => {
     await chat.save();
     res.json(chat);
   } catch (error) {
-    console.error("Error saving message:", error?.response?.data || error.message);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({message: error.message})
   }
 };
 

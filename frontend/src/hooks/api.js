@@ -25,7 +25,6 @@ api.interceptors.response.use(
 
     if (status === 401 && message?.toLowerCase().includes("expired")) {
       alert("Your session has expired. Please log in again.");
-      localStorage.removeItem("token");
       store.dispatch(logout());
       window.location.href = "/login"; 
     }

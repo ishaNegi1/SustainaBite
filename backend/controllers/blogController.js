@@ -73,7 +73,6 @@ const updateStars = async (req, res) => {
   }
 };
 
-
 const updateViews = async (req, res) => {
   try {
     const blog = await Blog.findByIdAndUpdate(

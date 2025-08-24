@@ -4,7 +4,8 @@ const dotenv = require("dotenv");
 const authRoutes = require("./routes/auth");
 const blogRoutes = require("./routes/blog");
 const contactRoutes = require("./routes/contact");
-const chatRoutes = require("./routes/chat")
+const chatRoutes = require("./routes/chat");
+const donateRoutes = require("./routes/donate");
 const cors = require("cors");
 
 dotenv.config();
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/chats", chatRoutes);
+app.use("/api/donate", donateRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI)
