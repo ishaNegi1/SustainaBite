@@ -91,7 +91,7 @@ const Dashboard = () => {
     <img
       src={donation.image}
       alt="Donation"
-      className="w-full h-32 object-cover p-2 rounded-xl"
+      className="w-full h-44 object-cover p-2 rounded-xl"
     />
   )}
                 <div className="p-2 space-y-1 text-sm">
@@ -126,9 +126,9 @@ const Dashboard = () => {
                     </span>
                   </p>
 
-                  {donation.status === "Picked Up" && (
+                  {donation.status === "Picked up" && (
                     <p className="text-yellow-600 font-bold">
-                      Coins Earned: {donation.coins || 2}
+                      Coins Earned: {donation.coin || 2}
                     </p>
                   )}
                 </div>
