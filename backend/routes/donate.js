@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const protect = require('../middlewares/authMiddleware');
-const { donateFood } = require('../controllers/donateController')
+const { donateFood, myDonations } = require('../controllers/donateController')
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -11,5 +11,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post('/request', protect, upload.single('image'), donateFood);
+router.get('/myDonations', protect, myDonations)
 
 module.exports = router;

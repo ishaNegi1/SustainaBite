@@ -16,5 +16,15 @@ const donateRequest = async (formData) => {
   }
 };
 
-export {donateRequest}
+const getMyDonations = async() => {
+  try{
+    const response = await api.get('/donate/myDonations');
+    return response.data;
+  }
+  catch(error){
+    return { error: error.response?.data?.message || "Error fetching donations" }
+  }
+}
+
+export {donateRequest, getMyDonations,}
 

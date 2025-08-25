@@ -286,7 +286,7 @@ const Donation = () => {
                 <img
                   src={preview}
                   alt="Preview"
-                  className=" w-56 h-auto rounded-md border border-white"
+                  className=" w-64 h-56 rounded-md border border-white"
                 />
               </div>
             )}

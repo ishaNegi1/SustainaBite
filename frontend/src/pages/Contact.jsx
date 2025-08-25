@@ -5,6 +5,7 @@ import PageSeo from "../components/PageSeo";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,6 +28,7 @@ const Contact = () => {
       setFormData({ name: "", email: "", phone: "", message: "" });
     }
     setLoading(false);
+    setSubmitted(true);
   };
 
   return (
@@ -141,6 +143,23 @@ const Contact = () => {
           className=" rounded-tl-xl rounded-tr-xl sm:hidden block"
         />
       </div>
+
+      {submitted ? (
+  <div className="bg-green-200 border border-[#133221] text-[#133221] p-6 mx-6 rounded-lg text-center space-y-3 mb-16">
+    <h2 className="text-2xl font-semibold">Thank You!</h2>
+    <p className="text-lg font-normal">
+      We've received your message.
+    </p>
+    <p className="text-lg font-normal">
+      Our team will review your query and respond as soon as possible.
+    </p>
+    <p className="text-base font-medium">
+      We value your time and appreciate you reaching out to us. 💚
+    </p>
+  </div>
+) : (
+  " "
+)}
 
       <div className=" bg-[#85CA81] py-10 px-6 mb-14 flex flex-col justify-center items-center text-center">
         <p className="text-xl font-Nunito font-bold mb-16 mx-auto max-w-3xl text-[#133221]">

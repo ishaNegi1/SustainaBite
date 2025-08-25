@@ -2,7 +2,7 @@ const Blog = require("../models/blogModel");
 
 const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find().populate("author", "name");
+    const blogs = await Blog.find().populate("author", "name").sort({ date: -1 });
     res.json(blogs);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -69,7 +69,7 @@ const updateStars = async (req, res) => {
     await blog.populate("author", "name");
     res.json(blog);
   } catch (err) {
-    res.status(500).json({ message: "Failed to update stars" });
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -82,9 +82,19 @@ const updateViews = async (req, res) => {
     );
     res.json(blog);
   } catch (err) {
-    res.status(500).json({ message: "Failed to update views" });
+    res.status(500).json({ message: err.message });
   }
 };
+
+const myBlogs = async(req, res) => {
+  try{
+    const blogs = await Blog.find({author: req.user.id}).sort({ date: -1 });
+    res.status(201).json(blogs);
+  }
+  catch(error){
+    res.status(500).json({message: error.message})
+  }
+}
 
 module.exports = {
   getAllBlogs,
@@ -93,4 +103,5 @@ module.exports = {
   updateBlog,
   updateStars,
   updateViews,
+  myBlogs
 };

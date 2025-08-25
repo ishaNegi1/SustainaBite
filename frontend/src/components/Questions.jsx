@@ -37,10 +37,6 @@ const Questions = () => {
   const [seeMore, setSeeMore] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
 
-  const handleSeeMore = () => {
-    setSeeMore((prev) => !prev);
-  };
-
   const handleToggle = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
   };
@@ -74,9 +70,6 @@ const Questions = () => {
       ques: "How can I schedule a compost pickup?",
       ans: "Just log in, go to the “Compost Collection” section, and select your preferred date and time for pickup.",
     },
-  ];
-
-  const faqsHidden = [
     {
       ques: "Who can donate food?",
       ans: "Anyone! Individuals, restaurants, cafés, or caterers can all donate surplus food, as long as it's fresh and safe to eat.",
@@ -99,6 +92,8 @@ const Questions = () => {
     },
   ];
 
+  const displayFaqs = seeMore ? faqs : faqs.slice(0, 8);
+
   return (
     <div className=" mb-24 flex flex-col justify-center items-center">
       <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center">
@@ -106,7 +101,7 @@ const Questions = () => {
       </h1>
 
       <div className=" flex flex-col mt-14 px-7 sm:px-24 md:px-36 lg:px-64">
-        {[...faqs, ...(seeMore ? faqsHidden : [])].map((item, index) => (
+        {displayFaqs.map((item, index) => (
           <div key={index} className=" flex flex-col -mb-5">
             <Box
               ques={item.ques}
@@ -117,15 +112,17 @@ const Questions = () => {
           </div>
         ))}
       </div>
-      <div
-        className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-1"
-        onClick={handleSeeMore}
-      >
-        <button>{seeMore ? "See less" : "See more"}</button>
-        <button className=" ml-2">
-          {<FontAwesomeIcon icon={seeMore ? faArrowUp : faArrowDown} />}
-        </button>
-      </div>
+      {faqs.length > 8 && (
+        <div
+          className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-1"
+          onClick={() => setSeeMore(!seeMore)}
+        >
+          <button>{seeMore ? "See less" : "See more"}</button>
+          <button className=" ml-2">
+            {<FontAwesomeIcon icon={seeMore ? faArrowUp : faArrowDown} />}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

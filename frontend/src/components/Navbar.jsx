@@ -141,7 +141,7 @@ function Navbar() {
           <div>
             <img src={logo} alt="logo" className=" w-14 h-14" />
           </div>
-          <p className=" text-[#ffffff] text-lg mx-3"> {status ? name : ""} </p>
+          <Link to="/dashboard" className=" text-[#ffffff] text-lg mx-3"> {status ? name : ""} </Link>
         </div>
 
         <div className=" flex items-center mr-4 md:mr-0">

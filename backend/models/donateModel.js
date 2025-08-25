@@ -48,11 +48,12 @@ const donateSchema = new mongoose.Schema({
     },
     status: {
         type: String,
+        enum: ["Pending", "Picked up"],
         default: "pending"
     },
     coin:{
         type: Number,
-        default: 2
+        default: 0
     },
     date: {
         type: Date,
