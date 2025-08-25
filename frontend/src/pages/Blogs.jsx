@@ -9,6 +9,7 @@ import {
   updateStars,
   updateViews,
 } from "../hooks/blogApi";
+import PageSeo from "../components/PageSeo";
 
 const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
 
@@ -128,6 +129,12 @@ catch(error){
 
   return (
     <>
+    <PageSeo
+  title="Blogs"
+  description="Read blogs on sustainability, food waste reduction, and eco-friendly practices."
+  keywords="blogs, sustainability tips, food waste blogs, SustainaBite"
+/>
+
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
         style={{

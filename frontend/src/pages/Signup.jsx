@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signupUser } from "../hooks/authApi";
+import PageSeo from "../components/PageSeo";
 
 function Signup() {
   const [error, setError] = useState("");
@@ -35,6 +36,13 @@ function Signup() {
     );
   }
   return (
+    <>
+    <PageSeo
+  title="Signup"
+  description="Create your SustainaBite account to start donating food, sharing recipes, and supporting sustainability."
+  keywords="signup, register, SustainaBite account"
+/>
+
     <div className="flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
         <div className="ml-11 sm:ml-6 sm:block hidden z-10">
@@ -132,6 +140,7 @@ function Signup() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

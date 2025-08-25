@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../slices/authSlice";
 import { loginUser } from "../hooks/authApi";
 import { useDispatch } from "react-redux";
+import PageSeo from "../components/PageSeo";
 
 function Login() {
   const [error, setError] = useState("");
@@ -35,6 +36,13 @@ function Login() {
     );
   }
   return (
+    <>
+    <PageSeo
+  title="Login"
+  description="Login to your SustainaBite account to manage donations, recipes, and more."
+  keywords="login, user account, SustainaBite"
+/>
+
     <div className=" flex sm:my-3 my-6 sm:h-screen">
       <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
         <div className="ml-11 sm:ml-6 sm:block hidden z-10">
@@ -115,6 +123,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

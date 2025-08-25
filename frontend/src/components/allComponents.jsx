@@ -6,6 +6,7 @@ import Questions from "./Questions";
 import Testimonial from "./Testimonial";
 import Carousel from "./Carousel";
 import ScrollToTop from "./ScrollToTop"
+import PageSeo from "./PageSeo"
 
 export {
   Footer,
@@ -16,4 +17,5 @@ export {
   Testimonial,
   Carousel,
   ScrollToTop,
+  PageSeo
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { contact, connect1, connect } from "../assets/pictures";
 import submitForm from "../hooks/contactApi";
+import PageSeo from "../components/PageSeo";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -30,6 +31,12 @@ const Contact = () => {
 
   return (
     <>
+    <PageSeo
+  title="Contact"
+  description="Get in touch with SustainaBite for food donations, partnerships, or inquiries."
+  keywords="contact, food donation support, SustainaBite"
+/>
+
       <div
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${contact})`, backgroundSize: "cover" }}

@@ -3,6 +3,7 @@ import { leftover1 } from "../assets/pictures";
 import { getChats, getChatById, startNewChat, sendMsg, delChat } from "../hooks/chatApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import PageSeo from "../components/PageSeo";
 
 const Recipes = () => {
   const [chats, setChats] = useState([]);
@@ -87,6 +88,12 @@ const Recipes = () => {
 
   return (
     <>
+    <PageSeo
+  title="Leftover Recipes"
+  description="Discover creative leftover recipes that turn yesterday's meals into delicious dishes."
+  keywords="leftover recipes, food waste, cooking ideas, SustainaBite"
+/>
+
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
         style={{

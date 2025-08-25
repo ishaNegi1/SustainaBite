@@ -40,7 +40,7 @@ const donateSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        
+        required: true
     },
     preferredTime: {
         type: String,
@@ -49,6 +49,10 @@ const donateSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "pending"
+    },
+    coin:{
+        type: Number,
+        default: 2
     },
     date: {
         type: Date,

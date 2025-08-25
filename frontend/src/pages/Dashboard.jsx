@@ -1,9 +1,16 @@
 import React from "react";
 import { dashboard } from "../assets/pictures";
+import PageSeo from "../components/PageSeo";
 
 const Dashboard = () => {
   return (
     <>
+    <PageSeo
+  title="Dashboard"
+  description="Manage donations, pickups, blogs, compost collections, leftover recipes, and fertilizer purchases all in one place."
+  keywords="dashboard, food donation management, compost collection, leftover recipes, blogs, fertilizer purchase, SustainaBite"
+/>
+
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
         style={{

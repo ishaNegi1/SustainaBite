@@ -9,6 +9,7 @@ import {
   Questions,
   Testimonial,
   Carousel,
+  PageSeo,
 } from "../components/allComponents";
 
 const Home = () => {
@@ -30,6 +31,12 @@ const Home = () => {
 
   return (
     <>
+    <PageSeo
+  title="Home"
+  description="SustainaBite - Reducing food waste with donations, recipes, composting, blogs and sustainable farming."
+  keywords="food donation, leftover recipes, compost, fertilizer, sustainability, blogs"
+/>
+
       <div
         className=" text-[#FFFFFF] h-auto bg-[#133221] flex items-center justify-center bg-cover bg-center bg-no-repeat relative py-12"
         style={{ backgroundImage: `url(${image})` }}

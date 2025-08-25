@@ -1,8 +1,15 @@
 import React from "react";
 import {fertilizer1} from '../assets/pictures'
+import PageSeo from "../components/PageSeo";
 
 const Fertilizer = () => {
   return <>
+  <PageSeo
+  title="Fertilizer Purchase"
+  description="Buy eco-friendly compost fertilizer made from collected organic waste."
+  keywords="fertilizer, organic compost, eco-friendly farming, SustainaBite"
+/>
+
     <div
             className="text-center py-20 px-4 bg-[#133221] text-white relative"
             style={{

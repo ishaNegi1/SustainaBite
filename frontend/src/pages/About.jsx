@@ -10,11 +10,17 @@ import {
   goals,
   about,
 } from "../assets/pictures";
-import { Carousel } from "../components/allComponents";
+import { Carousel, PageSeo } from "../components/allComponents";
 
 const About = () => {
   return (
     <>
+    <PageSeo
+  title="About"
+  description="Learn more about SustainaBite's mission to fight food waste and promote sustainable living."
+  keywords="about us, food waste, sustainability, SustainaBite"
+/>
+
       <div
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${about})`, backgroundSize: "cover" }}

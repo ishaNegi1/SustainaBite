@@ -1,25 +1,17 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState } from "react";
 import { donate1 } from "../assets/pictures";
 import Carousel from "../components/Carousel";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { donateRequest } from "../hooks/donateApi";
+import PageSeo from "../components/PageSeo";
 
 const Donation = () => {
-
   const userName = useSelector((state) => state.auth.user.name);
   const userEmail = useSelector((state) => state.auth.user.email);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-  if (submitted) {
-    const timer = setTimeout(() => {
-      setSubmitted(false);
-    }, 30000); 
-    return () => clearTimeout(timer); 
-  }
-}, [submitted]);
+  const [preview, setPreview] = useState(null);
 
   const [formData, setFormData] = useState({
     name: userName || "",
@@ -50,28 +42,35 @@ const Donation = () => {
       });
     } else if (type === "file") {
       setFormData({ ...formData, [id]: files[0] });
+      setPreview(URL.createObjectURL(files[0]));
     } else {
       setFormData({ ...formData, [id]: value });
     }
   };
 
-  const handleSubmit = async(e) => {
-  e.preventDefault();
-  setLoading(true);
-  try {
-    const result = await donateRequest(formData);
-    if (result.error) {
-      alert(result.error);
-    } else {
-      setSubmitted(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const result = await donateRequest(formData);
+      if (result.error) {
+        alert(result.error);
+      } else {
+        setSubmitted(true);
+      }
+    } finally {
+      setLoading(false);
     }
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <>
+      <PageSeo
+        title="Food Donation"
+        description="Donate your extra food through SustainaBite and help reduce waste while feeding those in need."
+        keywords="donate food, food waste reduction, charity, SustainaBite"
+      />
+
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
         style={{
@@ -120,7 +119,7 @@ const Donation = () => {
 
         <div className=" flex flex-col sm:grid sm:grid-cols-2 gap-y-8 gap-x-24">
           <div>
-            <label htmlFor="name" className="block mb-1">
+            <label htmlFor="name" className="block mb-1 text-base">
               Name
             </label>
             <input
@@ -134,7 +133,7 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="email" className="block mb-1">
+            <label htmlFor="email" className="block mb-1 text-base">
               Email
             </label>
             <input
@@ -148,7 +147,7 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="phone" className="block mb-1">
+            <label htmlFor="phone" className="block mb-1 text-base">
               Phone No.
             </label>
             <input
@@ -167,7 +166,7 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="pincode" className="block mb-1">
+            <label htmlFor="pincode" className="block mb-1 text-base">
               Pincode
             </label>
             <input
@@ -186,7 +185,7 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="address" className="block mb-1">
+            <label htmlFor="address" className="block mb-1 text-base">
               Address
             </label>
             <input
@@ -200,7 +199,7 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="city" className="block mb-1">
+            <label htmlFor="city" className="block mb-1 text-base">
               City
             </label>
             <input
@@ -214,26 +213,30 @@ const Donation = () => {
           </div>
 
           <div className="col-span-2">
-            <label className="block mb-2">Food Type</label>
+            <label className="block mb-2 text-base">Food Type</label>
             <div className="flex flex-wrap gap-4">
-              {["Cooked", "Packaged", "Bakery", "Grains", "Fruits"].map(
-                (item) => (
-                  <label key={item} className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id={item.toLowerCase()}
-                      checked={formData.foodType.includes(item.toLowerCase())}
-                      onChange={handleChange}
-                    />
-                    {item}
-                  </label>
-                )
-              )}
+              {[
+                "Cooked",
+                "Packaged",
+                "Bakery",
+                "Grains/Pulses",
+                "Fruits/Vegetables",
+              ].map((item) => (
+                <label key={item} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={item.toLowerCase()}
+                    checked={formData.foodType.includes(item.toLowerCase())}
+                    onChange={handleChange}
+                  />
+                  {item}
+                </label>
+              ))}
             </div>
           </div>
 
           <div>
-            <label htmlFor="quantity" className="block mb-1">
+            <label htmlFor="quantity" className="block mb-1 text-base">
               Quantity
             </label>
             <input
@@ -247,7 +250,7 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="duration" className="block mb-1">
+            <label htmlFor="duration" className="block mb-1 text-base">
               Duration
             </label>
             <select
@@ -266,25 +269,36 @@ const Donation = () => {
           </div>
 
           <div>
-            <label htmlFor="image" className="block mb-1">
+            <label htmlFor="image" className="block mb-1 text-base">
               Food Photo
             </label>
             <input
               type="file"
               id="image"
               accept="image/*"
-              
+              required
               onChange={handleChange}
               className="w-full"
             />
+            {preview && (
+              <div className="mt-4">
+                <p className="text-base mb-2">Image Preview:</p>
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className=" w-56 h-auto rounded-md border border-white"
+                />
+              </div>
+            )}
           </div>
 
           <div>
-            <label htmlFor="preferredTime" className="block mb-1">
+            <label htmlFor="preferredTime" className="block mb-1 text-base">
               Preferred Pickup Time
             </label>
             <input
-              type="time"
+              type="text"
+              placeholder="hh:mm AM/PM"
               id="preferredTime"
               value={formData.preferredTime}
               required
