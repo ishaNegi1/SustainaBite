@@ -103,6 +103,7 @@ const Donation = () => {
       />
 
       <form
+        enctype="multipart/form-data"
         onSubmit={handleSubmit}
         className="bg-[#133221] text-white sm:p-10 p-8 my-14 sm:mx-20 mx-4 rounded-xl"
       >

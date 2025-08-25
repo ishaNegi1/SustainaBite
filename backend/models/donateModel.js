@@ -49,7 +49,7 @@ const donateSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ["Pending", "Picked up"],
-        default: "pending"
+        default: "Pending"
     },
     coin:{
         type: Number,

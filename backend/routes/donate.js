@@ -2,12 +2,18 @@ const express = require('express');
 const router = express.Router();
 const protect = require('../middlewares/authMiddleware');
 const { donateFood, myDonations } = require('../controllers/donateController')
-const multer = require('multer');
+const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
-  filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "donations",  
+    allowed_formats: ["jpg", "png", "jpeg"],
+  },
 });
+
 const upload = multer({ storage });
 
 router.post('/request', protect, upload.single('image'), donateFood);

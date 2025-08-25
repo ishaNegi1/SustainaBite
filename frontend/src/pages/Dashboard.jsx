@@ -87,14 +87,13 @@ const Dashboard = () => {
                 key={donation._id}
                 className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81]"
               >
-                {donation.image && (
-                  <img
-                    src={`https://sustainabite-mhc1.onrender.com${donation.image}`}
-                    alt="Donation"
-                    className="w-full h-32 object-cover p-2 rounded-xl"
-                  />
-                )}
-
+            {donation.image && (
+    <img
+      src={donation.image}
+      alt="Donation"
+      className="w-full h-32 object-cover p-2 rounded-xl"
+    />
+  )}
                 <div className="p-2 space-y-1 text-sm">
                   <h3 className=" font-semibold">{donation.foodType}</h3>
                   <p>
@@ -150,7 +149,7 @@ const Dashboard = () => {
         )}
       </div>
 
-      <div className=" mx-auto px-4 mt-16">
+      <div className=" mx-auto px-4 mt-16 mb-16">
         <h2 className="text-2xl text-[#133221] dark:text-[#ffffff] font-bold mb-10 text-center">My Blogs</h2>
         {loadingBlogs ? (
           <div className="flex justify-center items-center my-20">
@@ -166,7 +165,7 @@ const Dashboard = () => {
                 key={blog._id}
                 className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81]"
               >
-              <p className=" text-lg font-medium">{blog.title}</p>
+              <p className=" text-base font-medium mb-2">{blog.title}</p>
               <p className=" text-sm">
                     <span className="font-medium">Views:</span>{" "}
                     {blog.views}

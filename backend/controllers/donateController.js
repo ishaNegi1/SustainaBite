@@ -23,7 +23,7 @@ const donateFood = async (req, res) => {
       quantity,
       duration,
       preferredTime,
-      image: req.file ? `/uploads/${req.file.filename}` : null
+      image: req.file ? req.file.path : null,
     });
     await donation.save();
     res.status(201).json(donation);
