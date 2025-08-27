@@ -9,7 +9,6 @@ const Fertilizer = () => {
   description="Buy eco-friendly compost fertilizer made from collected organic waste."
   keywords="fertilizer, organic compost, eco-friendly farming, SustainaBite"
 />
-
     <div
             className="text-center py-20 px-4 bg-[#133221] text-white relative"
             style={{
@@ -25,7 +24,8 @@ const Fertilizer = () => {
               </p>
             </div>
           </div>
-    </>;
+          <div></div>
+    </>
 };
 
 export default Fertilizer;

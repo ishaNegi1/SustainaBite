@@ -14,7 +14,6 @@ import PageSeo from "../components/PageSeo";
 const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
 
 function Blogs() {
-  
   const user = useSelector((state) => state.auth.user);
   const [blogs, setBlogs] = useState([]);
   const [newBlog, setNewBlog] = useState({ title: "", content: "" });
@@ -22,19 +21,19 @@ function Blogs() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [editedBlog, setEditedBlog] = useState(null);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const fetchBlogs = async () => {
     setLoading(true);
-      const data = await getAllBlogs();
-      if (Array.isArray(data)) {
-    setBlogs(data);
-  } else {
-    console.error("Invalid blog data received:", data);
-    setBlogs([]); 
-  }
-  setLoading(false);
-    };
+    const data = await getAllBlogs();
+    if (Array.isArray(data)) {
+      setBlogs(data);
+    } else {
+      console.error("Invalid blog data received:", data);
+      setBlogs([]);
+    }
+    setLoading(false);
+  };
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -111,29 +110,28 @@ function Blogs() {
   };
 
   const handleStarClick = async (id) => {
-    try{
-  const result = await updateStars(id);
-  if (result.error) {
-      alert(result.error);
-      return;
+    try {
+      const result = await updateStars(id);
+      if (result.error) {
+        alert(result.error);
+        return;
+      }
+      setBlogs((prevBlogs) =>
+        prevBlogs.map((b) => (b._id === id ? result : b))
+      );
+      setSelectedBlog((prev) => (prev && prev._id === id ? result : prev));
+    } catch (error) {
+      alert("An error occurred while starring the blog.");
     }
-  setBlogs((prevBlogs) =>
-    prevBlogs.map((b) => (b._id === id ? result : b))
-  );
-  setSelectedBlog((prev) => (prev && prev._id === id ? result : prev));
-}
-catch(error){
-    alert("An error occurred while starring the blog.");
-}
-};
+  };
 
   return (
     <>
-    <PageSeo
-  title="Blogs"
-  description="Read blogs on sustainability, food waste reduction, and eco-friendly practices."
-  keywords="blogs, sustainability tips, food waste blogs, SustainaBite"
-/>
+      <PageSeo
+        title="Blogs"
+        description="Read blogs on sustainability, food waste reduction, and eco-friendly practices."
+        keywords="blogs, sustainability tips, food waste blogs, SustainaBite"
+      />
 
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
@@ -146,12 +144,13 @@ catch(error){
         <div className="relative z-10">
           <h1 className="text-4xl font-extrabold">Sustainability Blogs</h1>
           <p className="mt-4 text-xl max-w-3xl mx-auto font-medium">
-            Inspiring change, one bite at a time. Dive into stories, solutions, and insights that fight food waste and nourish a sustainable future.
+            Inspiring change, one bite at a time. Dive into stories, solutions,
+            and insights that fight food waste and nourish a sustainable future.
           </p>
         </div>
       </div>
 
-      <div className="bg-[#85CA81] p-6 mt-6">
+      <div className="bg-[#85CA81] p-6 mt-10">
         <h3 className="text-2xl font-semibold mb-4 text-[#133221]">
           Add Your Blog
         </h3>
@@ -185,7 +184,7 @@ catch(error){
         </form>
       </div>
 
-      <div className="py-10 flex flex-col sm:flex-row justify-center sm:justify-end items-center">
+      <div className="my-16 flex flex-col sm:flex-row justify-center sm:justify-end items-center">
         <input
           type="text"
           placeholder="Search anything..."
@@ -206,92 +205,93 @@ catch(error){
         </select>
       </div>
 
-        {loading ? (<div className="flex justify-center items-center my-36">
-        <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
-      </div>)
-      :
-        <div className="space-y-10 mb-16">
-        {filteredBlogs.map((blog) => (
-          <div
-            key={blog._id}
-            className="dark:bg-[#133221] border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
-          >
-            <div className="p-6 flex flex-col justify-between w-full">
-              <div>
-                <div className="flex flex-col justify-between items-center">
-                  <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
-                  <p className=" text-base font-semibold my-2">
-                    Author: {blog.author.name}
-                  </p>
+      {loading ? (
+        <div className="flex justify-center items-center my-36">
+          <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+        </div>
+      ) : (
+        <div className=" space-y-20 mb-28">
+          {filteredBlogs.map((blog) => (
+            <div
+              key={blog._id}
+              className="dark:bg-[#133221] border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
+            >
+              <div className="p-6 flex flex-col justify-between w-full">
+                <div>
+                  <div className="flex flex-col justify-between items-center">
+                    <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
+                    <p className=" text-base font-semibold my-2">
+                      Author: {blog.author.name}
+                    </p>
+                  </div>
+                  <p className="text-base">{blog.content.slice(0, 250)}...</p>
                 </div>
-                <p className="text-base">{blog.content.slice(0, 250)}...</p>
-              </div>
-              <div className=" sm:flex sm:justify-between">
-              <div className="flex flex-wrap sm:flex-row flex-col justify-between sm:justify-start items-center my-7">
-                <p className=" text-base font-medium sm:mx-2">
-                  Views: {blog.views} | Stars: {blog.stars}
-                </p>
-                <p className="text-base font-medium sm:mx-5 mt-3 sm:mt-0">
-                  Date:{" "}
-                  {new Date(blog.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
-              {user?._id === blog.author._id && (
-                <div className=" flex justify-center sm:justify-end items-center my-5">
-                  <button
-                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
-                    onClick={() => handleDelete(blog._id)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
-                    onClick={() => handleEditClick(blog)}
-                  >
-                    Edit
-                  </button>
+                <div className=" sm:flex sm:justify-between">
+                  <div className="flex flex-wrap sm:flex-row flex-col justify-between sm:justify-start items-center my-7">
+                    <p className=" text-base font-medium sm:mx-2">
+                      Views: {blog.views} | Stars: {blog.stars}
+                    </p>
+                    <p className="text-base font-medium sm:mx-5 mt-3 sm:mt-0">
+                      Date:{" "}
+                      {new Date(blog.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </p>
+                  </div>
+                  {user?._id === blog.author._id && (
+                    <div className=" flex justify-center sm:justify-end items-center my-5">
+                      <button
+                        className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
+                        onClick={() => handleDelete(blog._id)}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
+                        onClick={() => handleEditClick(blog)}
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  )}
                 </div>
-              )}
+                <button
+                  className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110"
+                  onClick={async () => {
+                    await updateViews(blog._id);
+                    setBlogs(
+                      blogs.map((b) =>
+                        b._id === blog._id ? { ...b, views: b.views + 1 } : b
+                      )
+                    );
+                    setSelectedBlog(blog);
+                  }}
+                >
+                  See More →
+                </button>
               </div>
-              <button
-                className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium sm:w-1/2 sm:mx-auto transition-all duration-500 ease-linear transform hover:scale-110"
-                onClick={async () => {
-                  await updateViews(blog._id);
-                  setBlogs(
-                    blogs.map((b) =>
-                      b._id === blog._id ? { ...b, views: b.views + 1 } : b
-                    )
-                  );
-                  setSelectedBlog(blog);
-                }}
-              >
-                See More →
-              </button>
             </div>
-          </div>
-        ))}
-      </div>}
+          ))}
+        </div>
+      )}
       {selectedBlog && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
           <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
             <div className=" flex justify-end">
               <div className="flex items-center mr-6">
-  <button
-    onClick={() => handleStarClick(selectedBlog._id)}
-    className={`text-4xl transition hover:scale-125 ${
-      selectedBlog.starredBy.includes(user?._id)
-        ? "text-yellow-400"
-        : "text-gray-400"
-    }`}
-    disabled={selectedBlog.starredBy.includes(user?._id)} 
-  >
-    ★
-  </button>
-
+                <button
+                  onClick={() => handleStarClick(selectedBlog._id)}
+                  className={`text-4xl transition hover:scale-125 ${
+                    selectedBlog.starredBy.includes(user?._id)
+                      ? "text-yellow-400"
+                      : "text-gray-400"
+                  }`}
+                  disabled={selectedBlog.starredBy.includes(user?._id)}
+                >
+                  ★
+                </button>
               </div>
               <button
                 onClick={() => setSelectedBlog(null)}

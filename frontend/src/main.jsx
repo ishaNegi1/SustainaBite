@@ -15,7 +15,6 @@ import {
   Fertilizer,
   Recipes,
   Blogs,
-  Pickup,
   Dashboard,
 } from "./pages/allPages";
 import PrivateRoute from "./components/PrivateRoute";
@@ -65,14 +64,6 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "pickup",
-        element: (
-          <PrivateRoute>
-            <Pickup />
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "fertilizer",
         element: (
           <PrivateRoute>
@@ -94,8 +85,8 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Dashboard />
           </PrivateRoute>
-        )
-      }
+        ),
+      },
     ],
   },
   {

@@ -7,7 +7,6 @@ const contactRoutes = require("./routes/contact");
 const chatRoutes = require("./routes/chat");
 const donateRoutes = require("./routes/donate");
 const cors = require("cors");
-const path = require("path");
 
 dotenv.config();
 const app = express();

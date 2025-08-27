@@ -26,9 +26,9 @@ const ImpactCounter = () => {
   const [startCounting, setStartCounting] = useState(false);
 
   const stats = [
-    { label: "Food Donated (kg)", value: 1450 },
-    { label: "Fertilizers Purchased", value: 1200 },
-    { label: "Compost Collected (kg)", value: 1750 },
+    { label: "Meals Delivered", value: 950 },
+    { label: "Fertilizers Purchased", value: 300 },
+    { label: "NGOs Partnered", value: 15 }, 
     { label: "Blogs Posted", value: 200 },
   ];
 
@@ -55,7 +55,7 @@ const ImpactCounter = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-[#85CA81] pb-10 pt-5 px-4 mt-32 mb-24 flex flex-col items-center"
+      className="bg-[#85CA81] pb-10 pt-5 px-4 sm:mt-32 mt-28 mb-32 flex flex-col items-center"
     >
       <h1 className="font-Nunito font-bold text-3xl mb-12 text-center text-[#133221]">
         Our Impact

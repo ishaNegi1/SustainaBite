@@ -48,15 +48,11 @@ const Questions = () => {
     },
     {
       ques: "What type of food can be donated?",
-      ans: "Freshly cooked meals, dry food, or sealed packaged items. We do not accept spoiled food or items from used plates.",
-    },
-    {
-      ques: "What waste qualifies for compost collection?",
-      ans: "Biodegradable kitchen waste like fruit peels, vegetable scraps, tea leaves, and eggshells. No meat, dairy, or oily foods, please.",
+      ans: "Freshly cooked meals, dry food, or sealed packaged items. We do not accept spoiled food or items from used plates. Only vegetarian accepted.",
     },
     {
       ques: "What are SustainaBite Coins?",
-      ans: "SustainaBite Coins are reward points earned by donating food, composting, or contributing content. You can redeem them for discounts and perks.",
+      ans: "SustainaBite Coins are reward points earned by donating food. You can redeem them for discounts and perks.",
     },
     {
       ques: "What is the organic fertilizer made from?",
@@ -67,16 +63,12 @@ const Questions = () => {
       ans: "Enter ingredients you have, and we suggest easy, waste-free recipes to help you make the most of your leftovers.",
     },
     {
-      ques: "How can I schedule a compost pickup?",
-      ans: "Just log in, go to the “Compost Collection” section, and select your preferred date and time for pickup.",
-    },
-    {
       ques: "Who can donate food?",
       ans: "Anyone! Individuals, restaurants, cafés, or caterers can all donate surplus food, as long as it's fresh and safe to eat.",
     },
     {
       ques: "How can I get discounts on fertilizer?",
-      ans: "Use your SustainaBite Coins earned from donations or composting to get discounts during checkout.",
+      ans: "Use your SustainaBite Coins earned from donations to get discounts during checkout.",
     },
     {
       ques: "Can I write a blog or share a recipe on SustainaBite?",
@@ -90,13 +82,21 @@ const Questions = () => {
       ques: "What topics do your blogs cover?",
       ans: "Food waste solutions, composting tips, eco-living hacks, sustainable cooking, environmental news, and more.",
     },
+    {
+      ques: "How do I know my donated food reaches the right people?",
+      ans: "We provide verified delivery through partner NGOs and volunteers, and in some cases, you can receive photos or short videos of your donation being delivered.",
+    },
+    {
+      ques: "Can I schedule a specific pickup time for my donation?",
+      ans: "Yes! You can choose a convenient time during the donation process, and our volunteers will pick up the food accordingly.",
+    },
   ];
 
-  const displayFaqs = seeMore ? faqs : faqs.slice(0, 8);
+  const displayFaqs = seeMore ? faqs : faqs.slice(0, 7);
 
   return (
-    <div className=" mb-24 flex flex-col justify-center items-center">
-      <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center">
+    <div className=" mb-32 flex flex-col justify-center items-center">
+      <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center px-3">
         Your Questions, Answered
       </h1>
 
@@ -112,7 +112,7 @@ const Questions = () => {
           </div>
         ))}
       </div>
-      {faqs.length > 8 && (
+      {faqs.length > 7 && (
         <div
           className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-1"
           onClick={() => setSeeMore(!seeMore)}

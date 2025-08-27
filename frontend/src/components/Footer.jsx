@@ -47,9 +47,6 @@ const Footer = () => {
               <Link to="/donation">Donate Food</Link>
             </li>
             <li>
-              <Link to="/pickup">Compost Collection</Link>
-            </li>
-            <li>
               <Link to="/fertilizer">Buy Fertilizer</Link>
             </li>
             <li>

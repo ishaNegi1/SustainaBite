@@ -33,11 +33,11 @@ const Contact = () => {
 
   return (
     <>
-    <PageSeo
-  title="Contact"
-  description="Get in touch with SustainaBite for food donations, partnerships, or inquiries."
-  keywords="contact, food donation support, SustainaBite"
-/>
+      <PageSeo
+        title="Contact"
+        description="Get in touch with SustainaBite for food donations, partnerships, or inquiries."
+        keywords="contact, food donation support, SustainaBite"
+      />
 
       <div
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
@@ -55,10 +55,7 @@ const Contact = () => {
 
       <div className="bg-[#133221] sm:py-6 sm:px-6 my-14 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
         <div className=" sm:w-1/2 flex flex-col">
-          <form
-            className="flex flex-col z-10 px-4"
-            onSubmit={handleSubmit}
-          >
+          <form className="flex flex-col z-10 px-4" onSubmit={handleSubmit}>
             <h1 className=" font-Merriweather sm:text-2xl text-xl text-center font-semibold my-8">
               Let's Make a Difference Together
             </h1>
@@ -145,21 +142,19 @@ const Contact = () => {
       </div>
 
       {submitted ? (
-  <div className="bg-green-200 border border-[#133221] text-[#133221] p-6 mx-6 rounded-lg text-center space-y-3 mb-16">
-    <h2 className="text-2xl font-semibold">Thank You!</h2>
-    <p className="text-lg font-normal">
-      We've received your message.
-    </p>
-    <p className="text-lg font-normal">
-      Our team will review your query and respond as soon as possible.
-    </p>
-    <p className="text-base font-medium">
-      We value your time and appreciate you reaching out to us. 💚
-    </p>
-  </div>
-) : (
-  " "
-)}
+        <div className="bg-green-200 border border-[#133221] text-[#133221] p-6 mx-6 rounded-lg text-center space-y-3 mb-16">
+          <h2 className="text-2xl font-semibold">Thank You!</h2>
+          <p className="text-lg font-normal">We've received your message.</p>
+          <p className="text-lg font-normal">
+            Our team will review your query and respond as soon as possible.
+          </p>
+          <p className="text-base font-medium">
+            We value your time and appreciate you reaching out to us. 💚
+          </p>
+        </div>
+      ) : (
+        " "
+      )}
 
       <div className=" bg-[#85CA81] py-10 px-6 mb-14 flex flex-col justify-center items-center text-center">
         <p className="text-xl font-Nunito font-bold mb-16 mx-auto max-w-3xl text-[#133221]">

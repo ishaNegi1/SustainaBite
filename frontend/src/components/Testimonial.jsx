@@ -32,9 +32,9 @@ const Testimonial = () => {
     {
       img: "https://randomuser.me/api/portraits/women/60.jpg",
       name: "Sonal Deshmukh",
-      role: "Compost Contributor",
+      role: "Urban Gardener",
       message:
-        "I never thought my kitchen waste could help the planet. Now I separate my organic waste every day and schedule compost pickups right from my phone!",
+        "I used my SustainaBite Coins to buy organic fertilizer for my rooftop garden. It's nutrient-rich, eco-friendly, and a great way to support sustainability while growing my plants!",
     },
     {
       img: "https://randomuser.me/api/portraits/men/75.jpg",
@@ -54,10 +54,10 @@ const Testimonial = () => {
 
   return (
     <>
-      <h1 className="font-Nunito font-bold text-3xl mb-16 text-center text-[#133221] dark:text-[#ffffff]">
+      <h1 className="font-Nunito font-bold text-3xl mb-16 text-center text-[#133221] dark:text-[#ffffff] px-3">
         What Our Community Says
       </h1>
-      <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-16 py-5 group">
+      <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-28 py-5 group">
         <div className="flex w-max animate-marquee1 group-hover:[animation-play-state:paused]">
           {[...testimonials, ...testimonials].map((item, index) => (
             <CarouselItem key={index} {...item} />

@@ -1,57 +1,56 @@
 import React, { useState, useEffect } from "react";
 import { dashboard } from "../assets/pictures";
 import PageSeo from "../components/PageSeo";
-import {getMyDonations} from "../hooks/donateApi"
+import { getMyDonations } from "../hooks/donateApi";
 import { getMyBlogs } from "../hooks/blogApi";
 
 const Dashboard = () => {
-
   const [donations, setDonations] = useState([]);
-   const [blogs, setBlogs] = useState([]);
-   const [loadingDonations, setLoadingDonations] = useState(false);
-   const [showAllDonations, setShowAllDonations] = useState(false);
-   const [loadingBlogs, setLoadingBlogs] = useState(false);
-   const [showAllBlogs, setShowAllBlogs] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [loadingDonations, setLoadingDonations] = useState(false);
+  const [showAllDonations, setShowAllDonations] = useState(false);
+  const [loadingBlogs, setLoadingBlogs] = useState(false);
+  const [showAllBlogs, setShowAllBlogs] = useState(false);
 
   const fetchDonations = async () => {
     setLoadingDonations(true);
-      const donations = await getMyDonations();
-      if (donations.error) {
-        alert(donations.error);
-      } 
-      else{
-        setDonations(donations);
-      }
-      setLoadingDonations(false);
-    };
+    const donations = await getMyDonations();
+    if (donations.error) {
+      alert(donations.error);
+    } else {
+      setDonations(donations);
+    }
+    setLoadingDonations(false);
+  };
 
-  const fetchBlogs = async() => {
-    setLoadingBlogs(true)
+  const fetchBlogs = async () => {
+    setLoadingBlogs(true);
     const blogs = await getMyBlogs();
     if (blogs.error) {
-        alert(blogs.error);
-      } 
-      else{
-        setBlogs(blogs);
-      }
-      setLoadingBlogs(false);
-  }
+      alert(blogs.error);
+    } else {
+      setBlogs(blogs);
+    }
+    setLoadingBlogs(false);
+  };
 
   useEffect(() => {
     fetchDonations();
     fetchBlogs();
   }, []);
 
-  const displayedDonations = showAllDonations ? donations : donations.slice(0, 4);
+  const displayedDonations = showAllDonations
+    ? donations
+    : donations.slice(0, 4);
   const displayedBlogs = showAllBlogs ? blogs : blogs.slice(0, 4);
 
   return (
     <>
-    <PageSeo
-  title="Dashboard"
-  description="Manage donations, pickups, blogs, compost collections, leftover recipes, and fertilizer purchases all in one place."
-  keywords="dashboard, food donation management, compost collection, leftover recipes, blogs, fertilizer purchase, SustainaBite"
-/>
+      <PageSeo
+        title="Dashboard"
+        description="Manage donations, pickups, blogs, leftover recipes, and fertilizer purchases all in one place."
+        keywords="dashboard, food donation management, leftover recipes, blogs, fertilizer purchase, SustainaBite"
+      />
 
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
@@ -71,71 +70,79 @@ const Dashboard = () => {
       </div>
 
       <div className=" mx-auto px-4 pt-12 pb-8">
-        <h2 className="text-2xl text-[#133221] dark:text-[#ffffff]  font-bold mb-10 text-center">My Donations</h2>
+        <h2 className="text-2xl text-[#133221] font-bold mb-10 text-center bg-[#85CA81] py-2">
+          My Donations
+        </h2>
 
         {loadingDonations ? (
           <div className="flex justify-center items-center my-20">
-        <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
-      </div>
+            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+          </div>
         ) : donations.length === 0 ? (
-          <p>You haven't made any donations yet.</p>
+          <p className=" dark:text-white">
+            You haven't made any donations yet.
+          </p>
         ) : (
           <>
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-5 px-3">
-            {displayedDonations.map((donation) => (
-              <div
-                key={donation._id}
-                className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81]"
-              >
-            {donation.image && (
-    <img
-      src={donation.image}
-      alt="Donation"
-      className="w-full h-44 object-cover p-2 rounded-xl"
-    />
-  )}
-                <div className="p-2 space-y-1 text-sm">
-                  <h3 className=" font-semibold">{donation.foodType}</h3>
-                  <p>
-                    <span className="font-medium">Quantity:</span>{" "}
-                    {donation.quantity}
-                  </p>
-                  <p>
-                    <span className="font-medium">Preferred Pickup:</span>{" "}
-                    {donation.preferredTime}
-                  </p>
-                  <p>
-                    <span className="font-medium">Date:</span>{" "}
-                    {new Date(donation.date).toLocaleDateString()}
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-5 px-3">
+              {displayedDonations.map((donation) => (
+                <div
+                  key={donation._id}
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81]"
+                >
+                  {donation.image && (
+                    <img
+                      src={donation.image}
+                      alt="Donation"
+                      className="w-full h-44 object-cover p-2 rounded-xl"
+                    />
+                  )}
+                  <div className="p-2 space-y-1 text-sm">
+                    <h3 className=" font-semibold">{donation.foodType}</h3>
+                    <p>
+                      <span className="font-medium">Quantity:</span>{" "}
+                      {donation.quantity}
                     </p>
                     <p>
-                    <span className="font-medium">Time:</span>{" "}
-                    {new Date(donation.date).toLocaleTimeString()}
-                  </p>
-
-                  <p>
-                    <span className="font-medium">Status:</span>{" "}
-                    <span
-                      className={`${
-                        donation.status === "Picked Up"
-                          ? "text-green-600"
-                          : "text-[#fa453c]"
-                      } font-semibold`}
-                    >
-                      {donation.status}
-                    </span>
-                  </p>
-
-                  {donation.status === "Picked up" && (
-                    <p className="text-yellow-600 font-bold">
-                      Coins Earned: {donation.coin || 2}
+                      <span className="font-medium">Preferred Pickup:</span>{" "}
+                      {donation.preferredTime}
                     </p>
-                  )}
+                    <p>
+                      <span className="font-medium">Date:</span>{" "}
+                      {new Date(donation.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </p>
+                    <p>
+                      <span className="font-medium">Time:</span>{" "}
+                      {new Date(donation.date).toLocaleTimeString()}
+                    </p>
+
+                    <p>
+                      <span className="font-medium">Status:</span>{" "}
+                      <span
+                        className={`${
+                          donation.status === "Picked up"
+                            ? "text-green-600"
+                            : "text-[#fa453c]"
+                        } font-semibold`}
+                      >
+                        {donation.status}
+                      </span>
+                    </p>
+
+                    {donation.status === "Picked up" && (
+                      <p className="text-yellow-600 font-bold">
+                        Coins Earned: {donation.coin || 2}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          {donations.length > 4 && (
+              ))}
+            </div>
+            {donations.length > 4 && (
               <div className="text-center mt-8">
                 <button
                   onClick={() => setShowAllDonations(!showAllDonations)}
@@ -149,43 +156,49 @@ const Dashboard = () => {
         )}
       </div>
 
-      <div className=" mx-auto px-4 mt-16 mb-16">
-        <h2 className="text-2xl text-[#133221] dark:text-[#ffffff] font-bold mb-10 text-center">My Blogs</h2>
+      <div className=" mx-auto px-4 mt-16 mb-24">
+        <h2 className="text-2xl text-[#133221] font-bold mb-10 text-center bg-[#85CA81] py-2">
+          My Blogs
+        </h2>
         {loadingBlogs ? (
           <div className="flex justify-center items-center my-20">
-        <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
-      </div>
+            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+          </div>
         ) : blogs.length === 0 ? (
-          <p className="mb-10">You haven't posted any blog yet.</p>
+          <p className=" dark:text-white mb-10">
+            You haven't posted any blog yet.
+          </p>
         ) : (
           <>
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-5 px-3">
-            {displayedBlogs.map((blog) => (
-              <div
-                key={blog._id}
-                className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81]"
-              >
-              <p className=" text-base font-medium mb-2">{blog.title}</p>
-              <p className=" text-sm">
-                    <span className="font-medium">Views:</span>{" "}
-                    {blog.views}
-                    </p>
-              <p className=" text-sm">
-                    <span className="font-medium">Stars:</span>{" "}
-                    {blog.stars}
-                    </p>
-              <p className=" text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-5 px-3">
+              {displayedBlogs.map((blog) => (
+                <div
+                  key={blog._id}
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81]"
+                >
+                  <p className=" text-base font-medium mb-2">{blog.title}</p>
+                  <p className=" text-sm">
+                    <span className="font-medium">Views:</span> {blog.views}
+                  </p>
+                  <p className=" text-sm">
+                    <span className="font-medium">Stars:</span> {blog.stars}
+                  </p>
+                  <p className=" text-sm">
                     <span className="font-medium">Date:</span>{" "}
-                    {new Date(blog.date).toLocaleDateString()}
-                    </p>
-                    <p className=" text-sm">
+                    {new Date(blog.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </p>
+                  <p className=" text-sm">
                     <span className="font-medium">Time:</span>{" "}
                     {new Date(blog.date).toLocaleTimeString()}
                   </p>
-         </div>
-        ))}
+                </div>
+              ))}
             </div>
-             {blogs.length > 4 && (
+            {blogs.length > 4 && (
               <div className="text-center my-8">
                 <button
                   onClick={() => setShowAllBlogs(!showAllBlogs)}
@@ -195,11 +208,9 @@ const Dashboard = () => {
                 </button>
               </div>
             )}
-         </>       
-          )
-        }
+          </>
+        )}
       </div>
-
     </>
   );
 };

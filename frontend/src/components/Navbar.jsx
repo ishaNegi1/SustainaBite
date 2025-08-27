@@ -74,7 +74,6 @@ function Navbar() {
     { path: "/about", name: "About" },
     { path: "/contact", name: "Contact" },
     { path: "/donation", name: "Donate" },
-    { path: "/pickup", name: "Compost" },
     { path: "/blogs", name: "Blogs" },
     { path: "/recipes", name: "Leftovers" },
     { path: "/fertilizer", name: "Fertilizer" },

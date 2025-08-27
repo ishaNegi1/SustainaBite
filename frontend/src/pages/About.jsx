@@ -15,11 +15,11 @@ import { Carousel, PageSeo } from "../components/allComponents";
 const About = () => {
   return (
     <>
-    <PageSeo
-  title="About"
-  description="Learn more about SustainaBite's mission to fight food waste and promote sustainable living."
-  keywords="about us, food waste, sustainability, SustainaBite"
-/>
+      <PageSeo
+        title="About"
+        description="Learn more about SustainaBite's mission to fight food waste and promote sustainable living."
+        keywords="about us, food waste, sustainability, SustainaBite"
+      />
 
       <div
         className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
@@ -33,7 +33,7 @@ const About = () => {
             planet.
           </p>
         </div>
-      </div> 
+      </div>
       <Carousel
         carousel={[
           "Who We Are",
@@ -45,9 +45,9 @@ const About = () => {
           "Community Voices",
           "Sustainability Goals",
         ]}
-      />z
+      />
       <div>
-        <div className=" flex sm:flex-row flex-col mb-20 mt-5 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-20 mt-14 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
           <img
             src={blog1}
             className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-64 h-64 rounded-full z-10"
@@ -72,9 +72,9 @@ const About = () => {
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
               To build a sustainable ecosystem where excess food is
-              redistributed, organic waste is turned into compost, and awareness
-              about food sustainability is spread widely through engaging blogs
-              and ideas.
+              redistributed, leftover recipes are shared to reduce waste, and
+              awareness about food sustainability is spread widely through
+              engaging blogs and ideas.
             </p>
           </div>
           <img
@@ -93,10 +93,10 @@ const About = () => {
               What We Do
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
-              We enable easy food donations, compost collection scheduling,
-              access to creative leftover recipes, and informative blogs that
-              raise awareness. Users can also purchase organic fertilizers made
-              from compost - closing the loop on food waste.
+              We enable easy food donations, access to creative leftover
+              recipes, and informative blogs that raise awareness. Users can
+              also purchase organic fertilizers made from compost - closing the
+              loop on food waste.
             </p>
           </div>
         </div>
@@ -107,9 +107,9 @@ const About = () => {
               Why It Matters
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
-              Every meal saved is a step towards fighting hunger. Every compost
-              pickup reduces landfill pressure. Every recipe shared inspires
-              someone to waste less. Our services aim to create impact.
+              Every meal saved is a step towards fighting hunger. Every recipe
+              shared inspires someone to waste less. Our services aim to create
+              impact and build a sustainable future.
             </p>
           </div>
           <img
@@ -130,8 +130,9 @@ const About = () => {
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
               Users can sign up and access all features from a single dashboard.
               Food donors list what they have; collectors are notified in
-              real-time. Compost contributors schedule pickups. Shoppers browse
-              and buy fertilizers. It's seamless and user-friendly.
+              real-time. Users can also explore and cook leftover recipes.
+              Shoppers browse and buy fertilizers. It's seamless and
+              user-friendly.
             </p>
           </div>
         </div>
@@ -164,10 +165,9 @@ const About = () => {
               Community Voices
             </h1>
             <p className=" break-words lg:pb-4 sm:pb-2 text-justify">
-              We celebrate the voices that drive change — from home cooks
-              donating food, to compost collectors, to recipe bloggers inspiring
-              creativity. Their stories and testimonials fuel our motivation
-              every day.
+              We celebrate the voices that drive change - from people donating
+              food, to bloggers inspiring creativity. Their stories and
+              testimonials fuel our motivation every day.
             </p>
           </div>
         </div>

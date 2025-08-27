@@ -39,14 +39,6 @@ function Card() {
       path: "/donation",
     },
     {
-      src: blog2,
-      alt: "Compost Collection",
-      title: "Compost Collection",
-      desc: "Turn your kitchen waste into value! Schedule compost pickups and earn SustainaBite Coins in return.",
-      btnText: "Schedule Pickup",
-      path: "/pickup",
-    },
-    {
       src: fertilizer1,
       alt: "Fertilizer Purchase",
       title: "Fertilizer Purchase",
@@ -54,9 +46,6 @@ function Card() {
       btnText: "Buy Fertilizer",
       path: "/fertilizer",
     },
-  ];
-
-  const card2 = [
     {
       src: leftover1,
       alt: "Leftover Recipes",
@@ -76,32 +65,14 @@ function Card() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto sm:px-4 px-8 my-20">
+    <div className="max-w-7xl mx-auto sm:px-4 px-8 mb-20 mt-28">
       <h1 className="text-[#133221] dark:text-white font-Nunito font-bold text-3xl text-center">
         Our Services
       </h1>
-      <div className="flex flex-wrap justify-center gap-14 mt-16 sm:mb-24 mb-14">
+      <div className="grid sm:grid-cols-4 grid-cols-1 sm:gap-6 gap-14 mt-16 sm:mb-24 mb-14 px-5">
         {card1.map((item, index) => (
           <div
-            className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110"
-            key={index}
-          >
-            <Services
-              src={item.src}
-              alt={item.alt}
-              title={item.title}
-              desc={item.desc}
-              btnText={item.btnText}
-              path={item.path}
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-14">
-        {card2.map((item, index) => (
-          <div
-            className=" w-auto sm:w-[23%] h-auto bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110"
+            className="  bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110"
             key={index}
           >
             <Services

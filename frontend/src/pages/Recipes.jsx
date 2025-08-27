@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { leftover1 } from "../assets/pictures";
-import { getChats, getChatById, startNewChat, sendMsg, delChat } from "../hooks/chatApi";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import {
+  getChats,
+  getChatById,
+  startNewChat,
+  sendMsg,
+  delChat,
+} from "../hooks/chatApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import PageSeo from "../components/PageSeo";
 
 const Recipes = () => {
@@ -75,24 +81,24 @@ const Recipes = () => {
     }
   };
 
-  const handleDelete = async(chatId) => {
-     const confirmed = confirm("Do you want to delete the chat?");
-     if(confirmed){
-      const result = await delChat(chatId)
-     if (result.error) return alert(result.error);
-     setChats(chats.filter((c) => c._id !== chatId));
-     loadChats();
-     setActiveChat(null);
-     }
-  }
+  const handleDelete = async (chatId) => {
+    const confirmed = confirm("Do you want to delete the chat?");
+    if (confirmed) {
+      const result = await delChat(chatId);
+      if (result.error) return alert(result.error);
+      setChats(chats.filter((c) => c._id !== chatId));
+      loadChats();
+      setActiveChat(null);
+    }
+  };
 
   return (
     <>
-    <PageSeo
-  title="Leftover Recipes"
-  description="Discover creative leftover recipes that turn yesterday's meals into delicious dishes."
-  keywords="leftover recipes, food waste, cooking ideas, SustainaBite"
-/>
+      <PageSeo
+        title="Leftover Recipes"
+        description="Discover creative leftover recipes that turn yesterday's meals into delicious dishes."
+        keywords="leftover recipes, food waste, cooking ideas, SustainaBite"
+      />
 
       <div
         className="text-center py-20 px-4 bg-[#133221] text-white relative"
@@ -165,9 +171,13 @@ const Recipes = () => {
                           : "bg-[#25603f] text-[#ffffff] hover:bg-[#85CA81]"
                       }`}
                     >
-                    <div className=" flex justify-between items-center">
-                      {chat.title || "New Chat"}
-                      <FontAwesomeIcon icon={faTrash} className=" transition-all duration-500 ease-linear transform hover:scale-110" onClick={() => handleDelete(chat._id)}/>
+                      <div className=" flex justify-between items-center">
+                        {chat.title || "New Chat"}
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className=" transition-all duration-500 ease-linear transform hover:scale-110"
+                          onClick={() => handleDelete(chat._id)}
+                        />
                       </div>
                     </li>
                   )
@@ -202,37 +212,47 @@ const Recipes = () => {
                 ))}
               </div>
               <form className="flex flex-col gap-5 my-3" onSubmit={handleSend}>
-              <div className="flex flex-col mt-6">
-              <label htmlFor="ingredients" className=" font-Nunito dark:text-[#ffffff]">Ingredients: </label>
-                <input
-                  type="text"
-                  id="ingredients"
-                  value={ingredients}
-                  required
-                  onChange={(e) => setIngredients(e.target.value)}
-                  className=" p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
-                  placeholder="e.g. rice, tomato, cheese, chappati, coconut"
-                />
+                <div className="flex flex-col mt-6">
+                  <label
+                    htmlFor="ingredients"
+                    className=" font-Nunito dark:text-[#ffffff]"
+                  >
+                    Ingredients:{" "}
+                  </label>
+                  <input
+                    type="text"
+                    id="ingredients"
+                    value={ingredients}
+                    required
+                    onChange={(e) => setIngredients(e.target.value)}
+                    className=" p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
+                    placeholder="e.g. rice, tomato, cheese, chappati, coconut"
+                  />
                 </div>
                 <div className="flex flex-col mt-6">
-                <label htmlFor="type" className=" font-Nunito dark:text-[#ffffff]">Dish Type: </label>
-                <input
-                  type="text"
-                  id="type"
-                  required
-                  value={dishType}
-                  onChange={(e) => setDishType(e.target.value)}
-                  className="p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
-                  placeholder="e.g. spicy, breakfast, indian, sweet"
-                />
+                  <label
+                    htmlFor="type"
+                    className=" font-Nunito dark:text-[#ffffff]"
+                  >
+                    Dish Type:{" "}
+                  </label>
+                  <input
+                    type="text"
+                    id="type"
+                    required
+                    value={dishType}
+                    onChange={(e) => setDishType(e.target.value)}
+                    className="p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
+                    placeholder="e.g. spicy, breakfast, indian, sweet"
+                  />
                 </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110 mt-7"
-              >
-                {loading ? "Sending..." : "Send"}
-              </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110 mt-7"
+                >
+                  {loading ? "Sending..." : "Send"}
+                </button>
               </form>
             </>
           )}

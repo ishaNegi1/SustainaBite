@@ -276,7 +276,7 @@ const Donation = () => {
             <input
               type="file"
               id="image"
-              accept="image/*"
+              accept=".png,.jpg,.jpeg"
               required
               onChange={handleChange}
               className="w-full"
@@ -344,11 +344,11 @@ const Donation = () => {
       ) : (
         " "
       )}
-      <div className="my-16 p-10 text-center bg-[#85CA81]">
-        <h2 className="text-2xl font-bold mb-8 text-[#133221]">
+      <div className="my-28 p-10 text-center bg-[#85CA81]">
+        <h2 className="text-2xl font-bold mb-10 text-[#133221]">
           How Food Donation Works
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 dark:text-[#ffffff] text-[#133221]">
+        <div className=" dark:text-[#ffffff] text-[#133221] grid grid-cols-1 sm:grid-cols-2 gap-10">
           <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
             <h3 className="text-lg font-semibold">1. Fill the Form</h3>
             <p className=" mt-2">
@@ -361,10 +361,19 @@ const Donation = () => {
               Our team verifies and schedules a pickup at your convenience.
             </p>
           </div>
+        </div>
+        <div className=" dark:text-[#ffffff] text-[#133221] grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10">
           <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
             <h3 className="text-lg font-semibold">3. Food Distribution</h3>
             <p className="mt-2">
               Your food donation is safely delivered to those in need.
+            </p>
+          </div>
+          <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <h3 className="text-lg font-semibold">4. Proof & Trust</h3>
+            <p className="mt-2">
+              Receive photos or videos of your donation being handed over,
+              shared via email or WhatsApp - building transparency and trust.
             </p>
           </div>
         </div>

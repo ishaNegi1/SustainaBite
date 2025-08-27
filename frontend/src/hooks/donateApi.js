@@ -6,7 +6,6 @@ const donateRequest = async (formData) => {
     for (let key in formData) {
       data.append(key, formData[key]);
     }
-
     const response = await api.post("/donate/request", data, {
       headers: { "Content-Type": "multipart/form-data" }
     });
