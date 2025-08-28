@@ -102,7 +102,7 @@ const Home = () => {
             waste-free future. 💚
           </p>
           <div className="flex justify-center">
-            <Link to="/signup">
+            <Link to="/dashboard">
               <button className="bg-[#fa453c] text-[#FFFFFF] py-1 rounded-lg w-32 sm:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard">
                 Dashboard
               </button>

@@ -84,7 +84,7 @@ const Dashboard = () => {
           </p>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-5 px-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-8">
               {displayedDonations.map((donation) => (
                 <div
                   key={donation._id}
@@ -156,7 +156,7 @@ const Dashboard = () => {
         )}
       </div>
 
-      <div className=" mx-auto px-4 mt-16 mb-24">
+      <div className=" mx-auto px-4 mt-16 mb-28">
         <h2 className="text-2xl text-[#133221] font-bold mb-10 text-center bg-[#85CA81] py-2">
           My Blogs
         </h2>
@@ -170,7 +170,7 @@ const Dashboard = () => {
           </p>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:px-5 px-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-8">
               {displayedBlogs.map((blog) => (
                 <div
                   key={blog._id}
