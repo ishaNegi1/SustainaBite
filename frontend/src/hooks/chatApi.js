@@ -1,14 +1,14 @@
-import api from './api'
+import api from "./api";
 
-const getChats = async() => {
+const getChats = async () => {
   try {
-    const res = await api.get('/chats/getChats'); 
+    const res = await api.get("/chats/getChats");
     return res.data;
   } catch (error) {
     console.error("Error fetching chats:", error);
     return [];
   }
-}
+};
 
 const getChatById = async (chatId) => {
   try {
@@ -20,20 +20,20 @@ const getChatById = async (chatId) => {
   }
 };
 
-const startNewChat = async(title) => {
+const startNewChat = async (title) => {
   try {
-    const res = await api.post('/chats/newChat', {title});
+    const res = await api.post("/chats/newChat", { title });
     return res.data;
   } catch (error) {
     console.error("Error starting new chat:", error);
     return null;
   }
-}
+};
 
 const sendMsg = async (chatId, content) => {
   try {
     const response = await api.post(`/chats/saveChat/${chatId}`, {
-      content
+      content,
     });
     return response.data;
   } catch (error) {
@@ -42,14 +42,13 @@ const sendMsg = async (chatId, content) => {
   }
 };
 
-const delChat = async(chatId) => {
-  try{
-    const response = await api.delete(`/chats/deleteChat/${chatId}`)
+const delChat = async (chatId) => {
+  try {
+    const response = await api.delete(`/chats/deleteChat/${chatId}`);
     return response.data;
-  }
-  catch(error){
+  } catch (error) {
     console.log("Error deleting chat", error);
   }
-}
+};
 
-export {getChats, getChatById, startNewChat, sendMsg, delChat}
+export { getChats, getChatById, startNewChat, sendMsg, delChat };

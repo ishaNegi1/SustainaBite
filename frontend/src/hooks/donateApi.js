@@ -7,7 +7,7 @@ const donateRequest = async (formData) => {
       data.append(key, formData[key]);
     }
     const response = await api.post("/donate/request", data, {
-      headers: { "Content-Type": "multipart/form-data" }
+      headers: { "Content-Type": "multipart/form-data" },
     });
     return response.data;
   } catch (error) {
@@ -15,15 +15,15 @@ const donateRequest = async (formData) => {
   }
 };
 
-const getMyDonations = async() => {
-  try{
-    const response = await api.get('/donate/myDonations');
+const getMyDonations = async () => {
+  try {
+    const response = await api.get("/donate/myDonations");
     return response.data;
+  } catch (error) {
+    return {
+      error: error.response?.data?.message || "Error fetching donations",
+    };
   }
-  catch(error){
-    return { error: error.response?.data?.message || "Error fetching donations" }
-  }
-}
+};
 
-export {donateRequest, getMyDonations,}
-
+export { donateRequest, getMyDonations };

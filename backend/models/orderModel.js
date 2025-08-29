@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
   productId: {
@@ -8,16 +8,24 @@ const orderSchema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", 
+    ref: "User",
     required: true,
   },
   address: {
     type: String,
     required: true,
   },
+  pincode: {
+    type: String,
+    required: true,
+    maxlength: 6,
+    match: /^[0-9]{6}$/,
+  },
   phone: {
     type: String,
     required: true,
+    maxlength: 10,
+    match: /^[0-9]{10}$/,
   },
   landmark: {
     type: String,

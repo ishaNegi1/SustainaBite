@@ -6,6 +6,8 @@ const blogRoutes = require("./routes/blog");
 const contactRoutes = require("./routes/contact");
 const chatRoutes = require("./routes/chat");
 const donateRoutes = require("./routes/donate");
+const fertilizerRoutes = require("./routes/fertilizer");
+const orderRoutes = require("./routes/order");
 const cors = require("cors");
 
 dotenv.config();
@@ -35,7 +37,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/chats", chatRoutes);
-app.use("/api/donate", donateRoutes)
+app.use("/api/donate", donateRoutes);
+app.use("/api/fertilizer", fertilizerRoutes);
+app.use("/api/orders", orderRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

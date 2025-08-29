@@ -16,7 +16,7 @@ const Layout = () => {
 
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <div className=" bg-white dark:bg-black transition-colors duration-500">
         <Navbar />
         <Outlet />

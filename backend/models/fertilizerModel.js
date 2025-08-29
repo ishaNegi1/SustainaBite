@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const fertilizerSchema = new mongoose.Schema({
   image: {
@@ -17,6 +17,10 @@ const fertilizerSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  packSize: {
+    type: String,
+    required: true,
+  },
   stock: {
     type: String,
     enum: ["In Stock", "Out of Stock"],
@@ -24,7 +28,7 @@ const fertilizerSchema = new mongoose.Schema({
   },
   like: {
     type: Number,
-    default: 0, 
+    default: 0,
   },
   dislike: {
     type: Number,
@@ -36,4 +40,4 @@ const fertilizerSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Fertilizer', fertilizerSchema);
+module.exports = mongoose.model("Fertilizer", fertilizerSchema);

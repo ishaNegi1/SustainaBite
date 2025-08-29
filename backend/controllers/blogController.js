@@ -2,13 +2,14 @@ const Blog = require("../models/blogModel");
 
 const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find().populate("author", "name").sort({ date: -1 });
+    const blogs = await Blog.find()
+      .populate("author", "name")
+      .sort({ date: -1 });
     res.json(blogs);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
 
 const createBlog = async (req, res) => {
   try {
@@ -60,7 +61,7 @@ const updateStars = async (req, res) => {
     const index = blog.starredBy.indexOf(userId);
     if (index > -1) {
       blog.starredBy.splice(index, 1);
-      blog.stars = Math.max(blog.stars - 1, 0); 
+      blog.stars = Math.max(blog.stars - 1, 0);
     } else {
       blog.starredBy.push(userId);
       blog.stars += 1;
@@ -86,15 +87,14 @@ const updateViews = async (req, res) => {
   }
 };
 
-const myBlogs = async(req, res) => {
-  try{
-    const blogs = await Blog.find({author: req.user.id}).sort({ date: -1 });
+const myBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find({ author: req.user.id }).sort({ date: -1 });
     res.status(201).json(blogs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-  catch(error){
-    res.status(500).json({message: error.message})
-  }
-}
+};
 
 module.exports = {
   getAllBlogs,
@@ -103,5 +103,5 @@ module.exports = {
   updateBlog,
   updateStars,
   updateViews,
-  myBlogs
+  myBlogs,
 };

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
   role: {
@@ -21,7 +21,7 @@ const chatSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true, 
+    required: true,
   },
   messages: {
     type: [messageSchema],

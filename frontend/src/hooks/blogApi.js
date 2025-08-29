@@ -54,15 +54,14 @@ const updateViews = async (id) => {
   }
 };
 
-const getMyBlogs = async() => {
-  try{
-  const response = await api.get('/blogs/myBlogs');
-  return response.data;
+const getMyBlogs = async () => {
+  try {
+    const response = await api.get("/blogs/myBlogs");
+    return response.data;
+  } catch (error) {
+    return { error: error.response?.data?.message || "Error fetching blogs" };
   }
-  catch(error){
-    return { error: error.response?.data?.message || "Error fetching blogs" }
-  }
-}
+};
 
 export {
   getAllBlogs,
@@ -71,5 +70,5 @@ export {
   updateBlog,
   updateStars,
   updateViews,
-  getMyBlogs
+  getMyBlogs,
 };
