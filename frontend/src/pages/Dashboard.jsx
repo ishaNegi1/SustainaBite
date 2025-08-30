@@ -109,7 +109,7 @@ const Dashboard = () => {
               {displayorders.map((order) => (
                 <div
                   key={order._id}
-                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81]"
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81] p-2"
                 >
                   {order.productId && order.productId.image && (
                     <img
@@ -219,7 +219,7 @@ const Dashboard = () => {
               {displayedDonations.map((donation) => (
                 <div
                   key={donation._id}
-                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81]"
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81] p-2"
                 >
                   {donation.image && (
                     <img

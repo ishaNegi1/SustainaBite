@@ -65,7 +65,7 @@ function Card() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto sm:px-4 px-8 mb-20 mt-28">
+    <div className="max-w-7xl mx-auto px-4 mb-20 mt-28">
       <h1 className="text-[#133221] dark:text-white font-Nunito font-bold text-3xl text-center">
         Our Services
       </h1>
