@@ -309,7 +309,7 @@ const Fertilizer = () => {
                       </div>
                     </form>
                   ) : (
-                    <p className=" bg-[#fa453c] text-white rounded-lg px-9 py-1 sm:text-lg font-medium transition-all duration-300 transform hover:scale-105 my-10">
+                    <p className=" bg-[#fa453c] text-white rounded-lg px-2 text-center py-1 sm:text-lg font-medium transition-all duration-300 transform hover:scale-105 my-10">
                       Sorry, the product is currently out of stock
                     </p>
                   )}
