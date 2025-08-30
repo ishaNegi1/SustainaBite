@@ -4,6 +4,9 @@ import PageSeo from "../components/PageSeo";
 import { getMyDonations } from "../hooks/donateApi";
 import { getMyBlogs } from "../hooks/blogApi";
 import { getAllOrders } from "../hooks/orderApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 
 const Dashboard = () => {
   const [donations, setDonations] = useState([]);
@@ -14,19 +17,18 @@ const Dashboard = () => {
   const [loadingBlogs, setLoadingBlogs] = useState(false);
   const [showAllBlogs, setShowAllBlogs] = useState(false);
   const [loadingOrders, setLoadingOrders] = useState(false);
-    const [showAllOrders, setShowAllOrders] = useState(false);
+  const [showAllOrders, setShowAllOrders] = useState(false);
 
-  const fetchOrders = async() => {
+  const fetchOrders = async () => {
     setLoadingOrders(true);
     const orders = await getAllOrders();
-    if(orders.error){
+    if (orders.error) {
       alert(orders.error);
-    }
-    else{
+    } else {
       setOrders(orders);
     }
     setLoadingOrders(false);
-  }
+  };
 
   const fetchDonations = async () => {
     setLoadingDonations(true);
@@ -56,7 +58,7 @@ const Dashboard = () => {
     fetchBlogs();
   }, []);
 
-  const displayorders = showAllOrders ? orders : orders.slice(0,3);
+  const displayorders = showAllOrders ? orders : orders.slice(0, 3);
   const displayedDonations = showAllDonations
     ? donations
     : donations.slice(0, 3);
@@ -98,7 +100,8 @@ const Dashboard = () => {
           </div>
         ) : orders.length === 0 ? (
           <p className=" dark:text-white">
-            No orders found. Start exploring our fertilizers and place your first order today!
+            No orders found. Start exploring our fertilizers and place your
+            first order today!
           </p>
         ) : (
           <>
@@ -108,18 +111,20 @@ const Dashboard = () => {
                   key={order._id}
                   className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81]"
                 >
-                  {order.productId.image && (
+                  {order.productId && order.productId.image && (
                     <img
                       src={order.productId.image}
-                      alt="Donation"
+                      alt="order"
                       className="w-full h-44 object-cover p-2 rounded-xl"
                     />
                   )}
                   <div className="p-2 space-y-1 text-sm">
-                    <h3 className=" font-semibold">{order.productId.name}</h3>
+                    <h3 className=" font-semibold">
+                      {order.productId?.name || "-"}
+                    </h3>
                     <p>
                       <span className="font-medium">Quantity:</span>{" "}
-                      {order.productId.price}
+                      {order.productId?.price || "-"}
                     </p>
                     <p>
                       <span className="font-medium">Address:</span>{" "}
@@ -134,8 +139,12 @@ const Dashboard = () => {
                       {order.landmark}
                     </p>
                     <p>
+                      <span className="font-medium">Coins Used:</span>{" "}
+                      {order.coinUsed || 0}
+                    </p>
+                    <p>
                       <span className="font-medium">Date:</span>{" "}
-                      {new Date(donation.date).toLocaleDateString("en-US", {
+                      {new Date(order.date).toLocaleDateString("en-US", {
                         year: "numeric",
                         month: "short",
                         day: "numeric",
@@ -150,7 +159,7 @@ const Dashboard = () => {
                       <span className="font-medium">Status:</span>{" "}
                       <span
                         className={`${
-                          order.status === "Confirmed"
+                          order.status === "Delivered"
                             ? "text-green-600"
                             : "text-[#fa453c]"
                         } font-semibold`}
@@ -158,6 +167,20 @@ const Dashboard = () => {
                         {order.status}
                       </span>
                     </p>
+                    <div className=" flex my-3 justify-end">
+                      <div className=" flex">
+                        <FontAwesomeIcon
+                          icon={faThumbsUp}
+                          className=" w-5 h-5"
+                        />
+                      </div>
+                      <div className=" flex ml-4 mr-2">
+                        <FontAwesomeIcon
+                          icon={faThumbsDown}
+                          className=" w-5 h-5"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -165,7 +188,7 @@ const Dashboard = () => {
             {orders.length > 3 && (
               <div className="text-center mt-8">
                 <button
-                  onClick={() => setShowAllDonations(!showAllOrders)}
+                  onClick={() => setShowAllOrders(!showAllOrders)}
                   className="bg-[#fa453c] text-white mt-5 rounded-lg px-8 py-1 sm:text-lg font-medium transition-all duration-300 transform hover:scale-105"
                 >
                   {showAllOrders ? "See Less" : "See More"}
@@ -187,7 +210,8 @@ const Dashboard = () => {
           </div>
         ) : donations.length === 0 ? (
           <p className=" dark:text-white">
-            No donations made yet. Start contributing today and make a positive impact!
+            No donations made yet. Start contributing today and make a positive
+            impact!
           </p>
         ) : (
           <>
@@ -273,7 +297,8 @@ const Dashboard = () => {
           </div>
         ) : blogs.length === 0 ? (
           <p className=" dark:text-white mb-10">
-           No blogs posted yet. Share your thoughts and inspire others with your first blog!
+            No blogs posted yet. Share your thoughts and inspire others with
+            your first blog!
           </p>
         ) : (
           <>

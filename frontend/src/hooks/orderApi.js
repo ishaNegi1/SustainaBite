@@ -18,4 +18,14 @@ const placeOrder = async (orderDetails) => {
   }
 };
 
-export { getAllOrders, placeOrder };
+const getCoinBalance = async() => {
+  try{
+    const response = await api.get("/orders/balance");
+    return response.data;
+  }
+  catch(error){
+    return { error: error.response?.data?.message || "Error fetching balance" };
+  }
+}
+
+export { getAllOrders, placeOrder, getCoinBalance };

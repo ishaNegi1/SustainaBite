@@ -57,6 +57,18 @@ const Donation = () => {
         alert(result.error);
       } else {
         setSubmitted(true);
+        setPreview(null);
+        setFormData({name: userName || "",
+    email: userEmail || "",
+    phone: "",
+    address: "",
+    city: "",
+    pincode: "",
+    foodType: [],
+    quantity: "",
+    duration: "",
+    image: null,
+    preferredTime: "",})
       }
     } finally {
       setLoading(false);
@@ -103,7 +115,6 @@ const Donation = () => {
       />
 
       <form
-        enctype="multipart/form-data"
         onSubmit={handleSubmit}
         className="bg-[#133221] text-white sm:p-10 p-8 my-14 sm:mx-20 mx-4 rounded-xl"
       >

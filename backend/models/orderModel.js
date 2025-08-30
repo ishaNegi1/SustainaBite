@@ -36,6 +36,10 @@ const orderSchema = new mongoose.Schema({
     enum: ["Pending", "Confirmed", "Shipped", "Delivered", "Cancelled"],
     default: "Pending",
   },
+  coinUsed: { 
+    type: Number, 
+    default: 0 
+  },
   date: {
     type: Date,
     default: Date.now,

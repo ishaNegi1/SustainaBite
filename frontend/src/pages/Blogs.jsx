@@ -221,7 +221,7 @@ function Blogs() {
                   <div className="flex flex-col justify-between items-center">
                     <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
                     <p className=" text-base font-semibold my-2">
-                      Author: {blog.author.name}
+                      Author: {blog.author?.name || "Unknown Author"}
                     </p>
                   </div>
                   <p className="text-base">{blog.content.slice(0, 250)}...</p>
@@ -240,7 +240,7 @@ function Blogs() {
                       })}
                     </p>
                   </div>
-                  {user?._id === blog.author._id && (
+                  {user?._id === blog.author?._id && (
                     <div className=" flex justify-center sm:justify-end items-center my-5">
                       <button
                         className="bg-[#fa453c] text-white rounded-lg px-4 py-2 text-base font-medium transition-all duration-500 ease-linear transform hover:scale-110 mx-2"
@@ -302,7 +302,7 @@ function Blogs() {
             </div>
             <h2 className="text-3xl font-bold my-7">{selectedBlog.title}</h2>
             <p className="text-base font-semibold mb-1">
-              Author: {selectedBlog.author.name}
+              Author: {selectedBlog.author?.name}
             </p>
             <p className="text-base mb-4 font-medium">
               Date:{" "}

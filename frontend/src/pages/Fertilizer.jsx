@@ -4,7 +4,7 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import { fertilizer1 } from "../assets/pictures";
 import { getAllProducts } from "../hooks/fertilizerApi";
-import { placeOrder } from "../hooks/orderApi";
+import { placeOrder, getCoinBalance } from "../hooks/orderApi";
 import PageSeo from "../components/PageSeo";
 
 const Fertilizer = () => {
@@ -12,6 +12,8 @@ const Fertilizer = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [coinBalance, setCoinBalance] = useState(0);
+  const [coinUsed, setCoinUsed] = useState(0);
   const [orderData, setOrderData] = useState({
     address: "",
     pincode: "",
@@ -30,7 +32,17 @@ const Fertilizer = () => {
     setLoading(false);
   };
 
+  const fetchBalance = async() => {
+    try {
+        const res = await getCoinBalance();
+        setCoinBalance(res.balance);
+      } catch (error) {
+        console.error("Error fetching balance", error);
+      }
+  }
+
   useEffect(() => {
+    fetchBalance();
     fetchProducts();
   }, []);
 
@@ -88,6 +100,7 @@ const Fertilizer = () => {
         </div>
       ) : (
         <div className="my-20 px-10">
+        {coinBalance > 0 ? <div>Your Coin Balance: {coinBalance}</div> : ""}
          {orderPlaced && (
       <div className="mb-6 p-4 text-center bg-green-100 border border-green-400 text-green-800 rounded-lg">
         ✅ Your order has been placed successfully!
@@ -160,7 +173,7 @@ const Fertilizer = () => {
                 </p>
                 <div className=" flex justify-between items-center">
                   <p className="font-bold text-lg ">
-                    ₹{selectedProduct.price}/Kg
+                    ₹{selectedProduct.price} {selectedProduct.packSize}
                   </p>
                   <p
                     className={`${
@@ -230,6 +243,23 @@ const Fertilizer = () => {
                       required
                       className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                     />
+                    <div className="mb-2">
+                    <label className="block mb-1">
+          Apply Coins (Max {coinBalance}):
+        </label>
+                    <input
+                      type="number"
+                      min="0"
+          max={coinBalance}
+                      placeholder="Enter coins"
+                      value={coinUsed}
+                      onChange={(e) =>
+                        setCoinUsed(Number(e.target.value))
+                      }
+                      required
+                      className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
+                    />
+                    </div>
                     <div className=" text-center my-10">
                       <button
                         type="submit"
