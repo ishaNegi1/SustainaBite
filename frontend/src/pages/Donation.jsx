@@ -58,17 +58,19 @@ const Donation = () => {
       } else {
         setSubmitted(true);
         setPreview(null);
-        setFormData({name: userName || "",
-    email: userEmail || "",
-    phone: "",
-    address: "",
-    city: "",
-    pincode: "",
-    foodType: [],
-    quantity: "",
-    duration: "",
-    image: null,
-    preferredTime: "",})
+        setFormData({
+          name: userName || "",
+          email: userEmail || "",
+          phone: "",
+          address: "",
+          city: "",
+          pincode: "",
+          foodType: [],
+          quantity: "",
+          duration: "",
+          image: null,
+          preferredTime: "",
+        });
       }
     } finally {
       setLoading(false);
@@ -124,8 +126,12 @@ const Donation = () => {
         <p className="font-Nunito text-lg text-center font-medium mt-4 mb-14">
           Sharing a meal spreads hope. All fields are required to ensure safe &
           timely pickup.{" "}
-          <span className="text-[#fa453c] font-semibold">
+          <span className="text-[#fa453c] font-bold">
             Only vegetarian food is accepted.
+          </span>
+          <span className="block my-4">
+            Our donation services are available daily from{" "}
+            <b className="text-[#fa453c]">9:00 AM to 5:00 PM</b>
           </span>
         </p>
 

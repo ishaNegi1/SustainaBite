@@ -90,7 +90,7 @@ const Dashboard = () => {
       </div>
 
       <div className=" mx-auto px-4 pt-12 pb-8">
-        <h2 className="text-2xl text-[#133221] font-bold mb-10 text-center bg-[#85CA81] py-2">
+        <h2 className="text-2xl text-[#133221] font-bold mb-14 text-center bg-[#85CA81] py-2">
           My Orders
         </h2>
 
@@ -99,13 +99,13 @@ const Dashboard = () => {
             <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
           </div>
         ) : orders.length === 0 ? (
-          <p className=" dark:text-white">
+          <p className=" dark:text-white text-base">
             No orders found. Start exploring our fertilizers and place your
             first order today!
           </p>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-4 sm:px-8">
               {displayorders.map((order) => (
                 <div
                   key={order._id}
@@ -118,7 +118,7 @@ const Dashboard = () => {
                       className="w-full h-44 object-cover p-2 rounded-xl"
                     />
                   )}
-                  <div className="p-2 space-y-1 text-sm">
+                  <div className="p-2 space-y-1 text-base sm:text-sm">
                     <h3 className=" font-semibold">
                       {order.productId?.name || "-"}
                     </h3>
@@ -160,8 +160,8 @@ const Dashboard = () => {
                       <span
                         className={`${
                           order.status === "Delivered"
-                            ? "text-green-600"
-                            : "text-[#fa453c]"
+                            ? " text-green-600 dark:text-[#85CA81]"
+                            : " text-red-600 dark:text-[#fa453c]"
                         } font-semibold`}
                       >
                         {order.status}
@@ -200,7 +200,7 @@ const Dashboard = () => {
       </div>
 
       <div className=" mx-auto px-4 pt-12 pb-8">
-        <h2 className="text-2xl text-[#133221] font-bold mb-10 text-center bg-[#85CA81] py-2">
+        <h2 className="text-2xl text-[#133221] font-bold mb-14 text-center bg-[#85CA81] py-2">
           My Donations
         </h2>
 
@@ -209,13 +209,13 @@ const Dashboard = () => {
             <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
           </div>
         ) : donations.length === 0 ? (
-          <p className=" dark:text-white">
+          <p className=" dark:text-white text-base">
             No donations made yet. Start contributing today and make a positive
             impact!
           </p>
         ) : (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:px-8 px-4">
               {displayedDonations.map((donation) => (
                 <div
                   key={donation._id}
@@ -228,7 +228,7 @@ const Dashboard = () => {
                       className="w-full h-44 object-cover p-2 rounded-xl"
                     />
                   )}
-                  <div className="p-2 space-y-1 text-sm">
+                  <div className="p-2 space-y-1 text-base sm:text-sm">
                     <h3 className=" font-semibold">{donation.foodType}</h3>
                     <p>
                       <span className="font-medium">Quantity:</span>{" "}
@@ -256,8 +256,8 @@ const Dashboard = () => {
                       <span
                         className={`${
                           donation.status === "Picked up"
-                            ? "text-green-600"
-                            : "text-[#fa453c]"
+                            ? " text-green-600 dark:text-[#85CA81]"
+                            : " text-red-600 dark:text-[#fa453c]"
                         } font-semibold`}
                       >
                         {donation.status}
@@ -287,8 +287,8 @@ const Dashboard = () => {
         )}
       </div>
 
-      <div className=" mx-auto px-4 mt-16 mb-28">
-        <h2 className="text-2xl text-[#133221] font-bold mb-10 text-center bg-[#85CA81] py-2">
+      <div className=" mx-auto px-2 sm:px-4 mt-16 mb-28">
+        <h2 className="text-2xl text-[#133221] font-bold mb-14 text-center bg-[#85CA81] py-2">
           My Blogs
         </h2>
         {loadingBlogs ? (
@@ -296,7 +296,7 @@ const Dashboard = () => {
             <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
           </div>
         ) : blogs.length === 0 ? (
-          <p className=" dark:text-white mb-10">
+          <p className=" dark:text-white mb-10 text-base">
             No blogs posted yet. Share your thoughts and inspire others with
             your first blog!
           </p>
@@ -306,16 +306,18 @@ const Dashboard = () => {
               {displayedBlogs.map((blog) => (
                 <div
                   key={blog._id}
-                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81]"
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81] text-base sm:text-sm"
                 >
-                  <p className=" text-base font-medium mb-2">{blog.title}</p>
-                  <p className=" text-sm">
+                  <p className=" font-semibold mb-2 sm:text-base text-lg">
+                    {blog.title}
+                  </p>
+                  <p>
                     <span className="font-medium">Views:</span> {blog.views}
                   </p>
-                  <p className=" text-sm">
+                  <p>
                     <span className="font-medium">Stars:</span> {blog.stars}
                   </p>
-                  <p className=" text-sm">
+                  <p>
                     <span className="font-medium">Date:</span>{" "}
                     {new Date(blog.date).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -323,7 +325,7 @@ const Dashboard = () => {
                       day: "numeric",
                     })}
                   </p>
-                  <p className=" text-sm">
+                  <p>
                     <span className="font-medium">Time:</span>{" "}
                     {new Date(blog.date).toLocaleTimeString()}
                   </p>
