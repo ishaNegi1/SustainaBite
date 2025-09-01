@@ -11,4 +11,14 @@ const getAllProducts = async () => {
   }
 };
 
-export { getAllProducts };
+const likeFertilizer = async (id) => {
+  const response = await api.put(`/fertilizer/like/${id}`);
+  return response.data;
+};
+
+const dislikeFertilizer = async (id) => {
+  const response = await api.put(`/fertilizer/dislike/${id}`);
+  return response.data;
+};
+
+export { getAllProducts, likeFertilizer, dislikeFertilizer };

@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const getOrders = async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.user.id })
-      .populate("productId", "image name price")
+      .populate("productId", "image name packSize")
       .sort({ date: -1 });
     res.status(200).json(orders);
   } catch (error) {

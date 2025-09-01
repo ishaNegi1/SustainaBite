@@ -7,6 +7,7 @@ import { getAllOrders } from "../hooks/orderApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import { likeFertilizer, dislikeFertilizer } from "../hooks/fertilizerApi";
 
 const Dashboard = () => {
   const [donations, setDonations] = useState([]);
@@ -123,8 +124,8 @@ const Dashboard = () => {
                       {order.productId?.name || "-"}
                     </h3>
                     <p>
-                      <span className="font-medium">Quantity:</span>{" "}
-                      {order.productId?.price || "-"}
+                      <span className="font-medium">Price:</span>{" "}
+                      {order.finalPrice || "-"} {order.productId?.packSize}
                     </p>
                     <p>
                       <span className="font-medium">Address:</span>{" "}
@@ -159,28 +160,75 @@ const Dashboard = () => {
                       <span className="font-medium">Status:</span>{" "}
                       <span
                         className={`${
-                          order.status === "Delivered"
-                            ? " text-green-600 dark:text-[#85CA81]"
-                            : " text-red-600 dark:text-[#fa453c]"
+                          order.status === "Delivered" ||
+                          order.status === "Confirmed"
+                            ? "text-green-600 dark:text-[#85CA81]"
+                            : order.status === "Shipped"
+                            ? "text-yellow-600"
+                            : "text-red-600 dark:text-[#fa453c]"
                         } font-semibold`}
                       >
                         {order.status}
                       </span>
                     </p>
-                    <div className=" flex my-3 justify-end">
-                      <div className=" flex">
-                        <FontAwesomeIcon
-                          icon={faThumbsUp}
-                          className=" w-5 h-5"
-                        />
-                      </div>
-                      <div className=" flex ml-4 mr-2">
-                        <FontAwesomeIcon
-                          icon={faThumbsDown}
-                          className=" w-5 h-5"
-                        />
-                      </div>
-                    </div>
+                  <div className="flex my-3 justify-end space-x-6">
+  <button
+    onClick={async () => {
+      try {
+        const res = await likeFertilizer(order.productId._id);
+        setOrders((prev) =>
+          prev.map((o) =>
+            o._id === order._id
+              ? {
+                  ...o,
+                  productId: {
+                    ...o.productId,
+                    likes: Array(res.likes).fill(0),
+                    dislikes: Array(res.dislikes).fill(0),
+                  },
+                }
+              : o
+          )
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    }}
+    className="flex items-center space-x-1 text-green-600 hover:scale-110 transition"
+  >
+    <FontAwesomeIcon icon={faThumbsUp} className="w-5 h-5" />
+    <span>{order.productId?.likes?.length || 0}</span>
+  </button>
+
+  <button
+    onClick={async () => {
+      try {
+        const res = await dislikeFertilizer(order.productId._id);
+        setOrders((prev) =>
+          prev.map((o) =>
+            o._id === order._id
+              ? {
+                  ...o,
+                  productId: {
+                    ...o.productId,
+                    likes: Array(res.likes).fill(0),
+                    dislikes: Array(res.dislikes).fill(0),
+                  },
+                }
+              : o
+          )
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    }}
+    className="flex items-center space-x-1 text-red-600 hover:scale-110 transition"
+  >
+    <FontAwesomeIcon icon={faThumbsDown} className="w-5 h-5" />
+    <span>{order.productId?.dislikes?.length || 0}</span>
+  </button>
+</div>
+
                   </div>
                 </div>
               ))}

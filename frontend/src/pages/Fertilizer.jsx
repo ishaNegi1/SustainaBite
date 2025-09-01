@@ -7,6 +7,7 @@ import { getAllProducts } from "../hooks/fertilizerApi";
 import { placeOrder, getCoinBalance } from "../hooks/orderApi";
 import PageSeo from "../components/PageSeo";
 import { Link } from "react-router-dom";
+import { likeFertilizer, dislikeFertilizer } from "../hooks/fertilizerApi";
 
 const Fertilizer = () => {
   const [products, setProducts] = useState([]);
@@ -60,6 +61,8 @@ const Fertilizer = () => {
       pincode: orderData.pincode,
       phone: orderData.phone,
       landmark: orderData.landmark,
+      coinUsed: coinUsed,
+      finalPrice: Math.max(selectedProduct.price - coinUsed, 0),
     };
     const result = await placeOrder(orderDetails);
     if (result.error) {
@@ -159,18 +162,70 @@ const Fertilizer = () => {
                       {product.stock}
                     </p>
                   </div>
-                  <div className=" flex mt-5">
-                    <div className=" flex">
-                      <FontAwesomeIcon icon={faThumbsUp} className=" w-5 h-5" />
-                      <p className=" mx-1">{product.like}</p>
-                    </div>
-                    <div className=" flex mx-5">
+                  <div className="flex mt-5 space-x-6">
+                    <button
+                      onClick={async (e) => {
+                        e.stopPropagation();
+                        const res = await likeFertilizer(product._id);
+                        setProducts((prev) =>
+                          prev.map((p) =>
+                            p._id === product._id
+                              ? {
+                                  ...p,
+                                  likes: res.likes,
+                                  dislikes: res.dislikes,
+                                }
+                              : p
+                          )
+                        );
+
+                        // also update modal if it's open
+                        if (selectedProduct?._id === product._id) {
+                          setSelectedProduct((prev) => ({
+                            ...prev,
+                            likes: res.likes,
+                            dislikes: res.dislikes,
+                          }));
+                        }
+                      }}
+                      className="flex items-center space-x-1 text-green-600"
+                    >
+                      <FontAwesomeIcon icon={faThumbsUp} className="w-5 h-5" />
+                      <span>{product.likes?.length || 0}</span>
+                    </button>
+
+                    <button
+                      onClick={async (e) => {
+                        e.stopPropagation();
+                        const res = await dislikeFertilizer(product._id);
+                        setProducts((prev) =>
+                          prev.map((p) =>
+                            p._id === product._id
+                              ? {
+                                  ...p,
+                                  likes: res.likes,
+                                  dislikes: res.dislikes,
+                                }
+                              : p
+                          )
+                        );
+
+                        if (selectedProduct?._id === product._id) {
+                          setSelectedProduct((prev) => ({
+                            ...prev,
+                            likes: res.likes,
+                            dislikes: res.dislikes,
+                          }));
+                        }
+                      }}
+                      className="flex items-center space-x-1 text-red-600"
+                    >
                       <FontAwesomeIcon
                         icon={faThumbsDown}
-                        className=" w-5 h-5"
+                        className="w-5 h-5"
                       />
-                      <p className=" mx-1">{product.dislike}</p>
-                    </div>
+                      <span>{product.dislikes?.length || 0}</span>
+                    </button>
                   </div>
                 </div>
               ))}
@@ -214,14 +269,18 @@ const Fertilizer = () => {
                   <div className=" flex my-4 justify-end">
                     <div className=" flex mr-5">
                       <FontAwesomeIcon icon={faThumbsUp} className=" w-5 h-5" />
-                      <p className=" ml-1">{selectedProduct.like}</p>
+                      <p className=" ml-1">
+                        {selectedProduct.likes?.length || 0}
+                      </p>
                     </div>
                     <div className=" flex">
                       <FontAwesomeIcon
                         icon={faThumbsDown}
                         className=" w-5 h-5"
                       />
-                      <p className=" ml-1">{selectedProduct.dislike}</p>
+                      <p className=" ml-1">
+                        {selectedProduct.dislikes?.length || 0}
+                      </p>
                     </div>
                   </div>
                   {selectedProduct.stock === "In Stock" ? (
@@ -294,10 +353,27 @@ const Fertilizer = () => {
                           max={coinBalance}
                           placeholder="Enter coins"
                           value={coinUsed}
-                          onChange={(e) => setCoinUsed(Number(e.target.value))}
+                          onChange={(e) => {
+                            let val = e.target.value;
+                            if (val === "") {
+                              setCoinUsed("");
+                              return;
+                            }
+                            val = Number(val);
+                            if (val < 0) val = 0;
+                            if (val > coinBalance) val = coinBalance;
+                            setCoinUsed(val);
+                          }}
                           required
                           className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                         />
+                      </div>
+                      <div className="mt-4 text-lg font-semibold text-center">
+                        Final Price: ₹
+                        {Math.max(selectedProduct.price - coinUsed, 0)}{" "}
+                        <span className="text-sm font-medium text-gray-500">
+                          (after applying {coinUsed} coins)
+                        </span>
                       </div>
                       <div className=" text-center my-10">
                         <button

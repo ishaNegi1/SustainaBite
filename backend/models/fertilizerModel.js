@@ -26,14 +26,20 @@ const fertilizerSchema = new mongoose.Schema({
     enum: ["In Stock", "Out of Stock"],
     required: true,
   },
-  like: {
-    type: Number,
-    default: 0,
-  },
-  dislike: {
-    type: Number,
-    default: 0,
-  },
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: [],
+    },
+  ],
+  dislikes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: [],
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,

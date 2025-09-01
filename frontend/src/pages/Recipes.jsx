@@ -118,7 +118,7 @@ const Recipes = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row my-4">
+      <div className="flex flex-col sm:flex-row my-12">
         <div className="w-full sm:w-1/3 bg-[#133221] text-white p-4 sm:block overflow-y-auto sm:overflow-y-visible max-h-[60vh] sm:max-h-none">
           {!showTitleInput ? (
             <button
@@ -188,7 +188,7 @@ const Recipes = () => {
 
         <div className="w-full sm:w-3/4 p-4 flex flex-col">
           {!activeChat ? (
-            <div className="text-gray-500 font-medium text-lg mx-auto my-auto text-center">
+            <div className="text-[#133221] dark:text-white font-medium text-lg mx-auto my-auto text-center">
               Select a chat to start
             </div>
           ) : (

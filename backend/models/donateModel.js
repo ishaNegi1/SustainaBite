@@ -48,7 +48,7 @@ const donateSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Pending", "Picked up"],
+    enum: ["Pending", "Picked up", "Cancelled"],
     default: "Pending",
   },
   coin: {
