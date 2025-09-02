@@ -320,7 +320,7 @@ function Blogs() {
       )}
       {editedBlog && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
-          <div className="bg-white text-black dark:bg-[#133221] dark:text-white p-6 rounded-lg w-full max-w-3xl overflow-auto max-h-[90vh]">
+          <div className="bg-white text-black dark:bg-[#21583a] dark:text-white p-6 rounded-lg w-full max-w-3xl overflow-auto max-h-[90vh]">
             <div className="flex justify-end gap-4">
               <button
                 onClick={handleCancelEdit}

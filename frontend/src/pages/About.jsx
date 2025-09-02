@@ -123,7 +123,7 @@ const About = () => {
             src={trash}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 px-6 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 px-6 py-3 sm:py-0 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               How It Works
             </h1>

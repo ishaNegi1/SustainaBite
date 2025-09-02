@@ -229,7 +229,7 @@ const Fertilizer = () => {
 
             {selectedProduct && (
               <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
-                <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-lg w-full max-h-[90vh] overflow-y-auto rounded-lg py-6 px-7 relative">
+                <div className="bg-white dark:bg-[#21583a] text-[#133221] dark:text-white max-w-lg w-full max-h-[90vh] overflow-y-auto rounded-lg py-6 px-7 relative">
                   <button
                     onClick={closeModal}
                     className=" absolute top-3 right-5 text-[#fa453c] font-extrabold text-xl mb-7"
