@@ -42,7 +42,6 @@ const orderSchema = new mongoose.Schema({
   },
   finalPrice: {
     type: Number,
-    default: 0,
   },
   date: {
     type: Date,

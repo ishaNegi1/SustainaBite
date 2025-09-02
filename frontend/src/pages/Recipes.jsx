@@ -14,7 +14,6 @@ import PageSeo from "../components/PageSeo";
 const Recipes = () => {
   const [chats, setChats] = useState([]);
   const [activeChat, setActiveChat] = useState(null);
-  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [showTitleInput, setShowTitleInput] = useState(false);
   const [titleInput, setTitleInput] = useState("");
@@ -73,7 +72,6 @@ const Recipes = () => {
       setLoading(true);
       const updatedChat = await sendMsg(activeChat._id, content);
       setActiveChat(updatedChat);
-      setInput("");
     } catch (err) {
       console.error("Error sending message:", err);
     } finally {
@@ -225,7 +223,7 @@ const Recipes = () => {
                     value={ingredients}
                     required
                     onChange={(e) => setIngredients(e.target.value)}
-                    className=" p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
+                    className=" p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221] dark:text-white"
                     placeholder="e.g. rice, tomato, cheese, chappati, coconut"
                   />
                 </div>
@@ -242,17 +240,23 @@ const Recipes = () => {
                     required
                     value={dishType}
                     onChange={(e) => setDishType(e.target.value)}
-                    className="p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221]"
+                    className="p-2 rounded-md mt-2 border-0 border-b-2 bg-transparent dark:border-[#FFFFFF] border-[#133221] dark:text-white"
                     placeholder="e.g. spicy, breakfast, indian, sweet"
                   />
                 </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110 mt-7"
-                >
-                  {loading ? "Sending..." : "Send"}
-                </button>
+                {loading ? (
+                  <div className="flex justify-center items-center my-10">
+          <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+        </div>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-[#fa453c] text-white p-2 rounded-md font-medium w-1/2 mx-auto transition-all duration-500 ease-linear transform hover:scale-110 my-10"
+                  >
+                    Send
+                  </button>
+                )}
               </form>
             </>
           )}

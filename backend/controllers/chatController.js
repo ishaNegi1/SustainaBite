@@ -61,7 +61,7 @@ const saveMessages = async (req, res) => {
     });
 
     const completion = await openai.chat.completions.create({
-      model: "openai/gpt-oss-20b:free",
+      model: "deepseek/deepseek-r1-0528:free",
       messages: chat.messages.map((m) => ({
         role: m.role === "bot" ? "assistant" : m.role,
         content: m.content,

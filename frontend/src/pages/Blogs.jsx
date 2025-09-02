@@ -335,7 +335,7 @@ function Blogs() {
                 Save Changes
               </button>
             </div>
-            <h2 className="text-2xl font-bold my-5">Edit Blog</h2>
+            <h2 className="text-2xl font-bold my-7">Edit Blog</h2>
             <label className="font-semibold">Title:</label>
             <input
               type="text"
@@ -343,7 +343,7 @@ function Blogs() {
               onChange={(e) =>
                 setEditedBlog({ ...editedBlog, title: e.target.value })
               }
-              className="w-full p-2 mb-4 border rounded dark:text-black"
+              className="w-full p-2 my-4 border rounded dark:text-black"
             />
 
             <label className="font-semibold">Content:</label>
@@ -352,7 +352,7 @@ function Blogs() {
               onChange={(e) =>
                 setEditedBlog({ ...editedBlog, content: e.target.value })
               }
-              className="w-full p-2 mb-4 border rounded dark:text-black"
+              className="w-full p-2 my-4 border rounded dark:text-black"
               rows={8}
             />
           </div>

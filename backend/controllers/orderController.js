@@ -15,7 +15,7 @@ const getOrders = async (req, res) => {
 
 const postOrders = async (req, res) => {
   try {
-    const { productId, address, pincode, phone, landmark, coinUsed } = req.body;
+    const { productId, address, pincode, phone, landmark, coinUsed, finalPrice } = req.body;
     const userId = req.user.id;
     const earned = await Donate.aggregate([
       { $match: { userId: new mongoose.Types.ObjectId(userId) } },
@@ -46,6 +46,7 @@ const postOrders = async (req, res) => {
       phone,
       landmark,
       coinUsed: coinsApplied,
+      finalPrice,
       userId
     });
     await order.save();

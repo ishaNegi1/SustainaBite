@@ -103,13 +103,9 @@ const Fertilizer = () => {
         </div>
       ) : (
         <div className=" my-10 px-10">
-          {coinBalance > 0 ? (
-            <div className=" text-center font-semibold text-xl text-[#133221] bg-[#85CA81] py-2">
-              Your Coin Balance: {coinBalance}
-            </div>
-          ) : (
-            ""
-          )}
+          <div className=" text-center font-semibold text-xl text-[#133221] bg-[#85CA81] py-2">
+            Your Coin Balance: {coinBalance}
+          </div>
           {orderPlaced && (
             <div className="mt-6 p-6 text-center bg-green-200 border border-[#133221] text-[#133221] rounded-lg space-y-3">
               <h2 className="text-2xl font-semibold">Thank You!</h2>
@@ -179,7 +175,6 @@ const Fertilizer = () => {
                           )
                         );
 
-                        // also update modal if it's open
                         if (selectedProduct?._id === product._id) {
                           setSelectedProduct((prev) => ({
                             ...prev,
@@ -188,7 +183,7 @@ const Fertilizer = () => {
                           }));
                         }
                       }}
-                      className="flex items-center space-x-1 text-green-600"
+                      className="flex items-center space-x-1 text-green-600 dark:text-[#85CA81]"
                     >
                       <FontAwesomeIcon icon={faThumbsUp} className="w-5 h-5" />
                       <span>{product.likes?.length || 0}</span>
@@ -218,7 +213,8 @@ const Fertilizer = () => {
                           }));
                         }
                       }}
-                      className="flex items-center space-x-1 text-red-600"
+                      className="flex items-center space-x-1 
+                      text-red-600 dark:text-[#fa453c]"
                     >
                       <FontAwesomeIcon
                         icon={faThumbsDown}
@@ -268,7 +264,10 @@ const Fertilizer = () => {
                   </div>
                   <div className=" flex my-4 justify-end">
                     <div className=" flex mr-5">
-                      <FontAwesomeIcon icon={faThumbsUp} className=" w-5 h-5" />
+                      <FontAwesomeIcon
+                        icon={faThumbsUp}
+                        className=" w-5 h-5 text-green-600 dark:text-[#85CA81]"
+                      />
                       <p className=" ml-1">
                         {selectedProduct.likes?.length || 0}
                       </p>
@@ -276,7 +275,7 @@ const Fertilizer = () => {
                     <div className=" flex">
                       <FontAwesomeIcon
                         icon={faThumbsDown}
-                        className=" w-5 h-5"
+                        className=" w-5 h-5 text-red-600 dark:text-[#fa453c]"
                       />
                       <p className=" ml-1">
                         {selectedProduct.dislikes?.length || 0}
@@ -284,7 +283,7 @@ const Fertilizer = () => {
                     </div>
                   </div>
                   {selectedProduct.stock === "In Stock" ? (
-                    <form onSubmit={handleOrder} className="my-6 space-y-6">
+                    <form onSubmit={handleOrder} className="my-6 space-y-8">
                       <input
                         type="text"
                         placeholder="Enter Address"
@@ -296,7 +295,7 @@ const Fertilizer = () => {
                           })
                         }
                         required
-                        className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
+                        className="w-full border-b-2 text-base rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                       />
                       <input
                         type="text"
@@ -312,7 +311,7 @@ const Fertilizer = () => {
                           }
                         }}
                         required
-                        className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
+                        className="w-full border-b-2 text-base rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                       />
                       <input
                         type="tel"
@@ -328,7 +327,7 @@ const Fertilizer = () => {
                           }
                         }}
                         required
-                        className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
+                        className="w-full border-b-2 text-base rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                       />
                       <input
                         type="text"
@@ -341,10 +340,10 @@ const Fertilizer = () => {
                           })
                         }
                         required
-                        className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
+                        className="w-full border-b-2 text-base rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                       />
                       <div className="mb-2">
-                        <label className="block mb-1 text-sm">
+                        <label className="block mb-1 text-base">
                           Apply Coins (Max {coinBalance}):
                         </label>
                         <input
@@ -365,13 +364,13 @@ const Fertilizer = () => {
                             setCoinUsed(val);
                           }}
                           required
-                          className="w-full border-b-2 text-sm rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
+                          className="w-full border-b-2 text-base rounded-md dark:border-white border-[#133221] bg-transparent py-2 px-3 focus:outline-none"
                         />
                       </div>
                       <div className="mt-4 text-lg font-semibold text-center">
                         Final Price: ₹
                         {Math.max(selectedProduct.price - coinUsed, 0)}{" "}
-                        <span className="text-sm font-medium text-gray-500">
+                        <span className="text-base font-medium dark:text-white">
                           (after applying {coinUsed} coins)
                         </span>
                       </div>
