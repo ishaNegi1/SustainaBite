@@ -65,11 +65,11 @@ function Card() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 mb-20 mt-28">
+    <div className="max-w-6xl mx-auto px-4 my-20">
       <h1 className="text-[#133221] dark:text-white font-Nunito font-bold text-3xl text-center">
         Our Services
       </h1>
-      <div className="grid sm:grid-cols-4 grid-cols-1 sm:gap-6 gap-14 mt-16 sm:mb-24 mb-14 px-5">
+      <div className="grid sm:grid-cols-4 grid-cols-1 sm:gap-y-6 sm:gap-x-10 gap-14 mt-16 sm:mb-24 mb-14 px-5">
         {card1.map((item, index) => (
           <div
             className="  bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.7)] p-2 flex flex-wrap transition-transform duration-300 hover:scale-110"

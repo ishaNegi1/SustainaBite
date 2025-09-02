@@ -151,7 +151,7 @@ function Blogs() {
       </div>
 
       <div className="bg-[#85CA81] p-6 mt-10">
-        <h3 className="text-2xl font-semibold mb-4 text-[#133221]">
+        <h3 className="text-2xl font-semibold mb-4 text-[#133221] text-center">
           Add Your Blog
         </h3>
         <form className="flex flex-col gap-4" onSubmit={handleAddBlog}>
@@ -177,7 +177,7 @@ function Blogs() {
           ></textarea>
           <button
             type="submit"
-            className="bg-[#133221] text-white font-medium text-lg py-2 px-4 rounded hover:bg-[#1a422c] transition"
+            className="bg-[#133221] text-white font-medium text-lg py-2 px-4 rounded hover:bg-[#1a422c] transition mt-5"
           >
             Add Blog
           </button>
@@ -207,14 +207,14 @@ function Blogs() {
 
       {loading ? (
         <div className="flex justify-center items-center my-36">
-          <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+          <div className="w-20 h-20 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
         </div>
       ) : (
         <div className=" space-y-20 mb-28">
           {filteredBlogs.map((blog) => (
             <div
               key={blog._id}
-              className="dark:bg-[#133221] border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
+              className="dark:bg-[#21583a] border-[#85CA81] border-2 rounded-lg shadow-xl overflow-hidden flex flex-col sm:flex-row mx-5 text-[#133221] dark:text-white"
             >
               <div className="p-6 flex flex-col justify-between w-full">
                 <div>
@@ -278,12 +278,12 @@ function Blogs() {
       )}
       {selectedBlog && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center px-4">
-          <div className="bg-white dark:bg-[#133221] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
+          <div className="bg-white dark:bg-[#21583a] text-[#133221] dark:text-white max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg p-6 relative">
             <div className=" flex justify-end">
               <div className="flex items-center mr-6">
                 <button
                   onClick={() => handleStarClick(selectedBlog._id)}
-                  className={`text-4xl transition hover:scale-125 ${
+                  className={`text-4xl ${
                     selectedBlog.starredBy.includes(user?._id)
                       ? "text-yellow-400"
                       : "text-gray-400"

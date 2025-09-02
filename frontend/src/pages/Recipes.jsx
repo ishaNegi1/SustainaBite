@@ -246,8 +246,9 @@ const Recipes = () => {
                 </div>
                 {loading ? (
                   <div className="flex justify-center items-center my-10">
-          <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
-        </div>
+  <div className="w-14 h-14 border-8 border-dashed rounded-full border-[#fa453c] animate-[spin_3s_linear_infinite]"></div>
+</div>
+
                 ) : (
                   <button
                     type="submit"

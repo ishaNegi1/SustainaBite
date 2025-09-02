@@ -55,7 +55,7 @@ const ImpactCounter = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-[#85CA81] pb-10 pt-5 px-4 sm:mt-32 mt-28 mb-32 flex flex-col items-center"
+      className="bg-[#85CA81] pb-10 pt-5 px-4 mt-32 mb-28 flex flex-col items-center"
     >
       <h1 className="font-Nunito font-bold text-3xl mb-12 text-center text-[#133221]">
         Our Impact
@@ -64,7 +64,7 @@ const ImpactCounter = () => {
         {stats.map((item, index) => (
           <div
             key={index}
-            className="text-center p-4 bg-white dark:bg-[#133221] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg border-2 border-[#fa453c] transition-transform duration-300 hover:scale-110"
+            className="text-center p-4 bg-white dark:bg-[#21583a] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg border-2 border-[#fa453c] transition-transform duration-300 hover:scale-110"
           >
             <p className="text-3xl font-bold text-[#133221] dark:text-white">
               <Counter

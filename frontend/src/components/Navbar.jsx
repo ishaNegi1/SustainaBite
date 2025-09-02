@@ -77,6 +77,7 @@ function Navbar() {
     { path: "/blogs", name: "Blogs" },
     { path: "/recipes", name: "Leftovers" },
     { path: "/fertilizer", name: "Fertilizer" },
+    { path: "/dashboard", name: "Dashboard" },
   ];
 
   return (

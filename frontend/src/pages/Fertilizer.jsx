@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
-import { faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { fertilizer1 } from "../assets/pictures";
 import { getAllProducts } from "../hooks/fertilizerApi";
 import { placeOrder, getCoinBalance } from "../hooks/orderApi";
@@ -99,7 +99,7 @@ const Fertilizer = () => {
 
       {loading ? (
         <div className="flex justify-center items-center my-36">
-          <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+          <div className="w-20 h-20 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
         </div>
       ) : (
         <div className=" my-10 px-10">
@@ -129,11 +129,11 @@ const Fertilizer = () => {
             </div>
           )}
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-10 sm:gap-y-28 gap-y-20 my-20 sm:px-10 ">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-14 sm:gap-y-28 gap-y-20 mt-20 mb-28 sm:px-10 ">
               {products.map((product) => (
                 <div
                   key={product._id}
-                  className="bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81]"
+                  className="bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81]"
                   onClick={() => setSelectedProduct(product)}
                 >
                   <img

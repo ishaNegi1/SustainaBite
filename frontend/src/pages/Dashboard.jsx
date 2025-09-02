@@ -97,7 +97,7 @@ const Dashboard = () => {
 
         {loadingOrders ? (
           <div className="flex justify-center items-center my-20">
-            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
           </div>
         ) : orders.length === 0 ? (
           <p className=" dark:text-white text-base">
@@ -110,7 +110,7 @@ const Dashboard = () => {
               {displayorders.map((order) => (
                 <div
                   key={order._id}
-                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81] p-2"
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81] p-2"
                 >
                   {order.productId && order.productId.image && (
                     <img
@@ -171,6 +171,7 @@ const Dashboard = () => {
                         {order.status}
                       </span>
                     </p>
+                    <p className=" text-base sm:text-sm font-medium">Payment (Cash/UPI) will be collected at the time of delivery.</p>
                   <div className="flex my-3 justify-end space-x-6">
   <button
     onClick={async () => {
@@ -254,7 +255,7 @@ const Dashboard = () => {
 
         {loadingDonations ? (
           <div className="flex justify-center items-center my-20">
-            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
           </div>
         ) : donations.length === 0 ? (
           <p className=" dark:text-white text-base">
@@ -267,7 +268,7 @@ const Dashboard = () => {
               {displayedDonations.map((donation) => (
                 <div
                   key={donation._id}
-                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81] p-2"
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl transition-transform duration-300 hover:scale-110 overflow-hidden border-2 border-[#85CA81] p-2"
                 >
                   {donation.image && (
                     <img
@@ -341,7 +342,7 @@ const Dashboard = () => {
         </h2>
         {loadingBlogs ? (
           <div className="flex justify-center items-center my-20">
-            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
           </div>
         ) : blogs.length === 0 ? (
           <p className=" dark:text-white mb-10 text-base">
@@ -354,7 +355,7 @@ const Dashboard = () => {
               {displayedBlogs.map((blog) => (
                 <div
                   key={blog._id}
-                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl shadow-[rgba(0,0,0,0.5)] dark:shadow-[rgba(78,77,77,0.5)] transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81] text-base sm:text-sm"
+                  className=" bg-[#FFFFFF] text-[#133221] dark:bg-[#21583a] dark:text-white rounded-lg shadow-xl transition-transform duration-300 hover:scale-110 overflow-hidden p-3 border-2 border-[#85CA81] text-base sm:text-sm"
                 >
                   <p className=" font-semibold mb-2 sm:text-base text-lg">
                     {blog.title}

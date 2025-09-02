@@ -31,7 +31,7 @@ function Signup() {
   if (loading) {
     return (
       <div className="flex justify-center items-center my-52">
-        <div className="w-20 h-20 border-8 border-dashed rounded-full animate-spin border-[#fa453c]"></div>
+        <div className="w-20 h-20 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
       </div>
     );
   }
@@ -44,7 +44,7 @@ function Signup() {
       />
 
       <div className="flex sm:my-3 my-6 sm:h-screen">
-        <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221]">
+        <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221] dark:bg-[#21583a]">
           <div className="ml-11 sm:ml-6 sm:block hidden z-10">
             <div className="font-Courgette lg:text-3xl text-4xl sm:text-2xl font-semibold">
               <p className="mb-4">Start your journey to</p>

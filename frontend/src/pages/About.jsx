@@ -22,7 +22,7 @@ const About = () => {
       />
 
       <div
-        className="text-center py-20 px-4 bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
+        className="text-center py-20  bg-[#1c4830] text-white bg-cover bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${about})`, backgroundSize: "cover" }}
       >
         <div className="absolute inset-0 bg-black sm:opacity-40 opacity-20"></div>
@@ -47,12 +47,12 @@ const About = () => {
         ]}
       />
       <div>
-        <div className=" flex sm:flex-row flex-col mb-20 mt-14 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col my-8 py-8 justify-center items-center">
           <img
             src={blog1}
             className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-64 h-64 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 p-6 sm:p-4 mx-5 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3 font-medium sm:text-left text-center">
               Who We Are
             </h1>
@@ -65,8 +65,8 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16 py-8 justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 p-6 mx-5 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Our Mission
             </h1>
@@ -83,12 +83,12 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-16  py-8 justify-center items-center">
           <img
             src={fertilizer2}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 p-6 mx-5 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               What We Do
             </h1>
@@ -101,8 +101,8 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16  py-8 justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Why It Matters
             </h1>
@@ -118,12 +118,12 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-16  py-8 justify-center items-center">
           <img
             src={trash}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 px-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               How It Works
             </h1>
@@ -137,8 +137,8 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16  py-8 justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Our Impact
             </h1>
@@ -155,12 +155,12 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-16  py-8 justify-center items-center">
           <img
             src={community}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
-          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+          <div className=" sm:w-[70%] sm:pl-20 sm:pr-14 sm:rounded-r-full border-2 sm:relative -left-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Community Voices
             </h1>
@@ -172,8 +172,8 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-20 px-4 py-8 bg-[#1c4830] dark:bg-[#85CA81] justify-center items-center">
-          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center bg-white dark:bg-[#1c4830] dark:text-white text-[#1c4830] border-[#fa453c] mt-8 sm:mt-0 p-4 sm:p-0 mx-3 sm:mx-0 rounded-2xl">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16  py-8 justify-center items-center">
+          <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Sustainability Goals
             </h1>

@@ -95,7 +95,7 @@ const Questions = () => {
   const displayFaqs = seeMore ? faqs : faqs.slice(0, 7);
 
   return (
-    <div className=" mb-32 flex flex-col justify-center items-center">
+    <div className=" mb-24 flex flex-col justify-center items-center">
       <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center px-3">
         Your Questions, Answered
       </h1>
@@ -114,7 +114,7 @@ const Questions = () => {
       </div>
       {faqs.length > 7 && (
         <div
-          className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-1"
+          className=" text-lg text-white font-medium flex mt-2 transition-all duration-500 transform hover:scale-110 bg-[#fa453c] rounded-md p-2"
           onClick={() => setSeeMore(!seeMore)}
         >
           <button>{seeMore ? "See less" : "See more"}</button>

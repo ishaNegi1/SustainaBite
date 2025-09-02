@@ -53,7 +53,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="bg-[#133221] sm:py-6 sm:px-6 my-14 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
+      <div className="bg-[#133221] dark:bg-[#21583a] sm:py-6 sm:px-6 mt-14 mb-20 sm:mx-20 mx-4 rounded-xl flex flex-col-reverse sm:flex-row justify-between text-white">
         <div className=" sm:w-1/2 flex flex-col">
           <form className="flex flex-col z-10 px-4" onSubmit={handleSubmit}>
             <h1 className=" font-Merriweather sm:text-2xl text-xl text-center font-semibold my-8">
@@ -121,12 +121,14 @@ const Contact = () => {
               required
               className="border-0 border-b-2 py-1 px-2 rounded-md lg:mb-6 sm:mb-4 mb-6 bg-transparent border-[#FFFFFF] text-sm focus:outline-none"
             />
-            <button
+            {loading ? ( <div className="flex justify-center items-center mt-7">
+            <div className="w-14 h-14 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
+          </div>) : (<button
               type="submit"
               className=" bg-[#fa453c] text-[#ffffff] rounded-lg w-40 sm:text-md lg:text-xl text-lg font-medium transition-all duration-500 ease-linear transform hover:scale-110 font-Coustard py-1 mt-7 mb-7 sm:mb-0 mx-auto"
             >
-              {loading ? "Loading..." : "Submit"}
-            </button>
+              Submit
+            </button>)}
           </form>
         </div>
         <img
@@ -156,13 +158,13 @@ const Contact = () => {
         " "
       )}
 
-      <div className=" bg-[#85CA81] py-10 px-6 mb-14 flex flex-col justify-center items-center text-center">
+      <div className=" bg-[#85CA81] p-14 mb-20 flex flex-col justify-center items-center text-center">
         <p className="text-xl font-Nunito font-bold mb-16 mx-auto max-w-3xl text-[#133221]">
           We'd love to connect with you. Whether you have a question, feedback,
           or a partnership idea - reach out and we'll get back to you soon.
         </p>
-        <div className=" grid grid-cols-2 sm:grid-cols-4 gap-6 text-[#133221] dark:text-[#FFFFFF]">
-          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+        <div className=" grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-10 text-[#133221] dark:text-[#FFFFFF]">
+          <div className=" text-center p-4 bg-white dark:bg-[#21583a] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
             <p className=" font-bold text-lg">Email</p>
             <a
               href="mailto:support@sustainabite.com"
@@ -171,13 +173,13 @@ const Contact = () => {
               support@sustainabite.com
             </a>
           </div>
-          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+          <div className=" text-center p-4 bg-white dark:bg-[#21583a] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
             <p className=" font-bold text-lg">Phone</p>
             <a href="tel:+911234567890" className="underline break-words">
               +91 98765 43210
             </a>
           </div>
-          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+          <div className=" text-center p-4 bg-white dark:bg-[#21583a] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
             <p className=" font-bold text-lg">Instagram</p>
             <a
               href="https://instagram.com/sustainabite"
@@ -187,7 +189,7 @@ const Contact = () => {
               instagram.com/sustainabite
             </a>
           </div>
-          <div className=" text-center p-4 bg-white dark:bg-[#133221] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+          <div className=" text-center p-4 bg-white dark:bg-[#21583a] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
             <p className=" font-bold text-lg">Facebook</p>
             <a
               href="https://facebook.com/sustainabite"

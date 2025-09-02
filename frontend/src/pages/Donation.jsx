@@ -116,9 +116,45 @@ const Donation = () => {
         ]}
       />
 
+      <div className=" sm:mt-20 mt-14 py-10 sm:px-16 px-10 text-center bg-[#85CA81]">
+        <h2 className="text-2xl font-bold mb-10 text-[#133221]">
+          How Food Donation Works
+        </h2>
+        <div className=" dark:text-[#ffffff] text-[#133221] grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-20">
+          <div className="text-center p-4 bg-white dark:bg-[#21583a] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <h3 className="text-lg font-semibold">1. Fill the Form</h3>
+            <p className=" mt-2">
+              Share your details and food info in a simple donation form. This
+              helps us arrange a quick and safe pickup.
+            </p>
+          </div>
+          <div className="text-center p-4 bg-white dark:bg-[#21583a] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <h3 className="text-lg font-semibold">2. Verification</h3>
+            <p className="mt-2">
+              Our team confirms your donation and pickup time. Food quality
+              checks ensure safety and trust.
+            </p>
+          </div>
+          <div className="text-center p-4 bg-white dark:bg-[#21583a] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <h3 className="text-lg font-semibold">3. Food Distribution</h3>
+            <p className="mt-2">
+              The food is delivered to shelters and communities. We make sure it
+              reaches those who need it most.
+            </p>
+          </div>
+          <div className="text-center p-4 bg-white dark:bg-[#21583a] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
+            <h3 className="text-lg font-semibold">4. Proof & Trust</h3>
+            <p className="mt-2">
+              Get photos or videos of your donation shared with you. This builds
+              transparency and trust in the process.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <form
         onSubmit={handleSubmit}
-        className="bg-[#133221] text-white sm:p-10 p-8 my-14 sm:mx-20 mx-4 rounded-xl"
+        className="bg-[#133221] dark:bg-[#21583a] text-white sm:p-10 p-8 my-20 sm:mx-20 mx-4 rounded-xl"
       >
         <h1 className="font-Merriweather text-2xl text-center font-semibold mb-2">
           Donate Food
@@ -326,18 +362,20 @@ const Donation = () => {
           </div>
         </div>
 
-        <div className="text-center mt-10">
+       {loading ? (<div className="flex justify-center items-center mb-10 mt-14">
+          <div className="w-14 h-14 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
+        </div>) : ( <div className="text-center mt-10">
           <button
             type="submit"
             className="bg-[#fa453c] text-white my-5 rounded-lg px-12 py-1 sm:text-lg font-medium transition-all duration-300 transform hover:scale-105"
           >
-            {loading ? "Loading..." : "Donate"}
+            Donate
           </button>
-        </div>
+        </div>)}
       </form>
 
       {submitted ? (
-        <div className=" bg-green-200 border border-[#133221] text-[#133221] p-6 mx-6 rounded-lg text-center space-y-3">
+        <div className=" bg-green-200 border border-[#133221] text-[#133221] p-6 mx-6 rounded-lg text-center space-y-3 mb-24">
           <h2 className="text-2xl font-semibold">Thank You!</h2>
           <p className=" text-lg font-normal">
             Your donation has been successfully placed.
@@ -361,40 +399,6 @@ const Donation = () => {
       ) : (
         " "
       )}
-      <div className="my-28 p-10 text-center bg-[#85CA81]">
-        <h2 className="text-2xl font-bold mb-10 text-[#133221]">
-          How Food Donation Works
-        </h2>
-        <div className=" dark:text-[#ffffff] text-[#133221] grid grid-cols-1 sm:grid-cols-2 gap-10">
-          <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
-            <h3 className="text-lg font-semibold">1. Fill the Form</h3>
-            <p className=" mt-2">
-              Provide your details and food information in the donation form.
-            </p>
-          </div>
-          <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
-            <h3 className="text-lg font-semibold">2. Verification</h3>
-            <p className="mt-2">
-              Our team verifies and schedules a pickup at your convenience.
-            </p>
-          </div>
-        </div>
-        <div className=" dark:text-[#ffffff] text-[#133221] grid grid-cols-1 sm:grid-cols-2 gap-10 mt-10">
-          <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
-            <h3 className="text-lg font-semibold">3. Food Distribution</h3>
-            <p className="mt-2">
-              Your food donation is safely delivered to those in need.
-            </p>
-          </div>
-          <div className="text-center p-4 bg-white dark:bg-[#133221] dark:text-[#ffffff] border-2 border-[#fa453c] shadow-xl shadow-[rgba(0,0,0,0.7)] rounded-lg transition-transform duration-300 hover:scale-110">
-            <h3 className="text-lg font-semibold">4. Proof & Trust</h3>
-            <p className="mt-2">
-              Receive photos or videos of your donation being handed over,
-              shared via email or WhatsApp - building transparency and trust.
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
