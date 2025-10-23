@@ -29,7 +29,7 @@ SustainaBite is a full-stack MERN application designed to reduce food waste and 
 📩 Nodemailer for emails</br>
 🔧 dotenv for environment variables
 
-<b><h3>🌐 Live Demo</h3></b>
+<b><h2>🌐 Live Demo</h2></b>
 👉 <a href="https://sustaina-bite.vercel.app/" target="_blank">Click here</a> to visit the live website.
 
 <b><h2>📂 Project Structure</h2></b>
