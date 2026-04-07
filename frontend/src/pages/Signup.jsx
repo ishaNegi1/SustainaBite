@@ -43,7 +43,7 @@ function Signup() {
         keywords="signup, register, SustainaBite account"
       />
 
-      <div className="flex sm:my-3 my-6 sm:h-screen">
+      <div className="flex sm:my-3 my-16 sm:h-screen">
         <div className=" sm:w-1/2 flex text-[#FFFFFF] items-center justify-center bg-[#133221] dark:bg-[#21583a]">
           <div className="ml-11 sm:ml-6 sm:block hidden z-10">
             <div className="font-Courgette lg:text-3xl text-4xl sm:text-2xl font-semibold">

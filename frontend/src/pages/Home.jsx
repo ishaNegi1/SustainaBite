@@ -92,7 +92,7 @@ const Home = () => {
       <Testimonial />
 
       {status ? (
-        <div className="text-center text-[#133221] dark:text-white mb-28">
+        <div className="text-center text-[#133221] dark:text-white mb-20">
           <h2 className="text-3xl font-Nunito font-bold mb-6 px-5">
             Thanks for Being With Us
           </h2>
@@ -110,7 +110,7 @@ const Home = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center text-[#133221] dark:text-white mb-28">
+        <div className="text-center text-[#133221] dark:text-white mb-24">
           <h2 className="text-3xl font-Nunito font-bold mb-6 px-5">
             Make Every Meal Count
           </h2>

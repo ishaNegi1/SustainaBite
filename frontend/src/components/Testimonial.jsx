@@ -54,10 +54,10 @@ const Testimonial = () => {
 
   return (
     <>
-      <h1 className="font-Nunito font-bold text-3xl mb-14 text-center text-[#133221] dark:text-[#ffffff] px-3">
+      <h1 className="font-Nunito font-bold text-3xl mb-12 text-center text-[#133221] dark:text-[#ffffff] px-3">
         What Our Community Says
       </h1>
-      <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-28 py-5 group">
+      <div className="relative overflow-hidden bg-[#85CA81] text-[#133221] mb-20 py-5 group">
         <div className="flex w-max animate-marquee1 group-hover:[animation-play-state:paused]">
           {[...testimonials, ...testimonials].map((item, index) => (
             <CarouselItem key={index} {...item} />

@@ -11,7 +11,7 @@ import {
 } from "../hooks/blogApi";
 import PageSeo from "../components/PageSeo";
 
-const filterOptions = ["Most Viewed", "Max Stars", "2025", "2024"];
+const filterOptions = ["Most Viewed", "Max Stars", "2026", "2025", "2024"];
 
 function Blogs() {
   const user = useSelector((state) => state.auth.user);

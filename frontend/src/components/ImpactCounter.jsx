@@ -55,7 +55,7 @@ const ImpactCounter = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-[#85CA81] pb-10 pt-5 sm:px-4 px-7 mt-32 mb-28 flex flex-col items-center"
+      className="bg-[#85CA81] pb-10 pt-5 sm:px-4 px-7 sm:mt-28 sm:mb-24 mt-24 mb-20 flex flex-col items-center"
     >
       <h1 className="font-Nunito font-bold text-3xl mb-12 text-center text-[#133221]">
         Our Impact

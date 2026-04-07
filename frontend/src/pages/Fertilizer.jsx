@@ -102,7 +102,7 @@ const Fertilizer = () => {
           <div className="w-20 h-20 border-8 border-dashed rounded-full animate-[spin_3s_linear_infinite] border-[#fa453c]"></div>
         </div>
       ) : (
-        <div className=" my-10 px-10">
+        <div className=" my-10 sm:px-10 px-7">
           <div className=" text-center font-semibold text-xl text-[#133221] bg-[#85CA81] py-2">
             Your Coin Balance: {coinBalance}
           </div>
@@ -129,7 +129,7 @@ const Fertilizer = () => {
             </div>
           )}
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-14 sm:gap-y-28 gap-y-20 mt-20 mb-28 sm:px-10 ">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-14 sm:gap-y-20 gap-y-14 mt-16 mb-24 sm:px-10">
               {products.map((product) => (
                 <div
                   key={product._id}
@@ -377,7 +377,7 @@ const Fertilizer = () => {
                       <div className=" text-center my-10">
                         <button
                           type="submit"
-                          className="bg-[#fa453c] text-white rounded-lg px-9 py-1 sm:text-lg font-medium transition-all duration-300 transform hover:scale-105"
+                          className="bg-[#fa453c] text-white rounded-lg px-9 sm:py-1 py-2 sm:text-lg font-medium transition-all duration-300 transform hover:scale-105"
                         >
                           Place Order
                         </button>

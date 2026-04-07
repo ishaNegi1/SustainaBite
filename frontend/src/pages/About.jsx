@@ -1,4 +1,3 @@
-import React from "react";
 import {
   blog1,
   donate2,
@@ -65,7 +64,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-16 py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16 justify-center items-center">
           <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 p-6 mx-5 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Our Mission
@@ -79,11 +78,11 @@ const About = () => {
           </div>
           <img
             src={lifecycle}
-            className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
+            className=" lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-16  py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-16 justify-center items-center">
           <img
             src={fertilizer2}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
@@ -101,7 +100,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-16  py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16 justify-center items-center">
           <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Why It Matters
@@ -118,7 +117,7 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-16  py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-16 justify-center items-center">
           <img
             src={trash}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
@@ -137,7 +136,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-16  py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16 justify-center items-center">
           <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Our Impact
@@ -155,7 +154,7 @@ const About = () => {
           />
         </div>
 
-        <div className=" flex sm:flex-row flex-col mb-16  py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col mb-16 justify-center items-center">
           <img
             src={community}
             className="  lg:h-64 lg:w-64 sm:h-72 sm:w-72 w-60 h-60 rounded-full z-10"
@@ -172,7 +171,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" flex sm:flex-row flex-col-reverse mb-16  py-8 justify-center items-center">
+        <div className=" flex sm:flex-row flex-col-reverse mb-16 justify-center items-center">
           <div className=" sm:w-[70%] sm:px-20 sm:rounded-l-full border-2 sm:relative -right-12 flex flex-col justify-center text-white bg-[#21583a] dark:bg-[#85CA81] dark:text-[#133221] border-[#fa453c] mt-8 sm:mt-0 sm:p-4 mx-5 p-6 sm:mx-0 rounded-2xl">
             <h1 className=" lg:text-3xl sm:text-2xl text-xl sm:py-3 pb-3  font-medium sm:text-left text-center">
               Sustainability Goals

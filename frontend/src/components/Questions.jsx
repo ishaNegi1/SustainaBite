@@ -95,12 +95,12 @@ const Questions = () => {
   const displayFaqs = seeMore ? faqs : faqs.slice(0, 7);
 
   return (
-    <div className=" mb-24 flex flex-col justify-center items-center">
+    <div className=" mb-20 flex flex-col justify-center items-center">
       <h1 className="text-[#133221] dark:text-white font-Nunito font-bold sm:text-3xl text-3xl text-center px-3">
         Your Questions, Answered
       </h1>
 
-      <div className=" flex flex-col mt-14 px-7 sm:px-24 md:px-36 lg:px-64">
+      <div className=" flex flex-col mt-11 px-7 sm:px-24 md:px-36 lg:px-64">
         {displayFaqs.map((item, index) => (
           <div key={index} className=" flex flex-col -mb-5">
             <Box
