@@ -11,22 +11,29 @@ function Signup() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
-      return;
-    }
-    const result = await signupUser({ name, email, password });
-    if (result?.user) {
-      navigate("/Login");
-    } else {
-      setError(result?.error || "User already exists");
-    }
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  if (password.length < 6) {
+    setError("Password must be at least 6 characters long");
     setLoading(false);
-  };
+    return;
+  }
+  try {
+    const result = await signupUser({ name, email, password });
+    if (result?.user || result?.success) {
+      navigate("/login");
+    } else {
+      setError(result?.error || "Signup failed");
+    }
+  } catch (err) {
+    console.error(err);
+    setError("Network error or server issue");
+  } finally {
+    setLoading(false); 
+  }
+};
 
   if (loading) {
     return (
