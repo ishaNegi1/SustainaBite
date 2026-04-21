@@ -50,12 +50,13 @@ cd sustainabite
 cd backend</br>
 npm install
 <b><h4>Create a .env file inside backend/ with:</h4></b>
-PORT=5000</br>
+PORT=3000</br>
 MONGO_URI=your_mongodb_connection_string</br>
 JWT_SECRET=your_jwt_secret</br>
 CLOUDINARY_CLOUD_NAME=your_cloud_name</br>
 CLOUDINARY_API_KEY=your_api_key</br>
 CLOUDINARY_API_SECRET=your_api_secret</br>
+OPENROUTER_API_KEY=your_api_key</br>
 EMAIL_USER=your_email@example.com</br>
 EMAIL_PASS=your_email_password
 <b><h4>Run backend:</h4></b>
